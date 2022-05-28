@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 
 class PageManager {
   final progressNotifier = ValueNotifier<ProgressBarState>(
@@ -11,8 +17,8 @@ class PageManager {
   );
   final buttonNotifier = ValueNotifier<ButtonState>(ButtonState.paused);
 
-  static const url =
-      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3';
+  // static const url =
+  //     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3';
 
   late AudioPlayer _audioPlayer;
   PageManager() {
@@ -21,7 +27,9 @@ class PageManager {
 
   void _init() async {
     _audioPlayer = AudioPlayer();
-    await _audioPlayer.setUrl(url);
+    var response = await http.get(Uri.parse('https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts/hKXqE9wtyp7tnEJfDYFK/stream'));
+    String? myurl =await jsonDecode(response.body)!["podcastUrl"];
+    await _audioPlayer.setUrl(myurl!);
 
     _audioPlayer.playerStateStream.listen((playerState) {
       final isPlaying = playerState.playing;
