@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'PodcastView.dart';
 
-
 class ExplorePage extends StatelessWidget {
   const ExplorePage({Key? key}) : super(key: key);
 
@@ -30,13 +29,13 @@ class ExplorePage extends StatelessWidget {
                           child: Column(children: [
                         IconButton(
                           icon: const Icon(Icons.access_alarm),
-                          iconSize: 100,
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const podcastview();
-                            }));
-                          },
+                          iconSize: 100, onPressed: () {},
+                          // onPressed: () {
+                          //   Navigator.push(context,
+                          //       MaterialPageRoute(builder: (context) {
+                          //     return const podcastview();
+                          //   }));
+                          // },
                         ),
                         const Text("The cons of a lunk alarm"),
                         const Text("Fitness . 1 hour . 4.9")
@@ -65,13 +64,13 @@ class ExplorePage extends StatelessWidget {
                           child: Column(children: [
                         IconButton(
                           icon: const Icon(Icons.access_alarm),
-                          iconSize: 100,
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const podcastview();
-                            }));
-                          },
+                          iconSize: 100, onPressed: () {},
+                          // onPressed: () {
+                          //   Navigator.push(context,
+                          //       MaterialPageRoute(builder: (context) {
+                          //     return const podcastview();
+                          //   }));
+                          // },
                         ),
                         const Text("The cons of a lunk alarm"),
                         const Text("Fitness . 1 hour . 4.9")
@@ -98,7 +97,3 @@ class ExplorePage extends StatelessWidget {
     ]);
   }
 }
-
-
-
-

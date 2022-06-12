@@ -3,7 +3,9 @@ import 'page_manager.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 
 class podcastplayer extends StatefulWidget {
-  const podcastplayer({Key? key}) : super(key: key);
+  final id;
+
+  const podcastplayer({Key? key, required this.id}) : super(key: key);
 
   @override
   State<podcastplayer> createState() => _podcastplayerState();
@@ -15,7 +17,7 @@ class _podcastplayerState extends State<podcastplayer> {
   @override
   void initState() {
     super.initState();
-    _pageManager = PageManager();
+    _pageManager = PageManager(podId: widget.id);
   }
 
   @override
@@ -49,11 +51,13 @@ class _podcastplayerState extends State<podcastplayer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [IconButton(
-            icon: const Icon(Icons.fast_rewind),
-            iconSize: 25.0,
-            color: Colors.white, onPressed: () {  },
-          ),
+          children: [
+            IconButton(
+              icon: const Icon(Icons.fast_rewind),
+              iconSize: 25.0,
+              color: Colors.white,
+              onPressed: () {},
+            ),
             ValueListenableBuilder<ButtonState>(
               valueListenable: _pageManager.buttonNotifier,
               builder: (_, value, __) {
@@ -63,7 +67,9 @@ class _podcastplayerState extends State<podcastplayer> {
                       margin: const EdgeInsets.all(8.0),
                       width: 32.0,
                       height: 32.0,
-                      child: const CircularProgressIndicator(color: Colors.white,),
+                      child: const CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
                     );
                   case ButtonState.paused:
                     return IconButton(
@@ -85,8 +91,10 @@ class _podcastplayerState extends State<podcastplayer> {
             IconButton(
               icon: const Icon(Icons.fast_forward),
               iconSize: 25.0,
-              color: Colors.white, onPressed: () {  },
-            )],
+              color: Colors.white,
+              onPressed: () {},
+            )
+          ],
         ),
       ],
     );

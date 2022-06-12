@@ -1,4 +1,4 @@
 var myIdToken;
 var myRefreshToken;
-String displayName ="";
-
+String displayName = "";
+List<dynamic> allPodcasts = [];

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'PodcastView.dart';
 
 class Previewpage extends StatefulWidget {
-  const Previewpage({Key? key}) : super(key: key);
+  final podcastdet;
+
+  const Previewpage({Key? key, required this.podcastdet}) : super(key: key);
 
   @override
   State<Previewpage> createState() => _PreviewpageState();
@@ -11,6 +13,7 @@ class Previewpage extends StatefulWidget {
 class _PreviewpageState extends State<Previewpage> {
   @override
   Widget build(BuildContext context) {
+    String name = widget.podcastdet['title'];
     return Scaffold(
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -31,62 +34,68 @@ class _PreviewpageState extends State<Previewpage> {
                   ),
                 ],
               ),
-
               const Text("Like what you see?",
                   style: TextStyle(
                     color: Color(0xffb257a84),
                     fontSize: 35,
                   )),
               const Spacer(),
-                  const Text("Click the card to start listening",
-                      style: TextStyle(
-                        color: Color(0xffb257a84),
-                        fontSize: 15,
-                      )),
-                  const Spacer(),
-              Card(
-                color: const Color(0xffb257a84),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                child: InkWell(
-                  onTap: () {Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                        return const podcastview();
+              const Text("Click the card to start listening",
+                  style: TextStyle(
+                    color: Color(0xffb257a84),
+                    fontSize: 15,
+                  )),
+              const Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(widget.podcastdet['imgUrl']),
+                      fit: BoxFit.cover,
+                    ),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(12.0))),
+                child: Card(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return podcastview(podcast: widget.podcastdet);
                       }));
-                  },
-                  child: SizedBox(
-                    width: 300,
-                    height: 400,
-                    child: Column(
-                      children: [
-                        IconButton(
-                          // width: MediaQuery.of(context).size.width,
-                          // margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          //
-                          // decoration: const BoxDecoration(
-                          //     color: Color(0xffb257a84),
-                          //     borderRadius: BorderRadius.all(Radius.circular(18))),
-                          icon: const Icon(Icons.access_alarm),
-                          onPressed: () {},
-                          // child: Text(
-                          //   '$i',
-                          //   style: const TextStyle(fontSize: 16.0),
-                          // )
-                        ),
-                        const Text(
-                          'IS this displaying',
-                          style: TextStyle(fontSize: 16.0),
-                        )
-                      ],
+                    },
+                    child: SizedBox(
+                      width: 300,
+                      height: 400,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            widget.podcastdet['title'],
+                            style: const TextStyle(fontSize: 16.0),
+                          ),
+                          Text(
+                            widget.podcastdet['description'],
+                            style: const TextStyle(fontSize: 16.0),
+                          ),
+                          Text(
+                            widget.podcastdet['artistName'],
+                            style: const TextStyle(fontSize: 16.0),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
               const Spacer(),
-                  const Spacer(),
-                  const Spacer(),
-                  const Spacer(),
+              const Spacer(),
+              const Spacer(),
+              const Spacer(),
             ]))));
   }
 }

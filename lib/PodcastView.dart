@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'Podcastplayer.dart';
+import 'page_manager.dart';
 
 class podcastview extends StatefulWidget {
-  const podcastview({Key? key}) : super(key: key);
+  final podcast;
+
+  const podcastview({Key? key, required this.podcast}) : super(key: key);
 
   @override
   State<podcastview> createState() => _podcastviewState();
@@ -17,48 +20,55 @@ class _podcastviewState extends State<podcastview> {
           padding: const EdgeInsets.all(30.0),
           child: Center(
               child: Column(
+            children: [
+              const Padding(padding: EdgeInsets.all(15.0)),
+              Row(
                 children: [
-                  const Padding(padding: EdgeInsets.all(15.0)),
-                  Row(
-                    children: [
-                      SizedBox(
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text("<- Back",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ))),
-                      ),
-                    ],
-                  ),
-
-                  const Text("You're listening to..",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 35,
-                      )),
-                  const Spacer(),
-                  const Spacer(),
-                  // const Padding(padding: const EdgeInsets.all(30.0),),
                   SizedBox(
-                    child: IconButton(
-                      icon: const Icon(Icons.alarm),
-                      iconSize: 100,
-                      color: Colors.white,
-                      onPressed: () {},
-                    ),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("<- Back",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ))),
                   ),
-                  const Text("The cons of a lunk Alarm",
-                      style: TextStyle(
-                        color: Colors.white,
-                      )),
-                  const Spacer(),
-                  const podcastplayer(),
-                  const Spacer(),
                 ],
-              )),
+              ),
+
+              const Text("You're listening to..",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 35,
+                  )),
+              const Spacer(),
+              const Spacer(),
+              // const Padding(padding: const EdgeInsets.all(30.0),),
+              Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(widget.podcast['imgUrl']),
+                      fit: BoxFit.cover,
+                    ),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(12.0))),
+                child: SizedBox(
+                  width: 300,
+                  height: 350,
+                ),
+              ),
+              const Spacer(),
+              Text(widget.podcast['title'],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  )),
+              const Spacer(),
+              podcastplayer(id: widget.podcast['podcastId']),
+              const Spacer(),
+            ],
+          )),
         ));
   }
 }

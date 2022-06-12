@@ -180,6 +180,12 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   await jsonDecode(response.body)['displayName'];
               print(profile.myIdToken);
               print(profile.myRefreshToken);
+              final uri2 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
+              http.Response response2 = await http.get(
+                uri2,
+              );
+              profile.allPodcasts = await jsonDecode(response2.body);
               if (profile.myIdToken != null) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const SecondPage(title: 'SecondPage');
