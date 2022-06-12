@@ -12,6 +12,7 @@
  <div align="center">
 
 </div>
+
 ## Getting Started
 
 Castaway is a podcast app that serves contents from your favorite content creators on iPhone and Android. This project is written in Express and Firebase for the backend and Flutter for the frontend.
@@ -46,3 +47,14 @@ git clone git@github.com:yyj-02/castaway-frontend.git
 ##using https
 git clone https://github.com/yyj-02/castaway-frontend.git
 ```
+
+#Open and run in Android studio
+
+Guide: https://docs.flutter.dev/development/tools/android-studio
+## Frontend Documentation
+
+[go to API documentation →](./functions/README.md)
+
+## Frontend Documentation
+
+[go to frontend documentation →](https://github.com/yyj-02/castaway-backend#readme)
