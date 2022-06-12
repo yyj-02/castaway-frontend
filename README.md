@@ -1,3 +1,14 @@
+<p align="center"><img width=20% src="./assets/castaway.png" /></p>
+
+<h1 align="center">
+  Castaway
+</h1>
+
+<h3 align="center">
+  Your friendly podcast app (work in progress)
+</h3>
+
+ <br/>
 # castaway_frontend
 
 A new Flutter project.
