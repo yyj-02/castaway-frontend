@@ -9,6 +9,11 @@
 </h3>
 
  <br/>
+ <div align="center">
+
+![Flutter](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+</div>
 # castaway_frontend
 
 A new Flutter project.
