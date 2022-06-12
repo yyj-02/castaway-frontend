@@ -55,6 +55,6 @@ Guide: https://docs.flutter.dev/development/tools/android-studio
 
 [go to API documentation →](./functions/README.md)
 
-## Frontend Documentation
+## Backend Documentation
 
-[go to frontend documentation →](https://github.com/yyj-02/castaway-backend#readme)
+[go to backend documentation →](https://github.com/yyj-02/castaway-backend#readme)
