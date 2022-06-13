@@ -1,6 +1,12 @@
+import 'dart:convert';
+
+import 'package:http_parser/http_parser.dart';
+import 'dart:io';
+import 'ProfileDetails.dart' as profile;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:http/http.dart' as http;
 
 class CreatePage extends StatefulWidget {
   const CreatePage({Key? key}) : super(key: key);
@@ -67,11 +73,47 @@ class _CreatePageState extends State<CreatePage> {
                         borderRadius: BorderRadius.circular(18.0),
                         side: const BorderSide(color: Color(0xffb257a84))))),
             onPressed: () async {
-              XFile? pickedFile = await ImagePicker().pickImage(
+              final pickedFile = await ImagePicker().getImage(
                 source: ImageSource.gallery,
                 maxWidth: 1800,
                 maxHeight: 1800,
               );
+              var pather = pickedFile?.path;
+              print(pather);
+              File img = File(pather!);
+              print(img.runtimeType);
+              Image finale = Image.file(img);
+
+              void uploadFileToServer(File imagePath) async {
+                var request = new http.MultipartRequest(
+                    "POST",
+                    Uri.parse(
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images"));
+                request.fields['idToken'] = profile.myIdToken;
+                request.files.add(http.MultipartFile(
+                    'image',
+                    File(pather).readAsBytes().asStream(),
+                    File(pather).lengthSync(),
+                    filename: pather.split("/").last,
+                    contentType: new MediaType('image', 'jpeg')));
+                var res = await request.send();
+                final respStr = await res.stream.bytesToString();
+                print(respStr);
+              }
+
+              uploadFileToServer(img);
+
+              final uri = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images");
+
+              // var map = new Map<dynamic, dynamic>();
+              // map['idToken']=profile.myIdToken;
+              // map['image'] = pickedFile;
+              // http.Response response = await http.post(
+              //   uri,
+              //   body: map,
+              // );
+              // print(await jsonDecode(response.body)['imageUploadId']);
             },
             child: Column(
               children: const [
