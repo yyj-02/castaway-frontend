@@ -14,7 +14,7 @@ class Error extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: const [
-                      Text("Something went wrong ..."),
-                    ]))));
+                  Text("Something went wrong ..."),
+                ]))));
   }
 }

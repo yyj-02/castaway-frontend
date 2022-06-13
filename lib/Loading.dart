@@ -14,7 +14,7 @@ class loading extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: const [
-                      Text("How's your day ..."),
-                    ]))));
+                  Text("How's your day ..."),
+                ]))));
   }
 }

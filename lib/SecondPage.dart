@@ -68,16 +68,13 @@ class _SecondPageState extends State<SecondPage> {
       ),
       body: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _widgetOptions[_selectedIndex],
-            ],
-          )),
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _widgetOptions[_selectedIndex],
+        ],
+      )),
     );
   }
 }
 
-
 //Profile Page
-
-

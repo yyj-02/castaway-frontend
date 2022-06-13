@@ -21,16 +21,17 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
               const Spacer(),
-              const Text("You're Live",style: TextStyle(
-                color: Colors.white,
-                fontSize: 50,
-              )),
+              const Text("You're Live",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50,
+                  )),
               const Spacer(),
-              Text((current),style: const TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-              )),
-
+              Text((current),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  )),
               const Spacer(),
               const Icon(
                 Icons.mic,
@@ -38,7 +39,8 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                 color: Colors.white,
               ),
               const Spacer(),
-              const Text("Press mic icon to mute", style: TextStyle(
+              const Text("Press mic icon to mute",
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                   )),
