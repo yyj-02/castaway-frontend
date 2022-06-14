@@ -79,13 +79,10 @@ class _CreatePageState extends State<CreatePage> {
                 maxHeight: 1800,
               );
               var pather = pickedFile?.path;
-              print(pather);
               File img = File(pather!);
-              print(img.runtimeType);
-              Image finale = Image.file(img);
 
               void uploadFileToServer(File imagePath) async {
-                var request = new http.MultipartRequest(
+                var request = http.MultipartRequest(
                     "POST",
                     Uri.parse(
                         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images"));
@@ -95,7 +92,7 @@ class _CreatePageState extends State<CreatePage> {
                     File(pather).readAsBytes().asStream(),
                     File(pather).lengthSync(),
                     filename: pather.split("/").last,
-                    contentType: new MediaType('image', 'jpeg')));
+                    contentType: MediaType('image', 'jpeg')));
                 var res = await request.send();
                 final respStr = await res.stream.bytesToString();
                 print(respStr);
@@ -103,8 +100,6 @@ class _CreatePageState extends State<CreatePage> {
 
               uploadFileToServer(img);
 
-              final uri = Uri.parse(
-                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images");
 
               // var map = new Map<dynamic, dynamic>();
               // map['idToken']=profile.myIdToken;
@@ -208,11 +203,33 @@ class _CreatePageState extends State<CreatePage> {
               onPressed: () async {
                 FilePickerResult? result =
                     await FilePicker.platform.pickFiles();
+                var path = result?.paths[0];
+                File audio = File(path!);
+                void uploadFileToServer(File imagePath) async {
+                  var request = http.MultipartRequest(
+                      "POST",
+                      Uri.parse(
+                          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts"));
+                  request.fields['idToken'] = profile.myIdToken;
+                  request.files.add(http.MultipartFile(
+                      'podcast',
+                      File(path).readAsBytes().asStream(),
+                      File(path).lengthSync(),
+                      filename: path.split("/").last,
+                      contentType: MediaType('audio', 'mpeg')));
+                  var res = await request.send();
+                  final respStr = await res.stream.bytesToString();
+                  print(respStr);
+                }
+
+                uploadFileToServer(audio);
+                //add text controller data and send a post request to make a podcast
+
               },
               child: Text("Select audio".toUpperCase(),
                   style: const TextStyle(color: Colors.white, fontSize: 14)),
             ),
-            Spacer(),
+            const Spacer(),
             // ElevatedButton(
             //   style: ButtonStyle(
             //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
