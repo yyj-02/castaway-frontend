@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_page_castaway/Preview.dart';
@@ -14,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    setState(() {});
+    Timer.periodic(const Duration(seconds: 1000), (Timer t) => setState(() {}));
     return Center(
       child: Column(children: [
         const Padding(padding: EdgeInsets.all(35.0)),

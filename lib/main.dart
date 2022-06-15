@@ -28,6 +28,17 @@ Future<void> refresh() async {
     print(profile.myRefreshToken);
   }
 }
+Future<void> refreshall() async {
+  if (profile.myRefreshToken != null) {
+    final uri = Uri.parse(
+        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
+    http.Response response = await http.get(
+      uri
+    );
+    profile.allPodcasts = await jsonDecode(response.body);
+
+  }
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -41,12 +52,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     Timer.periodic(const Duration(seconds: 3600), (Timer t) => refresh());
+    Timer.periodic(const Duration(seconds: 1000), (Timer t) => refreshall());
     return MaterialApp(
       title: 'Navigation Demo',
       theme: ThemeData(
         primarySwatch: Palette.kToDark,
         fontFamily: 'Poppins',
-        primaryColor: Colors.white,
+        primaryColor: Color(0xffb257a84),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const FirstPage(title: 'FirstPage'),
