@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Podcastplayer.dart';
-import 'page_manager.dart';
 
 class podcastview extends StatefulWidget {
   final podcast;
@@ -52,15 +51,15 @@ class _podcastviewState extends State<podcastview> {
                       fit: BoxFit.cover,
                     ),
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(12.0))),
-                child: SizedBox(
+                    borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+                child: const SizedBox(
                   width: 300,
                   height: 350,
                 ),
               ),
               const Spacer(),
               Text(widget.podcast['title'],
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                   )),

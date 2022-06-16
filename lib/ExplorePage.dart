@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                         fit: BoxFit.cover,
                       ),
                       shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.all(Radius.circular(18.0))),
+                      borderRadius: const BorderRadius.all(Radius.circular(18.0))),
                   child: Card(
                     elevation: 0,
                     color: Colors.transparent,

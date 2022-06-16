@@ -176,8 +176,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
               profile.myIdToken = await jsonDecode(response.body)['idToken'];
               profile.myRefreshToken =
                   await jsonDecode(response.body)['refreshToken'];
-              profile.displayName =
-                  await jsonDecode(response.body)['displayName'];
               print(profile.myIdToken);
               print(profile.myRefreshToken);
               final uri2 = Uri.parse(
@@ -191,6 +189,25 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   return const SecondPage(title: 'SecondPage');
                 }));
               }
+
+              final uri3 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
+              http.Response response3 =
+                  await http.post(uri3, body: {'idToken': profile.myIdToken});
+              print(response3.body);
+              profile.favePodcasts = await jsonDecode(response3.body);
+              final uri4 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
+              http.Response response4 =
+                  await http.post(uri4, body: {'idToken': profile.myIdToken});
+              print(response4.body);
+              profile.email = await jsonDecode(response4.body)['email'];
+              profile.displayName =
+                  await jsonDecode(response4.body)['displayName'];
+              profile.numCre =
+                  await jsonDecode(response4.body)['numberOfCreations'];
+              profile.numFav =
+                  await jsonDecode(response4.body)['numberOfFavorites'];
             },
             child: Text("     Login     ".toUpperCase(),
                 style: const TextStyle(color: Colors.white, fontSize: 14)),

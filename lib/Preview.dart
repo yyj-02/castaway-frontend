@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'PodcastView.dart';
+import 'ProfileDetails.dart' as profile;
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Previewpage extends StatefulWidget {
   final podcastdet;
@@ -13,7 +16,6 @@ class Previewpage extends StatefulWidget {
 class _PreviewpageState extends State<Previewpage> {
   @override
   Widget build(BuildContext context) {
-    String name = widget.podcastdet['title'];
     return Scaffold(
         body: Padding(
             padding: const EdgeInsets.all(30.0),
@@ -53,7 +55,7 @@ class _PreviewpageState extends State<Previewpage> {
                       fit: BoxFit.cover,
                     ),
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(12.0))),
+                    borderRadius: const BorderRadius.all(Radius.circular(12.0))),
                 child: Card(
                   elevation: 0,
                   color: Colors.transparent,
@@ -92,6 +94,75 @@ class _PreviewpageState extends State<Previewpage> {
                   ),
                 ),
               ),
+              const Spacer(),
+              ElevatedButton(
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color(0xffb257a84)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side:
+                                const BorderSide(color: Color(0xffb257a84))))),
+                onPressed: () async {
+                  var data = {
+                    'idToken': profile.myIdToken,
+                    'podcastId': widget.podcastdet["podcastId"],
+                  };
+                  final uri = Uri.parse(
+                      "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
+                  http.Response response = await http.put(
+                    uri,
+                    body: data,
+                  );
+                  print(jsonDecode(response.body)['message']);
+                  if (response.statusCode == 200) {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                              scrollable: true,
+                              title: const Text(
+                                  'This podcast has been added to your favourites'),
+                              actions: [
+                                ElevatedButton(
+                                  child: const Text("Ok",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      )),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ]);
+                        });
+                  } else {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                              scrollable: true,
+                              title: const Text('Error please try again later'),
+                              actions: [
+                                ElevatedButton(
+                                  child: const Text("OK",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      )),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ]);
+                        });
+                  }
+                },
+                child: Text("Add to favourites".toUpperCase(),
+                    style: const TextStyle(color: Colors.white, fontSize: 14)),
+              ),
+              const Spacer(),
               const Spacer(),
               const Spacer(),
               const Spacer(),

@@ -109,10 +109,10 @@ class _CreatePageState extends State<CreatePage> {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           scrollable: true,
-                          title: Text('Your image submission was a success'),
+                          title: const Text('Your image submission was a success'),
                           actions: [
                             ElevatedButton(
-                                child: Text("ok",
+                                child: const Text("ok",
                                     style: TextStyle(
                                       color: Colors.white,
                                     )),
@@ -128,11 +128,11 @@ class _CreatePageState extends State<CreatePage> {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           scrollable: true,
-                          title: Text(
+                          title: const Text(
                               'Your image submission was not recieved please try again'),
                           actions: [
                             ElevatedButton(
-                                child: Text("ok",
+                                child: const Text("ok",
                                     style: TextStyle(
                                       color: Colors.white,
                                     )),
@@ -270,7 +270,7 @@ class _CreatePageState extends State<CreatePage> {
         const Padding(padding: EdgeInsets.all(5.0)),
         Row(
           children: [
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
               style: ButtonStyle(
                   foregroundColor:
@@ -309,11 +309,11 @@ class _CreatePageState extends State<CreatePage> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             scrollable: true,
-                            title: Text(
+                            title: const Text(
                                 'Your audio file submission was a success. Please click confirm to create your podcast'),
                             actions: [
                               ElevatedButton(
-                                  child: Text("Confirm",
+                                  child: const Text("Confirm",
                                       style: TextStyle(
                                         color: Colors.white,
                                       )),
@@ -343,11 +343,11 @@ class _CreatePageState extends State<CreatePage> {
                                           builder: (BuildContext context) {
                                             return AlertDialog(
                                                 scrollable: true,
-                                                title: Text(
+                                                title: const Text(
                                                     'Success your podcast was uploaded'),
                                                 actions: [
                                                   ElevatedButton(
-                                                      child: Text("Ok",
+                                                      child: const Text("Ok",
                                                           style: TextStyle(
                                                             color: Colors.white,
                                                           )),
@@ -362,11 +362,11 @@ class _CreatePageState extends State<CreatePage> {
                                           builder: (BuildContext context) {
                                             return AlertDialog(
                                                 scrollable: true,
-                                                title: Text(
+                                                title: const Text(
                                                     'Error your podcast was not uploaded try again'),
                                                 actions: [
                                                   ElevatedButton(
-                                                      child: Text("Ok",
+                                                      child: const Text("Ok",
                                                           style: TextStyle(
                                                             color: Colors.white,
                                                           )),
@@ -394,11 +394,11 @@ class _CreatePageState extends State<CreatePage> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             scrollable: true,
-                            title: Text(
+                            title: const Text(
                                 'Your audio file submission was not recieved please try again'),
                             actions: [
                               ElevatedButton(
-                                  child: Text("ok",
+                                  child: const Text("ok",
                                       style: TextStyle(
                                         color: Colors.white,
                                       )),

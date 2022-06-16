@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Palette.kToDark,
         fontFamily: 'Poppins',
-        primaryColor: Color(0xffb257a84),
+        primaryColor: const Color(0xffb257a84),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const FirstPage(title: 'FirstPage'),

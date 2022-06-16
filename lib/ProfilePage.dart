@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ProfileDetails.dart' as profile;
 import 'package:settings_ui/settings_ui.dart';
+import 'ViewProfile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -22,19 +23,19 @@ class _ProfilePageState extends State<ProfilePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Welcome",
+                const Text("Welcome",
                     style: TextStyle(
                       color: Color(0xffb257a84),
                       fontSize: 40,
                     )),
-                Padding(padding: EdgeInsets.all(9.0)),
+                const Padding(padding: EdgeInsets.all(9.0)),
                 Text(profile.displayName,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xffb257a84),
                       fontSize: 25,
                     )),
-                Padding(padding: EdgeInsets.all(15.0)),
-                settings()
+                const Padding(padding: EdgeInsets.all(15.0)),
+                const settings()
               ])
         ]));
   }
@@ -61,19 +62,22 @@ class _settingsState extends State<settings> {
                   title: const Text('Common'),
                   tiles: <SettingsTile>[
                     SettingsTile.navigation(
-                      leading: const Icon(Icons.language),
-                      title: const Text('Language'),
-                      value: const Text('English'),
+                      leading: const Icon(Icons.person),
+                      title: const Text('View profile'),
+                      onPressed: (context) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const viewProfilePage();
+                        }));
+                      },
                     ),
                     SettingsTile.navigation(
-                      leading: const Icon(Icons.person),
-                      title: const Text('View personal information'),
+                      leading: const Icon(Icons.upload),
+                      title: const Text('View creations'),
                     ),
-                    SettingsTile.switchTile(
-                      onToggle: (value) {},
-                      initialValue: true,
-                      leading: const Icon(Icons.format_paint),
-                      title: const Text('Enable dark mode'),
+                    SettingsTile.navigation(
+                      leading: const Icon(Icons.text_fields),
+                      title: const Text('Change Display name'),
                     ),
                   ],
                 ),
@@ -87,19 +91,6 @@ class _settingsState extends State<settings> {
                     SettingsTile.navigation(
                       leading: const Icon(Icons.security),
                       title: const Text('Account settings'),
-                    ),
-                  ],
-                ),
-                SettingsSection(
-                  title: const Text('Sound and playback'),
-                  tiles: <SettingsTile>[
-                    SettingsTile.navigation(
-                      leading: const Icon(Icons.equalizer),
-                      title: const Text('Equalizer'),
-                    ),
-                    SettingsTile.navigation(
-                      leading: const Icon(Icons.speaker),
-                      title: const Text('Advanced settings'),
                     ),
                   ],
                 ),
