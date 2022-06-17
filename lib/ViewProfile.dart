@@ -1,9 +1,14 @@
 import 'ProfileDetails.dart' as profile;
 import 'package:flutter/material.dart';
 
-class viewProfilePage extends StatelessWidget {
+class viewProfilePage extends StatefulWidget {
   const viewProfilePage({Key? key}) : super(key: key);
 
+  @override
+  State<viewProfilePage> createState() => _viewProfilePageState();
+}
+
+class _viewProfilePageState extends State<viewProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

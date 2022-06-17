@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_page_castaway/Preview.dart';
@@ -14,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String searchString = "";
+
   @override
   Widget build(BuildContext context) {
     Timer.periodic(const Duration(seconds: 1000), (Timer t) => setState(() {}));
@@ -25,6 +26,11 @@ class _HomePageState extends State<HomePage> {
             flex: 1,
             child: TextField(
               cursorColor: const Color(0xffb257a84),
+              onChanged: (value) {
+                setState(() {
+                  searchString = value.toLowerCase();
+                });
+              },
               decoration: InputDecoration(
                 fillColor: Colors.white,
                 filled: true,
@@ -37,16 +43,56 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          // TextButton(
-          //   onPressed: () {
-          //     profile.displayName = "";
-          //     profile.myRefreshToken = null;
-          //     profile.myIdToken = null;
-          //
-          //     Navigator.pop(context);
-          //   },
-          //   child: const Text('Logout'),
-          // ),
+          SizedBox(height: 10),
+          // Expanded(
+          //         child: FutureBuilder(
+          //           builder: (context, AsyncSnapshot<List> podcast) {
+          //             if (podcast.hasData) {
+          //               return Center(
+          //                 child: ListView.separated(
+          //                   padding: const EdgeInsets.all(8),
+          //                   itemCount: profile.allPodcasts.length,
+          //                   itemBuilder: (BuildContext context, int index) {
+          //                     return profile.allPodcasts.map((pod) => jsonDecode(pod.body)['title']).toList()[index].toLowercase().contains(searchString)
+          //                     // return podcast.data![index].title
+          //                     // return podcast.data![index].title
+          //                     //     .toLowerCase()
+          //                     //     .contains(searchString)
+          //                         ? ListTile(
+          //                       leading: CircleAvatar(
+          //                         backgroundImage: NetworkImage(
+          //                             '${jsonDecode(profile.allPodcasts[index].body)['imgUrl']}'),
+          //                       ),
+          //                       title: Text('${jsonDecode(profile.allPodcasts[index].body)['imgUrl']}'),
+          //                       subtitle: Text(
+          //                           'Score: ${jsonDecode(profile.allPodcasts[index].body)['imgUrl']}'),
+          //                     )
+          //                         : Container();
+          //                   },
+          //                   separatorBuilder: (BuildContext context, int index) {
+          //                     return podcast.data![index].title
+          //                         .toLowerCase()
+          //                         .contains(searchString)
+          //                         ? Divider()
+          //                         : Container();
+          //                   },
+          //                 ),
+          //               );
+          //             }
+          //             return Text("Hi");
+          //           },
+          //         ),
+          //         // TextButton(
+          //         //   onPressed: () {
+          //         //     profile.displayName = "";
+          //         //     profile.myRefreshToken = null;
+          //         //     profile.myIdToken = null;
+          //         //
+          //         //     Navigator.pop(context);
+          //         //   },
+          //         //   child: const Text('Logout'),
+          //         // ),
+          //       )
         ]),
         const Padding(padding: EdgeInsets.all(10.0)),
         CarouselSlider(
@@ -67,7 +113,8 @@ class _HomePageState extends State<HomePage> {
                         fit: BoxFit.cover,
                       ),
                       shape: BoxShape.rectangle,
-                      borderRadius: const BorderRadius.all(Radius.circular(18.0))),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(18.0))),
                   child: Card(
                     elevation: 0,
                     color: Colors.transparent,

@@ -184,11 +184,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 uri2,
               );
               profile.allPodcasts = await jsonDecode(response2.body);
-              if (profile.myIdToken != null) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const SecondPage(title: 'SecondPage');
-                }));
-              }
 
               final uri3 = Uri.parse(
                   "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
@@ -208,6 +203,18 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   await jsonDecode(response4.body)['numberOfCreations'];
               profile.numFav =
                   await jsonDecode(response4.body)['numberOfFavorites'];
+              final uri5 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
+              http.Response response5 =
+                  await http.post(uri5, body: {'idToken': profile.myIdToken});
+              print(response5.body);
+              profile.myCreations = await jsonDecode(response5.body);
+
+              if (profile.myIdToken != null) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const SecondPage(title: 'SecondPage');
+                }));
+              }
             },
             child: Text("     Login     ".toUpperCase(),
                 style: const TextStyle(color: Colors.white, fontSize: 14)),

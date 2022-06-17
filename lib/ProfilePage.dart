@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'ProfileDetails.dart' as profile;
 import 'package:settings_ui/settings_ui.dart';
 import 'ViewProfile.dart';
+import 'ChangeName.dart';
+import 'ViewCreations.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -74,10 +76,22 @@ class _settingsState extends State<settings> {
                     SettingsTile.navigation(
                       leading: const Icon(Icons.upload),
                       title: const Text('View creations'),
+                      onPressed: (context) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const ViewCreationsPage();
+                        }));
+                      },
                     ),
                     SettingsTile.navigation(
                       leading: const Icon(Icons.text_fields),
                       title: const Text('Change Display name'),
+                      onPressed: (context) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const changeName();
+                        }));
+                      },
                     ),
                   ],
                 ),
@@ -100,5 +114,6 @@ class _settingsState extends State<settings> {
         ],
       ),
     );
+    setState(() {});
   }
 }

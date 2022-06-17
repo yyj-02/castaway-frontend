@@ -3,6 +3,7 @@ import 'PodcastView.dart';
 import 'ProfileDetails.dart' as profile;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'SecondPage.dart';
 
 class Previewpage extends StatefulWidget {
   final podcastdet;
@@ -114,7 +115,7 @@ class _PreviewpageState extends State<Previewpage> {
                   };
                   final uri = Uri.parse(
                       "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
-                  http.Response response = await http.put(
+                  http.Response response = await http.delete(
                     uri,
                     body: data,
                   );
@@ -132,7 +133,7 @@ class _PreviewpageState extends State<Previewpage> {
                           return AlertDialog(
                               scrollable: true,
                               title: const Text(
-                                  'This podcast has been added to your favourites'),
+                                  'This podcast has been deleted from your favourites'),
                               actions: [
                                 ElevatedButton(
                                   child: const Text("Ok",
@@ -140,7 +141,11 @@ class _PreviewpageState extends State<Previewpage> {
                                         color: Colors.white,
                                       )),
                                   onPressed: () {
-                                    Navigator.pop(context);
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return const SecondPage(
+                                          title: 'SecondPage');
+                                    }));
                                   },
                                 )
                               ]);
@@ -166,7 +171,7 @@ class _PreviewpageState extends State<Previewpage> {
                         });
                   }
                 },
-                child: Text("Add to favourites".toUpperCase(),
+                child: Text("Delete from favourites".toUpperCase(),
                     style: const TextStyle(color: Colors.white, fontSize: 14)),
               ),
               const Spacer(),
