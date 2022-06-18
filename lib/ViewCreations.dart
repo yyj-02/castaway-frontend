@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'FavPreview.dart';
 import 'ProfileDetails.dart' as profile;
+import 'DeleteCreation.dart';
+import 'SecondpagefromProfile.dart';
 
 int count = 0;
 
@@ -19,6 +20,23 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
         child: Center(
           child: Column(children: [
             const Padding(padding: EdgeInsets.all(35.0)),
+            Row(
+              children: [
+                SizedBox(
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const SecondPage(title: "secondpage");
+                        }));
+                      },
+                      child: const Text("<- Back",
+                          style: TextStyle(
+                            color: Color(0xffb257a84),
+                          ))),
+                ),
+              ],
+            ),
             SingleChildScrollView(
               child: Center(
                 child: Column(
@@ -62,7 +80,7 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                                               Navigator.push(context,
                                                   MaterialPageRoute(
                                                       builder: (context) {
-                                                return Previewpage(
+                                                return DeleteCreationsPage(
                                                     podcastdet: i);
                                               }));
                                             },

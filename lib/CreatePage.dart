@@ -109,7 +109,8 @@ class _CreatePageState extends State<CreatePage> {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           scrollable: true,
-                          title: const Text('Your image submission was a success'),
+                          title:
+                              const Text('Your image submission was a success'),
                           actions: [
                             ElevatedButton(
                                 child: const Text("ok",
@@ -337,6 +338,13 @@ class _CreatePageState extends State<CreatePage> {
                                       data: jsonEncode(data),
                                     );
                                     print(response.data);
+                                    final uri2 = Uri.parse(
+                                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
+                                    http.Response response2 = await http.get(
+                                      uri2,
+                                    );
+                                    profile.allPodcasts =
+                                        await jsonDecode(response2.body);
                                     if (response.statusCode == 200) {
                                       showDialog(
                                           context: context,

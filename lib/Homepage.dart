@@ -27,7 +27,7 @@ class _ExplorePageState extends State<ExplorePage> {
             GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
-                children: profile.favePodcasts.map((i) {
+                children: profile.favePodcasts.where((s) => s != null).map((i) {
                   return Builder(
                     builder: (BuildContext context) {
                       return SizedBox(
