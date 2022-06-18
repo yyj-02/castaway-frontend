@@ -345,6 +345,12 @@ class _CreatePageState extends State<CreatePage> {
                                     );
                                     profile.allPodcasts =
                                         await jsonDecode(response2.body);
+                                    final uri5 = Uri.parse(
+                                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
+                                    http.Response response5 =
+                                    await http.post(uri5, body: {'idToken': profile.myIdToken});
+                                    print(response5.body);
+                                    profile.myCreations = await jsonDecode(response5.body);
                                     if (response.statusCode == 200) {
                                       showDialog(
                                           context: context,

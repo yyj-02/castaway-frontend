@@ -4,6 +4,7 @@ import 'package:settings_ui/settings_ui.dart';
 import 'ViewProfile.dart';
 import 'ChangeName.dart';
 import 'ViewCreations.dart';
+import 'Login.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -108,10 +109,31 @@ class _settingsState extends State<settings> {
                     ),
                   ],
                 ),
+      SettingsSection(
+        tiles: <SettingsTile>[
+          SettingsTile.navigation(
+            leading: const Icon(Icons.logout),
+            title: const Text('Logout'),
+            onPressed: (context) {
+              profile.myCreations = [];
+              profile.myIdToken = null;
+              profile.myRefreshToken = null;
+              profile.allPodcasts = [];
+              profile.displayName = "";
+              profile.favePodcasts =[];
+              profile.numFav =0;
+              profile.numCre =0;
+              profile.email ="";
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
+                    return const FirstPage(title: "firstpage");
+                  }));
+            },
+          ),
               ],
             ),
-          ),
-        ],
+          ]),
+          )],
       ),
     );
     setState(() {});
