@@ -23,7 +23,10 @@ class _HomePageState extends State<HomePage> {
       child: Center(
         child: Column(children: [
           AppBar(
-            title: const Text("Search"),
+            title: const Text("Search",
+                style: TextStyle(
+                  color: Color(0xffb257a84),
+                )),
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
             actions: [
@@ -32,12 +35,14 @@ class _HomePageState extends State<HomePage> {
                   showSearch(
                       context: context, delegate: CustomSearchDelegate());
                 },
-                icon: const Icon(Icons.search),
+                icon: const Icon(
+                  Icons.search,
+                  color: Color(0xffb257a84),
+                ),
               )
             ],
           ),
           const Padding(padding: EdgeInsets.all(35.0)),
-          const Padding(padding: EdgeInsets.all(10.0)),
           CarouselSlider(
             options: CarouselOptions(
               height: 400.0,
@@ -49,62 +54,94 @@ class _HomePageState extends State<HomePage> {
             items: profile.allPodcasts.map((i) {
               return Builder(
                 builder: (BuildContext context) {
-                  return Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(i['imgUrl']),
-                          fit: BoxFit.cover,
-                        ),
-                        shape: BoxShape.rectangle,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(18.0))),
-                    child: Card(
-                      elevation: 0,
-                      color: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return Previewpage(podcastdet: i);
-                          }));
-                        },
-                        child: SizedBox(
-                          width: 300,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                i['title'],
-                                style: const TextStyle(fontSize: 16.0),
+                  return Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(i['imgUrl']),
+                              fit: BoxFit.cover,
+                            ),
+                            shape: BoxShape.rectangle,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(18.0))),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: <Color>[
+                                Colors.transparent,
+                                Colors.transparent,
+                                Colors.transparent,
+                                Colors.transparent,
+                                Colors.transparent,
+                                Colors.transparent,
+                                Colors.transparent,
+                                Colors.white10,
+                                Colors.white24,
+                                Colors.white38,
+                                Colors.white54,
+                                Colors.white60,
+                                Colors.white70,
+                                Colors.white,
+                              ],
+                              tileMode: TileMode.mirror,
+                            ),
+                          ),
+                          child: Card(
+                            elevation: 0,
+                            color: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return Previewpage(podcastdet: i);
+                                }));
+                              },
+                              child: SizedBox(
+                                width: 300,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      i['title'],
+                                      style: const TextStyle(fontSize: 18.0),
+                                    ),
+                                    Text(
+                                      i['description'],
+                                      style: const TextStyle(fontSize: 16.0),
+                                    ),
+                                    Text(
+                                      i['artistName'],
+                                      style: const TextStyle(fontSize: 16.0),
+                                    ),
+                                    // Text(
+                                    //   i['genres'] ,
+                                    //   style: const TextStyle(fontSize: 16.0),
+                                    // )
+                                  ],
+                                ),
                               ),
-                              Text(
-                                i['description'],
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                              Text(
-                                i['artistName'],
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                              // Text(
-                              //   i['genres'] ,
-                              //   style: const TextStyle(fontSize: 16.0),
-                              // )
-                            ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   );
                 },
               );
             }).toList(),
           ),
           const Padding(padding: EdgeInsets.all(8.0)),
-          const Text('Click to select')
+          const Text('Click to select',
+              style: TextStyle(
+                color: Color(0xffb257a84),
+              ))
         ]),
       ),
     );

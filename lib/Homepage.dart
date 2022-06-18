@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'FavPreview.dart';
 import 'ProfileDetails.dart' as profile;
@@ -12,6 +13,7 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
+    Timer.periodic(const Duration(seconds: 1000), (Timer t) => setState(() {}));
     return Column(children: [
       const Padding(padding: EdgeInsets.all(35.0)),
       Column(
@@ -42,42 +44,64 @@ class _ExplorePageState extends State<ExplorePage> {
                                   shape: BoxShape.rectangle,
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(18.0))),
-                              child: Card(
-                                elevation: 0,
-                                color: Colors.transparent,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: <Color>[
+                                      Colors.transparent,
+                                      Colors.transparent,
+                                      Colors.transparent,
+                                      Colors.transparent,
+                                      Colors.transparent,
+                                      Colors.transparent,
+                                      Colors.transparent,
+                                      Colors.white10,
+                                      Colors.white24,
+                                      Colors.white38,
+                                      Colors.white54,
+                                      Colors.white60,
+                                      Colors.white70,
+                                      Colors.white,
+                                    ],
+                                    // Gradient from https://learnui.design/tools/gradient-generator.html
+                                    tileMode: TileMode.mirror,
+                                  ),
                                 ),
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return Previewpage(podcastdet: i);
-                                    }));
-                                  },
-                                  child: SizedBox(
-                                    width: 150,
-                                    height: 150,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          i['title'],
-                                          style:
-                                              const TextStyle(fontSize: 16.0),
-                                        ),
+                                child: Card(
+                                  elevation: 0,
+                                  color: Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  ),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return Previewpage(podcastdet: i);
+                                      }));
+                                    },
+                                    child: SizedBox(
+                                      width: 160,
+                                      height: 150,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            i['title'],
+                                            style:
+                                                const TextStyle(fontSize: 18.0),
+                                          ),
 
-                                        Text(
-                                          i['artistName'],
-                                          style:
-                                              const TextStyle(fontSize: 16.0),
-                                        ),
-                                        // Text(
-                                        //   i['genres'] ,
-                                        //   style: const TextStyle(fontSize: 16.0),
-                                        // )
-                                      ],
+                                          // Text(
+                                          //   i['genres'] ,
+                                          //   style: const TextStyle(fontSize: 16.0),
+                                          // )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

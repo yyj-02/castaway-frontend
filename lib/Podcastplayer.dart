@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'page_manager.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+import 'ProfileDetails.dart' as profile;
+import "PodcastView.dart";
 
 class podcastplayer extends StatefulWidget {
   final id;
+  final pos;
 
-  const podcastplayer({Key? key, required this.id}) : super(key: key);
+  const podcastplayer({Key? key, required this.id, required this.pos})
+      : super(key: key);
 
   @override
   State<podcastplayer> createState() => _podcastplayerState();
@@ -56,7 +60,15 @@ class _podcastplayerState extends State<podcastplayer> {
               icon: const Icon(Icons.fast_rewind),
               iconSize: 25.0,
               color: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                if (widget.pos == 0) {
+                } else {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return podcastview(
+                        podcast: profile.allPodcasts[widget.pos - 1]);
+                  }));
+                }
+              },
             ),
             ValueListenableBuilder<ButtonState>(
               valueListenable: _pageManager.buttonNotifier,
@@ -92,7 +104,15 @@ class _podcastplayerState extends State<podcastplayer> {
               icon: const Icon(Icons.fast_forward),
               iconSize: 25.0,
               color: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                if (widget.pos == (profile.allPodcasts.length - 1)) {
+                } else {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return podcastview(
+                        podcast: profile.allPodcasts[widget.pos + 1]);
+                  }));
+                }
+              },
             )
           ],
         ),

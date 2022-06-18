@@ -68,46 +68,62 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                                             borderRadius:
                                                 const BorderRadius.all(
                                                     Radius.circular(18.0))),
-                                        child: Card(
-                                          elevation: 0,
-                                          color: Colors.transparent,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(18.0),
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: <Color>[
+                                                Colors.transparent,
+                                                Colors.transparent,
+                                                Colors.transparent,
+                                                Colors.transparent,
+                                                Colors.transparent,
+                                                Colors.transparent,
+                                                Colors.transparent,
+                                                Colors.white10,
+                                                Colors.white24,
+                                                Colors.white38,
+                                                Colors.white54,
+                                                Colors.white60,
+                                                Colors.white70,
+                                                Colors.white,
+                                              ],
+                                              tileMode: TileMode.mirror,
+                                            ),
                                           ),
-                                          child: InkWell(
-                                            onTap: () {
-                                              Navigator.push(context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) {
-                                                return DeleteCreationsPage(
-                                                    podcastdet: i);
-                                              }));
-                                            },
-                                            child: SizedBox(
-                                              width: 150,
-                                              height: 150,
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Text(
-                                                    i['title'],
-                                                    style: const TextStyle(
-                                                        fontSize: 16.0),
-                                                  ),
-
-                                                  Text(
-                                                    i['artistName'],
-                                                    style: const TextStyle(
-                                                        fontSize: 16.0),
-                                                  ),
-                                                  // Text(
-                                                  //   i['genres'] ,
-                                                  //   style: const TextStyle(fontSize: 16.0),
-                                                  // )
-                                                ],
+                                          child: Card(
+                                            elevation: 0,
+                                            color: Colors.transparent,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
+                                            ),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                  return DeleteCreationsPage(
+                                                      podcastdet: i);
+                                                }));
+                                              },
+                                              child: SizedBox(
+                                                width: 150,
+                                                height: 150,
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      i['title'],
+                                                      style: const TextStyle(
+                                                          fontSize: 18.0),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),

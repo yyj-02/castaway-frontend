@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Podcastplayer.dart';
+import 'ProfileDetails.dart' as profile;
+import 'Preview.dart';
 
 class podcastview extends StatefulWidget {
   final podcast;
@@ -26,7 +28,10 @@ class _podcastviewState extends State<podcastview> {
                   SizedBox(
                     child: TextButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Previewpage(podcastdet: widget.podcast);
+                          }));
                         },
                         child: const Text("<- Back",
                             style: TextStyle(
@@ -51,7 +56,8 @@ class _podcastviewState extends State<podcastview> {
                       fit: BoxFit.cover,
                     ),
                     shape: BoxShape.rectangle,
-                    borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(12.0))),
                 child: const SizedBox(
                   width: 300,
                   height: 350,
@@ -64,7 +70,9 @@ class _podcastviewState extends State<podcastview> {
                     fontSize: 30,
                   )),
               const Spacer(),
-              podcastplayer(id: widget.podcast['podcastId']),
+              podcastplayer(
+                  id: widget.podcast['podcastId'],
+                  pos: profile.allPodcasts.indexOf(widget.podcast)),
               const Spacer(),
             ],
           )),

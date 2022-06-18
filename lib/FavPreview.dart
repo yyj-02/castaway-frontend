@@ -19,7 +19,7 @@ class _PreviewpageState extends State<Previewpage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.fromLTRB(5.0, 30.0, 5.0, 30.0),
             child: Center(
                 child: Column(children: [
               const Padding(padding: EdgeInsets.all(15.0)),
@@ -58,39 +58,64 @@ class _PreviewpageState extends State<Previewpage> {
                     shape: BoxShape.rectangle,
                     borderRadius:
                         const BorderRadius.all(Radius.circular(12.0))),
-                child: Card(
-                  elevation: 0,
-                  color: Colors.transparent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: <Color>[
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.white10,
+                        Colors.white24,
+                        Colors.white38,
+                        Colors.white54,
+                        Colors.white60,
+                        Colors.white70,
+                        Colors.white,
+                      ],
+                      tileMode: TileMode.mirror,
+                    ),
                   ),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return podcastview(podcast: widget.podcastdet);
-                      }));
-                    },
-                    child: SizedBox(
-                      width: 300,
-                      height: 400,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            widget.podcastdet['title'],
-                            style: const TextStyle(fontSize: 16.0),
-                          ),
-                          Text(
-                            widget.podcastdet['description'],
-                            style: const TextStyle(fontSize: 16.0),
-                          ),
-                          Text(
-                            widget.podcastdet['artistName'],
-                            style: const TextStyle(fontSize: 16.0),
-                          ),
-                        ],
+                  child: Card(
+                    elevation: 0,
+                    color: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return podcastview(podcast: widget.podcastdet);
+                        }));
+                      },
+                      child: SizedBox(
+                        width: 300,
+                        height: 400,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              widget.podcastdet['title'],
+                              style: const TextStyle(fontSize: 18.0),
+                            ),
+                            Text(
+                              widget.podcastdet['description'],
+                              style: const TextStyle(fontSize: 16.0),
+                            ),
+                            Text(
+                              widget.podcastdet['artistName'],
+                              style: const TextStyle(fontSize: 16.0),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

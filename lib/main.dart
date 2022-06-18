@@ -28,15 +28,31 @@ Future<void> refresh() async {
     print(profile.myRefreshToken);
   }
 }
+
 Future<void> refreshall() async {
   if (profile.myRefreshToken != null) {
     final uri = Uri.parse(
         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
-    http.Response response = await http.get(
-      uri
-    );
+    http.Response response = await http.get(uri);
     profile.allPodcasts = await jsonDecode(response.body);
-
+    final uri3 = Uri.parse(
+        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
+    http.Response response3 =
+        await http.post(uri3, body: {'idToken': profile.myIdToken});
+    profile.favePodcasts = await jsonDecode(response3.body);
+    final uri4 = Uri.parse(
+        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
+    http.Response response4 =
+        await http.post(uri4, body: {'idToken': profile.myIdToken});
+    profile.email = await jsonDecode(response4.body)['email'];
+    profile.displayName = await jsonDecode(response4.body)['displayName'];
+    profile.numCre = await jsonDecode(response4.body)['numberOfCreations'];
+    profile.numFav = await jsonDecode(response4.body)['numberOfFavorites'];
+    final uri5 = Uri.parse(
+        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
+    http.Response response5 =
+        await http.post(uri5, body: {'idToken': profile.myIdToken});
+    profile.myCreations = await jsonDecode(response5.body);
   }
 }
 
