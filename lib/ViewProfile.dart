@@ -17,8 +17,19 @@ class _viewProfilePageState extends State<viewProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Spacer(),
-            const Spacer(),
+            const Padding(padding:EdgeInsets.all(30.0)),
+            Row(
+              children: [
+                TextButton(
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("<- Back",
+                        style: TextStyle(
+                          color: Color(0xffb257a84),
+                        ))),
+              ],
+            ),
             const Text("View profile",
                 style: TextStyle(
                   color: Color(0xffb257a84),
@@ -33,7 +44,6 @@ class _viewProfilePageState extends State<viewProfilePage> {
             const Spacer(),
             Text(profile.email,
                 style: const TextStyle(
-                  color: Color(0xffb257a84),
                   fontSize: 20,
                 )),
             const Spacer(),
@@ -45,7 +55,6 @@ class _viewProfilePageState extends State<viewProfilePage> {
             const Spacer(),
             Text(profile.displayName,
                 style: const TextStyle(
-                  color: Color(0xffb257a84),
                   fontSize: 20,
                 )),
             const Spacer(),
@@ -57,7 +66,6 @@ class _viewProfilePageState extends State<viewProfilePage> {
             const Spacer(),
             Text(profile.numCre.toString(),
                 style: const TextStyle(
-                  color: Color(0xffb257a84),
                   fontSize: 20,
                 )),
             const Spacer(),
@@ -69,7 +77,6 @@ class _viewProfilePageState extends State<viewProfilePage> {
             const Spacer(),
             Text(profile.numFav.toString(),
                 style: const TextStyle(
-                  color: Color(0xffb257a84),
                   fontSize: 20,
                 )),
             const Spacer()

@@ -34,7 +34,19 @@ class _changeNameState extends State<changeName> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Spacer(),
+                const Padding(padding: EdgeInsets.all(30.0)),
+                Row(
+                  children: [
+                    TextButton(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("<- Back",
+                            style: TextStyle(
+                              color: Color(0xffb257a84),
+                            ))),
+                  ],
+                ),
                 const Spacer(),
                 const Text("Change display name",
                     style: TextStyle(
@@ -108,8 +120,8 @@ class _changeNameState extends State<changeName> {
                       style:
                           const TextStyle(color: Colors.white, fontSize: 14)),
                 ),
-                Spacer(),
-                Spacer(),
+                const Spacer(),
+                const Spacer(),
               ],
             ),
           ),

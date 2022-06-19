@@ -59,83 +59,82 @@ class _settingsState extends State<settings> {
         children: [
           SizedBox(
             height: 520,
-            child: SettingsList(
-              sections: [
-                SettingsSection(
-                  title: const Text('Common'),
-                  tiles: <SettingsTile>[
-                    SettingsTile.navigation(
-                      leading: const Icon(Icons.person),
-                      title: const Text('View profile'),
-                      onPressed: (context) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const viewProfilePage();
-                        }));
-                      },
-                    ),
-                    SettingsTile.navigation(
-                      leading: const Icon(Icons.upload),
-                      title: const Text('View creations'),
-                      onPressed: (context) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const ViewCreationsPage();
-                        }));
-                      },
-                    ),
-                    SettingsTile.navigation(
-                      leading: const Icon(Icons.text_fields),
-                      title: const Text('Change Display name'),
-                      onPressed: (context) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const changeName();
-                        }));
-                      },
-                    ),
-                  ],
-                ),
-                SettingsSection(
-                  title: const Text('Security'),
-                  tiles: <SettingsTile>[
-                    SettingsTile.navigation(
-                      leading: const Icon(Icons.privacy_tip),
-                      title: const Text('Privacy'),
-                    ),
-                    SettingsTile.navigation(
-                      leading: const Icon(Icons.security),
-                      title: const Text('Account settings'),
-                    ),
-                  ],
-                ),
-      SettingsSection(
-        tiles: <SettingsTile>[
-          SettingsTile.navigation(
-            leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
-            onPressed: (context) {
-              profile.myCreations = [];
-              profile.myIdToken = null;
-              profile.myRefreshToken = null;
-              profile.allPodcasts = [];
-              profile.displayName = "";
-              profile.favePodcasts =[];
-              profile.numFav =0;
-              profile.numCre =0;
-              profile.email ="";
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                    return const FirstPage(title: "firstpage");
-                  }));
-            },
-          ),
-              ],
-            ),
-          ]),
-          )],
+            child: SettingsList(sections: [
+              SettingsSection(
+                title: const Text('Common'),
+                tiles: <SettingsTile>[
+                  SettingsTile.navigation(
+                    leading: const Icon(Icons.person),
+                    title: const Text('View profile'),
+                    onPressed: (context) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const viewProfilePage();
+                      }));
+                    },
+                  ),
+                  SettingsTile.navigation(
+                    leading: const Icon(Icons.upload),
+                    title: const Text('View creations'),
+                    onPressed: (context) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const ViewCreationsPage();
+                      }));
+                    },
+                  ),
+                  SettingsTile.navigation(
+                    leading: const Icon(Icons.text_fields),
+                    title: const Text('Change Display name'),
+                    onPressed: (context) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const changeName();
+                      }));
+                    },
+                  ),
+                ],
+              ),
+              SettingsSection(
+                title: const Text('Security'),
+                tiles: <SettingsTile>[
+                  SettingsTile.navigation(
+                    leading: const Icon(Icons.privacy_tip),
+                    title: const Text('Privacy'),
+                  ),
+                  SettingsTile.navigation(
+                    leading: const Icon(Icons.security),
+                    title: const Text('Account settings'),
+                  ),
+                ],
+              ),
+              SettingsSection(
+                tiles: <SettingsTile>[
+                  SettingsTile.navigation(
+                    leading: const Icon(Icons.logout),
+                    title: const Text('Logout'),
+                    onPressed: (context) {
+                      profile.myCreations = [];
+                      profile.myIdToken = null;
+                      profile.myRefreshToken = null;
+                      profile.allPodcasts = [];
+                      profile.displayName = "";
+                      profile.favePodcasts = [];
+                      profile.numFav = 0;
+                      profile.numCre = 0;
+                      profile.email = "";
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const FirstPage(title: "firstpage");
+                      }));
+                    },
+                  ),
+                ],
+              ),
+            ]),
+          )
+        ],
       ),
     );
-    setState(() {});
   }
 }

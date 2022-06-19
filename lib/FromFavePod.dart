@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'PodcastPlayerfromcreate.dart';
+import 'Fromfaveplayer.dart';
 import 'ProfileDetails.dart' as profile;
-import "DeleteCreation.dart";
+import 'FavPreview.dart';
 
 class podcastview extends StatefulWidget {
   final podcast;
@@ -30,8 +30,7 @@ class _podcastviewState extends State<podcastview> {
                         onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return DeleteCreationsPage(
-                                podcastdet: widget.podcast);
+                            return Previewpage(podcastdet: widget.podcast);
                           }));
                         },
                         child: const Text("<- Back",
@@ -73,7 +72,7 @@ class _podcastviewState extends State<podcastview> {
               const Spacer(),
               podcastplayer(
                   id: widget.podcast['podcastId'],
-                  pos: profile.myCreations.indexOf(widget.podcast)),
+                  pos: profile.favePodcasts.indexOf(widget.podcast)),
               const Spacer(),
             ],
           )),

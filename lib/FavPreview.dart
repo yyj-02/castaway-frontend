@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'PodcastView.dart';
+import 'FromFavePod.dart';
 import 'ProfileDetails.dart' as profile;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -28,7 +28,9 @@ class _PreviewpageState extends State<Previewpage> {
                   SizedBox(
                     child: TextButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return const SecondPage(title: 'SecondPage');
+                          }));
                         },
                         child: const Text("<- Back",
                             style: TextStyle(

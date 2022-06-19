@@ -51,7 +51,7 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                       GridView.count(
                           crossAxisCount: 2,
                           shrinkWrap: true,
-                          physics: ScrollPhysics(),
+                          physics: const ScrollPhysics(),
                           children: profile.myCreations.map((i) {
                             return Builder(
                               builder: (BuildContext context) {

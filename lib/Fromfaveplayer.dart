@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'page_manager.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'ProfileDetails.dart' as profile;
-import "PodcastFromCreate.dart";
+import "FromFavePod.dart";
 
 class podcastplayer extends StatefulWidget {
   final id;
@@ -65,7 +65,7 @@ class _podcastplayerState extends State<podcastplayer> {
                 } else {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return podcastview(
-                        podcast: profile.myCreations[widget.pos - 1]);
+                        podcast: profile.favePodcasts[widget.pos - 1]);
                   }));
                 }
               },
@@ -105,11 +105,10 @@ class _podcastplayerState extends State<podcastplayer> {
               iconSize: 25.0,
               color: Colors.white,
               onPressed: () {
-                if (widget.pos >= (profile.myCreations.length - 1)) {
-                } else {
+                if (widget.pos < (profile.favePodcasts.length - 1)) {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return podcastview(
-                        podcast: profile.myCreations[widget.pos + 1]);
+                        podcast: profile.favePodcasts[widget.pos + 1]);
                   }));
                 }
               },

@@ -21,6 +21,20 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
               const Spacer(),
+              const Spacer(),
+              Row(
+                children: [
+                  TextButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("<- Back",
+                          style: TextStyle(
+                            color: Color(0xffb257a84),
+                          ))),
+                ],
+              ),
+              const Spacer(),
               const Text("You're Live",
                   style: TextStyle(
                     color: Colors.white,
