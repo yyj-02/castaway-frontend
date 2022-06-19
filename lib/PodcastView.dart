@@ -18,7 +18,7 @@ class _podcastviewState extends State<podcastview> {
     return Scaffold(
         backgroundColor: const Color(0xffb7BB9B9),
         body: Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 30.0),
           child: Center(
               child: Column(
             children: [

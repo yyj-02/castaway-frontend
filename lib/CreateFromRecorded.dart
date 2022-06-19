@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:dio/dio.dart';
 import 'SecondPagefromCreate.dart';
+import 'SecondPagefromCreate.dart';
 
 class CreateRecordedPage extends StatefulWidget {
   const CreateRecordedPage({Key? key}) : super(key: key);
@@ -321,105 +322,149 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                   title: const Text(
                                       'Your audio file submission was a success. Please click confirm to create your podcast'),
                                   actions: [
-                                    ElevatedButton(
-                                        child: const Text("Confirm",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            )),
-                                        onPressed: () async {
-                                          var data = {
-                                            'idToken': profile.myIdToken,
-                                            'podcastUploadId': podcastID,
-                                            "imageUploadId": imageID,
-                                            'title': myController.text,
-                                            'description': passController.text,
-                                            'genres': selected,
-                                            'public': true
-                                          };
-                                          Dio dio = Dio();
-                                          Response response = await dio.post(
-                                            "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts",
-                                            options: Options(headers: {
-                                              HttpHeaders.contentTypeHeader:
-                                                  "application/json",
+                                    Row(
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            if (imageID != null) {
+                                              print(imageID);
+                                              final uri5 = Uri.parse(
+                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images/$imageID/delete");
+                                              http.Response response5 =
+                                                  await http.post(uri5, body: {
+                                                'idToken': profile.myIdToken
+                                              });
+                                              print(response5.body);
+                                            }
+                                            if (podcastID != null) {
+                                              final uri5 = Uri.parse(
+                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts/$podcastID/delete");
+                                              http.Response response5 =
+                                                  await http.post(uri5, body: {
+                                                'idToken': profile.myIdToken
+                                              });
+                                              print(response5.body);
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) {
+                                                return const SecondPage(
+                                                    title: 'SecondPage');
+                                              }));
+                                            }
+                                          },
+                                          child: const Text(
+                                              "Cancel podcast\ncreation",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              )),
+                                        ),
+                                        const Spacer(),
+                                        ElevatedButton(
+                                            child: const Text(
+                                                "Confirm podcast\ncreation",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                )),
+                                            onPressed: () async {
+                                              var data = {
+                                                'idToken': profile.myIdToken,
+                                                'podcastUploadId': podcastID,
+                                                "imageUploadId": imageID,
+                                                'title': myController.text,
+                                                'description':
+                                                    passController.text,
+                                                'genres': selected,
+                                                'public': true
+                                              };
+                                              Dio dio = Dio();
+                                              Response response =
+                                                  await dio.post(
+                                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts",
+                                                options: Options(headers: {
+                                                  HttpHeaders.contentTypeHeader:
+                                                      "application/json",
+                                                }),
+                                                data: jsonEncode(data),
+                                              );
+                                              print(response.data);
+                                              final uri2 = Uri.parse(
+                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
+                                              http.Response response2 =
+                                                  await http.get(
+                                                uri2,
+                                              );
+                                              profile.allPodcasts =
+                                                  await jsonDecode(
+                                                      response2.body);
+                                              final uri5 = Uri.parse(
+                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
+                                              http.Response response5 =
+                                                  await http.post(uri5, body: {
+                                                'idToken': profile.myIdToken
+                                              });
+                                              print(response5.body);
+                                              profile.myCreations =
+                                                  await jsonDecode(
+                                                      response5.body);
+                                              if (response.statusCode == 200) {
+                                                showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return AlertDialog(
+                                                          scrollable: true,
+                                                          title: const Text(
+                                                              'Success your podcast was uploaded'),
+                                                          actions: [
+                                                            ElevatedButton(
+                                                                child: const Text(
+                                                                    "Ok",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    )),
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                          builder:
+                                                                              (context) {
+                                                                    return const SecondPage(
+                                                                        title:
+                                                                            'SecondPage');
+                                                                  }));
+                                                                })
+                                                          ]);
+                                                    });
+                                              } else {
+                                                showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return AlertDialog(
+                                                          scrollable: true,
+                                                          title: const Text(
+                                                              'Error your podcast was not uploaded try again'),
+                                                          actions: [
+                                                            ElevatedButton(
+                                                                child: const Text(
+                                                                    "Ok",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    )),
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                })
+                                                          ]);
+                                                    });
+                                              }
                                             }),
-                                            data: jsonEncode(data),
-                                          );
-                                          print(response.data);
-                                          final uri2 = Uri.parse(
-                                              "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
-                                          http.Response response2 =
-                                              await http.get(
-                                            uri2,
-                                          );
-                                          profile.allPodcasts =
-                                              await jsonDecode(response2.body);
-                                          final uri5 = Uri.parse(
-                                              "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
-                                          http.Response response5 = await http
-                                              .post(uri5, body: {
-                                            'idToken': profile.myIdToken
-                                          });
-                                          print(response5.body);
-                                          profile.myCreations =
-                                              await jsonDecode(response5.body);
-                                          if (response.statusCode == 200) {
-                                            showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                      scrollable: true,
-                                                      title: const Text(
-                                                          'Success your podcast was uploaded'),
-                                                      actions: [
-                                                        ElevatedButton(
-                                                            child: const Text(
-                                                                "Ok",
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                )),
-                                                            onPressed: () {
-                                                              Navigator.push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) {
-                                                                return const SecondPage(
-                                                                    title:
-                                                                        'SecondPage');
-                                                              }));
-                                                            })
-                                                      ]);
-                                                });
-                                          } else {
-                                            showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                      scrollable: true,
-                                                      title: const Text(
-                                                          'Error your podcast was not uploaded try again'),
-                                                      actions: [
-                                                        ElevatedButton(
-                                                            child: const Text(
-                                                                "Ok",
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                )),
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            })
-                                                      ]);
-                                                });
-                                          }
-                                        })
+                                      ],
+                                    )
                                   ],
                                 );
                               });

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'CreateFromRecorded.dart';
+import 'Livestream.dart';
 
 class CreatePage extends StatefulWidget {
   const CreatePage({Key? key}) : super(key: key);
@@ -96,10 +97,14 @@ class _CreatePageState extends State<CreatePage> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side: const BorderSide(color: Color(0xffb257a84))))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const LiveStreamPage();
+                }));
+              },
               child: Column(children: const [
                 Icon(Icons.mic, size: 123.0),
-                Text("Go live",
+                Text("Go live ",
                     style: TextStyle(
                       fontSize: 30,
                     ))

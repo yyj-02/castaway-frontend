@@ -52,72 +52,74 @@ class _PreviewpageState extends State<Previewpage> {
                     fontSize: 15,
                   )),
               const Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(widget.podcastdet['imgUrl']),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: BoxShape.rectangle,
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(12.0))),
+              SingleChildScrollView(
                 child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: <Color>[
-                        Colors.transparent,
-                        Colors.transparent,
-                        Colors.transparent,
-                        Colors.transparent,
-                        Colors.transparent,
-                        Colors.transparent,
-                        Colors.transparent,
-                        Colors.white10,
-                        Colors.white24,
-                        Colors.white38,
-                        Colors.white54,
-                        Colors.white60,
-                        Colors.white70,
-                        Colors.white,
-                      ],
-                      tileMode: TileMode.mirror,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(widget.podcastdet['imgUrl']),
+                        fit: BoxFit.cover,
+                      ),
+                      shape: BoxShape.rectangle,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0))),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Colors.transparent,
+                          Colors.transparent,
+                          Colors.transparent,
+                          Colors.transparent,
+                          Colors.transparent,
+                          Colors.transparent,
+                          Colors.transparent,
+                          Colors.white10,
+                          Colors.white24,
+                          Colors.white38,
+                          Colors.white54,
+                          Colors.white60,
+                          Colors.white70,
+                          Colors.white,
+                        ],
+                        tileMode: TileMode.mirror,
+                      ),
                     ),
-                  ),
-                  child: Card(
-                    elevation: 0,
-                    color: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return podcastview(podcast: widget.podcastdet);
-                        }));
-                      },
-                      child: SizedBox(
-                        width: 300,
-                        height: 400,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              widget.podcastdet['title'],
-                              style: const TextStyle(fontSize: 18.0),
-                            ),
-                            Text(
-                              widget.podcastdet['description'],
-                              style: const TextStyle(fontSize: 16.0),
-                            ),
-                            Text(
-                              widget.podcastdet['artistName'],
-                              style: const TextStyle(fontSize: 16.0),
-                            ),
-                          ],
+                    child: Card(
+                      elevation: 0,
+                      color: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return podcastview(podcast: widget.podcastdet);
+                          }));
+                        },
+                        child: SizedBox(
+                          width: 300,
+                          height: 400,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                widget.podcastdet['title'],
+                                style: const TextStyle(fontSize: 18.0),
+                              ),
+                              Text(
+                                widget.podcastdet['description'],
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                              Text(
+                                widget.podcastdet['artistName'],
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
