@@ -30,7 +30,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                       },
                       child: const Text("<- Back",
                           style: TextStyle(
-                            color: Color(0xffb257a84),
+                            color: Colors.white,
                           ))),
                 ],
               ),
