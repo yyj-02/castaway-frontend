@@ -78,7 +78,7 @@ Press the green play button to run the flutter program.
 (Refer to Installation appendix)
 
 ### Installation appendix
-<p align="center"><img width="90%" src="./ReadMefiles/Installationappendix.jpg" height="90%"/></p>
+<p align="center"><img width="110%" src="./ReadMefiles/Installationappendix.jpg" height="110%"/></p>
 
 
 
