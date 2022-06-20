@@ -20,7 +20,5 @@ our user interface. We believe that this will give us the edge over current comp
 <p align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
 
  ## Frontend Documentation
-
-[go to frontend documentation →](https://github.com/yyj-02/castaway-frontend#readme)
   [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
   
