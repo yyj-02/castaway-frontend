@@ -78,7 +78,7 @@ Press the green play button to run the flutter program.
 (Refer to Installation appendix)
 
 ### Installation appendix
-<p align="center"><img width=20% src="./ReadMefiles/castaway.png" /></p>
+<p align="center"><img width=20% src="./ReadMefiles/Installationappendix.png" /></p>
 
 
 
