@@ -33,82 +33,42 @@ our user interface. We believe that this will give us the edge over current comp
   ### Sign up Page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Favourites page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Create page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Explore page
    #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Preview page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Podcast view page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Profile page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### View profile page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### View creations page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Change name page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
-  [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
+  
+
   
