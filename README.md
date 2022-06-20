@@ -74,7 +74,7 @@ flutter pub upgrade
 
 ## Frontend Documentation
 
-[go to API documentation →](./functions/README.md)
+[go to API documentation →](./ReadMefiles/README.md)
 
 ## Backend Documentation
 
