@@ -21,13 +21,13 @@ Castaway is a podcast app that serves contents from your favorite content creato
 
 ## Installation
 
-###Install Flutter and Android Studio
+### Install Flutter and Android Studio
 
 Flutter installation guide : https://docs.flutter.dev/get-started/install
 
 Android studio installation guide : https://developer.android.com/studio/install
 
-###Enable HAXM
+### Enable HAXM
 
 Guide for HAXM:
 1. Reboot laptop and use ‘Escape’ to bring up boot menu
@@ -36,11 +36,11 @@ Guide for HAXM:
 4. Ensure that the ‘Virtualization Technology’ checkbox is checked
 5. Press F10 to Save and Exit
 
-###Create a virtual android/ios emulator
+### Create a virtual android/ios emulator
 
 Emulator guide: https://developer.android.com/studio/run/managing-avds
 
-###Clone this repository
+### Clone this repository
 
 ```bash
 ## using ssh
@@ -50,11 +50,11 @@ git clone git@github.com:yyj-02/castaway-frontend.git
 git clone https://github.com/yyj-02/castaway-frontend.git
 ```
 
-###Open cloned repository in Android studio
+### Open cloned repository in Android studio
 
 Guide: https://docs.flutter.dev/development/tools/android-studio
 
-###Install dependencies
+### Install dependencies
 <br>
 In your terminal
 
@@ -68,9 +68,9 @@ flutter pub get
 ##Upgrade all dependenceies to latest verison
 flutter pub upgrade
 ```
-###Select your virtual machine from the drop down menu
+### Select your virtual machine from the drop down menu
 
-###Run the program
+### Run the program
 
 
 ## Frontend Documentation
