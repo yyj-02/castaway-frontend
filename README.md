@@ -84,7 +84,7 @@ Press the green play button to run the flutter program.
 
 ## Frontend Documentation
 
-[go to API documentation →](./ReadMefiles/README.md)
+[go to Further documentation →](./ReadMefiles/README.md)
 
 ## Backend Documentation
 
