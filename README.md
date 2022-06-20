@@ -67,9 +67,19 @@ flutter pub get
 ##Upgrade all dependenceies to latest verison
 flutter pub upgrade
 ```
-### Select your virtual machine from the drop down menu
+### Select your virtual machine 
+Select your android virtual machine from the drop down menu on the toolbar
+<br>
+(Refer to Installation appendix)
 
 ### Run the program
+Press the green play button to run the flutter program.
+<br>
+(Refer to Installation appendix)
+
+### Installation appendix
+<p align="center"><img width=20% src="./ReadMefiles/castaway.png" /></p>
+
 
 
 ## Frontend Documentation
