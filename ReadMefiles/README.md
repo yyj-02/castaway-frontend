@@ -25,19 +25,11 @@ our user interface. We believe that this will give us the edge over current comp
   ### Hot reload feature
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+ 
   ### Login Page
   #### Description
   #### API used
-  <ul>
-    <li>API used</li>
-    <li>API used</li>
-    <li>API used</li>
-  </ul>
+  
   ### Sign up Page
   #### Description
   #### API used
