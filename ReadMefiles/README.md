@@ -19,5 +19,5 @@ our user interface. We believe that this will give us the edge over current comp
 <h2> User Flow Diagram <h2>
 <p align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
   <h2> API Used</h2>
-  [go to API documentation →]((https://github.com/yyj-02/castaway-backend/functions/README.md)
+  [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
   
