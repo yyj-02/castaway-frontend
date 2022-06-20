@@ -53,6 +53,7 @@ git clone https://github.com/yyj-02/castaway-frontend.git
 Guide: https://docs.flutter.dev/development/tools/android-studio
 
 #Install dependencies
+<br>
 In your terminal
 
 ```bash
