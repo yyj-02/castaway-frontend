@@ -48,9 +48,28 @@ git clone git@github.com:yyj-02/castaway-frontend.git
 git clone https://github.com/yyj-02/castaway-frontend.git
 ```
 
-#Open and run in Android studio
+#Open cloned repository in Android studio
 
 Guide: https://docs.flutter.dev/development/tools/android-studio
+
+#Install dependencies
+In your terminal
+
+```bash
+## Confirm flutter installation and version
+flutter doctor
+
+##Get all dependencies
+flutter pub get
+
+##Upgrade all dependenceies to latest verison
+flutter pub upgrade
+```
+#Select your virtual machine from the drop down menu
+
+#Run the program
+
+
 ## Frontend Documentation
 
 [go to API documentation →](./functions/README.md)
