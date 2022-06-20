@@ -110,6 +110,25 @@ class _changeNameState extends State<changeName> {
                     print(response4.body);
                     profile.displayName =
                         await jsonDecode(response4.body)['displayName'];
+                    final uri2 = Uri.parse(
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
+                    http.Response response2 = await http.get(
+                      uri2,
+                    );
+                    profile.allPodcasts = await jsonDecode(response2.body);
+
+                    final uri3 = Uri.parse(
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
+                    http.Response response3 = await http
+                        .post(uri3, body: {'idToken': profile.myIdToken});
+                    print(response3.body);
+                    profile.favePodcasts = await jsonDecode(response3.body);
+                    final uri5 = Uri.parse(
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
+                    http.Response response5 = await http
+                        .post(uri5, body: {'idToken': profile.myIdToken});
+                    print(response5.body);
+                    profile.myCreations = await jsonDecode(response5.body);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return const SecondPage(title: 'SecondPage');

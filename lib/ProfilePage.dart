@@ -58,7 +58,7 @@ class _settingsState extends State<settings> {
       child: Column(
         children: [
           SizedBox(
-            height: 520,
+            height: 450,
             child: SettingsList(sections: [
               SettingsSection(
                 title: const Text('Common'),

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:image_picker/image_picker.dart';
+import 'ProfileDetails.dart' as profile;
 import 'package:flutter/material.dart';
 import 'SecondPage.dart';
 import 'package:http/http.dart' as http;
@@ -91,7 +91,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         const Padding(padding: EdgeInsets.all(10.0)),
-        const Text("Username",
+        const Text("Email Address",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -194,15 +194,68 @@ class _MyCustomFormState extends State<MyCustomForm> {
               uri,
               body: data,
             );
-            var myidToken = await jsonDecode(response.body)['idToken'];
-            var myrefreshToken =
-                await jsonDecode(response.body)['refreshToken'];
-            print(myidToken);
-            print(myrefreshToken);
-            if (myidToken != null) {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const SecondPage(title: 'SecondPage');
-              }));
+            if (response.statusCode != 200) {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      scrollable: true,
+                      title: const Text('Invalid Credentials try again'),
+                      actions: [
+                        ElevatedButton(
+                            child: const Text("ok",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                )),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            })
+                      ],
+                    );
+                  });
+            } else {
+              profile.myIdToken = await jsonDecode(response.body)['idToken'];
+              profile.myRefreshToken =
+                  await jsonDecode(response.body)['refreshToken'];
+              print(profile.myIdToken);
+              print(profile.myRefreshToken);
+              final uri2 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
+              http.Response response2 = await http.get(
+                uri2,
+              );
+              profile.allPodcasts = await jsonDecode(response2.body);
+
+              final uri3 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
+              http.Response response3 =
+                  await http.post(uri3, body: {'idToken': profile.myIdToken});
+              print(response3.body);
+              profile.favePodcasts = await jsonDecode(response3.body);
+              final uri4 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
+              http.Response response4 =
+                  await http.post(uri4, body: {'idToken': profile.myIdToken});
+              print(response4.body);
+              profile.email = await jsonDecode(response4.body)['email'];
+              profile.displayName =
+                  await jsonDecode(response4.body)['displayName'];
+              profile.numCre =
+                  await jsonDecode(response4.body)['numberOfCreations'];
+              profile.numFav =
+                  await jsonDecode(response4.body)['numberOfFavorites'];
+              final uri5 = Uri.parse(
+                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
+              http.Response response5 =
+                  await http.post(uri5, body: {'idToken': profile.myIdToken});
+              print(response5.body);
+              profile.myCreations = await jsonDecode(response5.body);
+
+              if (profile.myIdToken != null) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const SecondPage(title: 'SecondPage');
+                }));
+              }
             }
           },
           child: Text("   Sign up   ".toUpperCase(),

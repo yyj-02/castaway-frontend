@@ -98,7 +98,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           const Padding(padding: EdgeInsets.all(10.0)),
-          const Text("Username",
+          const Text("Email Address",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,

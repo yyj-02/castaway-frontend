@@ -347,7 +347,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                               Navigator.push(context,
                                                   MaterialPageRoute(
                                                       builder: (context) {
-                                                return const SecondPage(
+                                                return const SecondPageC(
                                                     title: 'SecondPage');
                                               }));
                                             }
@@ -430,7 +430,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                                       MaterialPageRoute(
                                                                           builder:
                                                                               (context) {
-                                                                    return const SecondPage(
+                                                                    return const SecondPageC(
                                                                         title:
                                                                             'SecondPage');
                                                                   }));

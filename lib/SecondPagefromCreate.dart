@@ -4,15 +4,15 @@ import 'CreatePage.dart';
 import 'ExplorePage.dart';
 import 'ProfilePage.dart';
 
-class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key, required this.title}) : super(key: key);
+class SecondPageC extends StatefulWidget {
+  const SecondPageC({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  State<SecondPage> createState() => _SecondPageState();
+  State<SecondPageC> createState() => _SecondPageCState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _SecondPageCState extends State<SecondPageC> {
   int _selectedIndex = 1;
 
   final List<Widget> _widgetOptions = <Widget>[
