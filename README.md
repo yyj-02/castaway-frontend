@@ -10,7 +10,9 @@
 
  <br/>
  <div align="center">
+
 ![Flutter](https://img.shields.io/badge/flutter-%23007ACC.svg?style=for-the-badge&logo=flutter&logoColor=white)
+
 </div>
 
 ## Getting Started
