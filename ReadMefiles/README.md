@@ -35,7 +35,8 @@ our user interface. We believe that this will give us the edge over current comp
     </details>
     
   <details>
-  <summary><h3 style="display: inline;">Login page</h3></summary> 
+  <summary><h3 style="display: inline;">Login page</h3></summary>
+  <p align="center"><img width=30% height=20% src="./Loginpage.png" /></p>
   <h4>Description</h4>
   <p> A simple login page which authenticates the user and loads up their information and necessary streaming data. </p>
   <h4>API called</h4>
@@ -48,6 +49,7 @@ our user interface. We believe that this will give us the edge over current comp
     
  <details>
   <summary><h3 style="display: inline;">Sign up page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./signup.png" /></p>
   <h4>Description</h4>
   <p> A simple sign up page which creates an account, authenticates the user and loads up their information and necessary streaming data. </p>
   <h4>API called</h4>
@@ -59,6 +61,7 @@ our user interface. We believe that this will give us the edge over current comp
     </details>
 <details>
   <summary><h3 style="display: inline;">Favorites page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./FavouritesPage.png" /></p>
   <h4>Description</h4>
   <p> A simple page that displays all the podcasts that have been marked as favourite but the user with the option to preview them </p>
   <h4>API called</h4>
@@ -69,6 +72,7 @@ our user interface. We believe that this will give us the edge over current comp
     
   <details>
   <summary><h3 style="display: inline;">Create page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./maincreate.png" /></p>
   <h4>Description</h4>
   <p> A simple page which allows users to create their podcasts from a recorded source or go live. </p>
   <h4>API called</h4>
@@ -79,6 +83,7 @@ our user interface. We believe that this will give us the edge over current comp
     
   <details>
   <summary><h3 style="display: inline;">Create from Storage</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./CreatePage.png" /></p>
   <h4>Description</h4>
   <p> This page allows users to upload their podcast image, audio file, title, description and genres and create a podcast. The podcast is hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically </p>
   <h4>API called</h4>
@@ -93,7 +98,8 @@ our user interface. We believe that this will give us the edge over current comp
     </details>
     
   <details>
-  <summary><h3 style="display: inline;">Explore Page</h3></summary> 
+  <summary><h3 style="display: inline;">Explore Page</h3></summary>
+  <p align="center"><img width=30% height=20% src="./ExplorePage.png" /></p>
   <h4>Description</h4>
   <p> This page allows users to view podcasts uploaded by all users </p>
   <h4>API called</h4>
@@ -104,6 +110,7 @@ our user interface. We believe that this will give us the edge over current comp
     
   <details>
   <summary><h3 style="display: inline;">Preview Page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./PreviewPage.png" /><img width=30% height=20% src="./preview2.png" /><img width=30% height=20% src="./preview3.png" /></p>
   <h4>Description</h4>
   <p> This page allows users to preview podcasts uploaded by all users before going in to listen to them </p>
   <h4>API called</h4>
@@ -119,6 +126,7 @@ our user interface. We believe that this will give us the edge over current comp
     
   <details>
   <summary><h3 style="display: inline;">Podcast view Page</h3></summary> 
+   <p align="center"><img width=30% height=20% src="./player.png" /></p>
   <h4>Description</h4>
   <p> This page allows users to listen to podcasts uploaded by other users </p>
   <h4>API called</h4>
@@ -129,6 +137,7 @@ our user interface. We believe that this will give us the edge over current comp
     
   <details>
   <summary><h3 style="display: inline;">Profile Page</h3></summary> 
+   <p align="center"><img width=30% height=20% src="./ProfilePage.png" /></p>
   <h4>Description</h4>
   <p> This simple menu page allows users to view their personal profile and settings </p>
   <h4>API called</h4>
@@ -139,6 +148,7 @@ our user interface. We believe that this will give us the edge over current comp
     
    <details>
   <summary><h3 style="display: inline;">View Profile Page</h3></summary> 
+   <p align="center"><img width=30% height=20% src="./viewprofile.png" /></p>
   <h4>Description</h4>
   <p> This simple page displays users personal information </p>
   <h4>API called</h4>
@@ -149,6 +159,7 @@ our user interface. We believe that this will give us the edge over current comp
     
  <details>
   <summary><h3 style="display: inline;">View Creations Page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./viewcreations.png" /></p>
   <h4>Description</h4>
   <p> This simple page displays podcasts created by the user </p>
   <h4>API called</h4>
@@ -159,6 +170,7 @@ our user interface. We believe that this will give us the edge over current comp
     
   <details>
   <summary><h3 style="display: inline;">Change name Page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./changename.png" /></p>
   <h4>Description</h4>
   <p> This simple page allowing users to change their display name </p>
   <h4>API called</h4>
