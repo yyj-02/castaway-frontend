@@ -155,6 +155,18 @@ class _PreviewpageState extends State<Previewpage> {
                   print(response3.body);
                   profile.favePodcasts = await jsonDecode(response3.body);
                   print(jsonDecode(response.body)['message']);
+                  final uri4 = Uri.parse(
+                      "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
+                  http.Response response4 =
+                  await http.post(uri4, body: {'idToken': profile.myIdToken});
+                  print(response4.body);
+                  profile.email = await jsonDecode(response4.body)['email'];
+                  profile.displayName =
+                  await jsonDecode(response4.body)['displayName'];
+                  profile.numCre =
+                  await jsonDecode(response4.body)['numberOfCreations'];
+                  profile.numFav =
+                  await jsonDecode(response4.body)['numberOfFavorites'];
                   if (response.statusCode == 200) {
                     showDialog(
                         context: context,

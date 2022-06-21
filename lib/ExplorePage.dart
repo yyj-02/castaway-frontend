@@ -5,6 +5,7 @@ import 'package:multi_page_castaway/Preview.dart';
 import 'ProfileDetails.dart' as profile;
 import 'Preview.dart';
 import 'CustoSearchDelegate.dart';
+import "SecondpagefromExplore.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,7 +19,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Timer.periodic(const Duration(seconds: 1000), (Timer t) => setState(() {}));
+    //Periodic refresh
+    Timer.periodic(
+        const Duration(seconds: 3600),
+        (Timer t) =>
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const SecondPage(title: 'SecondPage');
+            })));
     return SingleChildScrollView(
       child: Center(
         child: Column(children: [

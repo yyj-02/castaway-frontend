@@ -80,7 +80,7 @@ our user interface. We believe that this will give us the edge over current comp
   <details>
   <summary><h3 style="display: inline;">Create from Storage</h3></summary> 
   <h4>Description</h4>
-  <p> This page allows users to upload their podcast image, audio file, title, description and genres and create a podcast. The podcast is hot reloaded onto the users page and will be loaded for all other users when a reload is triggered e.g. login </p>
+  <p> This page allows users to upload their podcast image, audio file, title, description and genres and create a podcast. The podcast is hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically </p>
   <h4>API called</h4>
   <ul>
     <li>Upload Audio file</li>
@@ -160,7 +160,7 @@ our user interface. We believe that this will give us the edge over current comp
   <details>
   <summary><h3 style="display: inline;">Change name Page</h3></summary> 
   <h4>Description</h4>
-  <p> This simple page allowing uusers to change their display name </p>
+  <p> This simple page allowing users to change their display name </p>
   <h4>API called</h4>
   <ul>
     <li>Change display name</li>
