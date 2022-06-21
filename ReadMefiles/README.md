@@ -20,7 +20,6 @@ our user interface. We believe that this will give us the edge over current comp
 <p align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
 
  ## Components and API used
-  <br>
   <details>
   <summary><h3 style="display: inline;">In app Hot reload</h3></summary> 
   <h4>Description</h4>
