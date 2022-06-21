@@ -17,7 +17,7 @@ our user interface. We believe that this will give us the edge over current comp
 <h2> App preview Images</h2>
 <p align="center"><img width=30% height=20% src="./Castawayoptimized.gif" /></p>
 <h2> User Flow Diagram </h2>
-<p> align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
+<p align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
 
  ## Components and API used
   [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
