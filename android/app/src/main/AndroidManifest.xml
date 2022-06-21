@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.castaway_frontend">
+    package="com.example.multi_page_castaway">
    <application
-        android:label="castaway_frontend"
+        android:requestLegacyExternalStorage="true"
+        android:label="multi_page_castaway"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -30,5 +31,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

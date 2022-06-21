@@ -1,11 +1,11 @@
 {
-    "name": "castaway_frontend",
-    "short_name": "castaway_frontend",
+    "name": "multi_page_castaway",
+    "short_name": "multi_page_castaway",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Multi page App",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

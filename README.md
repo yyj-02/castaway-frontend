@@ -1,13 +1,8 @@
-<p align="center"><img width=20% src="./assets/castaway.png" /></p>
+<p align="center"><img width=20% src="./ReadMefiles/castaway.png" /></p>
 
 <h1 align="center">
   Castaway
 </h1>
-<div align="center">
-
-![Flutter](https://img.shields.io/badge/flutter-%23007ACC.svg?style=for-the-badge&logo=flutter&logoColor=white)
-
-</div>
 
 <h3 align="center">
   Your friendly podcast app (work in progress)
@@ -15,6 +10,8 @@
 
  <br/>
  <div align="center">
+
+![Flutter](https://img.shields.io/badge/flutter-%23007ACC.svg?style=for-the-badge&logo=flutter&logoColor=white)
 
 </div>
 
@@ -24,13 +21,13 @@ Castaway is a podcast app that serves contents from your favorite content creato
 
 ## Installation
 
-#Install Flutter and Android Studio
+### Install Flutter and Android Studio
 
 Flutter installation guide : https://docs.flutter.dev/get-started/install
 
 Android studio installation guide : https://developer.android.com/studio/install
 
-#Enable HAXM
+### Enable HAXM
 
 Guide for HAXM:
 1. Reboot laptop and use ‘Escape’ to bring up boot menu
@@ -39,11 +36,11 @@ Guide for HAXM:
 4. Ensure that the ‘Virtualization Technology’ checkbox is checked
 5. Press F10 to Save and Exit
 
-#Create a virtual android/ios emulator
+### Create a virtual android/ios emulator
 
 Emulator guide: https://developer.android.com/studio/run/managing-avds
 
-#Clone this repository
+### Clone this repository
 
 ```bash
 ## using ssh
@@ -53,12 +50,11 @@ git clone git@github.com:yyj-02/castaway-frontend.git
 git clone https://github.com/yyj-02/castaway-frontend.git
 ```
 
-#Open cloned repository in Android studio
+### Open cloned repository in Android studio
 
 Guide: https://docs.flutter.dev/development/tools/android-studio
 
-#Install dependencies
-<br>
+### Install dependencies
 In your terminal
 
 ```bash
@@ -71,14 +67,28 @@ flutter pub get
 ##Upgrade all dependenceies to latest verison
 flutter pub upgrade
 ```
-#Select your virtual machine from the drop down menu
+### Select your virtual machine 
+Select your android virtual machine from the drop down menu on the toolbar
+<br>
+(Refer to Installation appendix)
 
-#Run the program
+### Run the program
+Press the green play button to run the flutter program.
+<br>
+(Refer to Installation appendix)
+
+### Possible errors and solution
+<ul>
+  <li> OS error number 5: Disable your antivirus software e.g norton/windows defender</li>
+  </ul>
+<h3> Installation appendix</h3>
+<p align="center"><img width="110%" src="./ReadMefiles/Installationappendix.jpg" height="110%"/></p>
+
 
 
 ## Frontend Documentation
 
-[go to API documentation →](./ReadMefiles/README.md)
+[go to Further documentation →](./ReadMefiles/README.md)
 
 ## Backend Documentation
 
