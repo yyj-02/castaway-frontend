@@ -20,7 +20,6 @@ our user interface. We believe that this will give us the edge over current comp
 <p align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
 
  ## Components and API used
-  [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
   <br>
   <details>
   <summary><h3 style="display: inline;">In app Hot reload</h3></summary> 
@@ -178,3 +177,5 @@ our user interface. We believe that this will give us the edge over current comp
     <li>Change display name</li>
   </ul>
     </details>
+    
+  [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
