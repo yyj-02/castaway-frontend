@@ -110,7 +110,7 @@ our user interface. We believe that this will give us the edge over current comp
     
   <details>
   <summary><h3 style="display: inline;">Preview Page</h3></summary> 
-  <p align="center"><img width=30% height=20% src="./PreviewPage.png" />  <img width=30% height=20% src="./preview2.png" />  <img width=30% height=20% src="./preview3.png" /></p>
+  <p align="center"><img width=30% height=20% src="./PreviewPage.png" />    <img width=30% height=20% src="./preview2.png" />    <img width=30% height=20% src="./preview3.png" /></p>
   <h4>Description</h4>
   <p> This page allows users to preview podcasts uploaded by all users before going in to listen to them </p>
   <h4>API called</h4>
