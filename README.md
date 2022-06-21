@@ -79,7 +79,7 @@ Press the green play button to run the flutter program.
 
 ### Possible errors and solution
 <ul>
-  <li> OS error number 5: Disable your antivirus software e.g norton/windiows defender</li>
+  <li> OS error number 5: Disable your antivirus software e.g norton/windows defender</li>
   </ul>
 <h3> Installation appendix</h3>
 <p align="center"><img width="110%" src="./ReadMefiles/Installationappendix.jpg" height="110%"/></p>
