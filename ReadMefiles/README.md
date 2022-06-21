@@ -22,9 +22,17 @@ our user interface. We believe that this will give us the edge over current comp
  ## Components and API used
   [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
   <br>
-  ### Hot reload feature
-  #### Description
-  #### API used
+  <details>
+  <summary><h3 style="display: inline;">In app Hot reload</h3></summary> 
+  <h4>Description</h4>
+  <p> A combination of API calls used to ensure that information updated on the app is displayed instantly. The collection of these API calls will be refered to as hot reload feature in the further pasts of this documentation </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Get all podcasts</li>
+    <li>View favourites</li>
+    <li>View creations</li>
+  </ul>
+    </details>
  
   ### Login Page
   #### Description
