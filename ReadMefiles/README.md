@@ -66,39 +66,103 @@ our user interface. We believe that this will give us the edge over current comp
     <li>None</li>
   </ul>
     </details>
-  
-  
-  ### Create page
-  #### Description
-  #### API used
-  
-  ### Explore page
-   #### Description
-  #### API used
-  
-  ### Preview page
-  #### Description
-  #### API used
-  
-  ### Podcast view page
-  #### Description
-  #### API used
-  
-  ### Profile page
-  #### Description
-  #### API used
-  
-  ### View profile page
-  #### Description
-  #### API used
-  
-  ### View creations page
-  #### Description
-  #### API used
-  
-  ### Change name page
-  #### Description
-  #### API used
-  
-
-  
+    
+  <details>
+  <summary><h3 style="display: inline;">Create page</h3></summary> 
+  <h4>Description</h4>
+  <p> A simple page which allows users to create their podcasts from a recorded source or go live. </p>
+  <h4>API called</h4>
+  <ul>
+    <li>None</li>
+  </ul>
+    </details>
+    
+  <details>
+  <summary><h3 style="display: inline;">Create from Storage</h3></summary> 
+  <h4>Description</h4>
+  <p> This page allows users to upload their podcast image, audio file, title, description and genres and create a podcast. The podcast is hot reloaded onto the users page and will be loaded for all other users when a reload is triggered e.g. login </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Upload Audio file</li>
+    <li>Upload Image file</li>
+    <li> Create Podcast</li>
+    <li> Delete Audio file</li>
+    <li> Delete Image file</li>
+    <li>Hot reload feature</li>
+  </ul>
+    </details>
+    
+  <details>
+  <summary><h3 style="display: inline;">Explore Page</h3></summary> 
+  <h4>Description</h4>
+  <p> This page allows users to view podcasts uploaded by all users </p>
+  <h4>API called</h4>
+  <ul>
+    <li>None</li>
+  </ul>
+    </details>
+    
+  <details>
+  <summary><h3 style="display: inline;">Preview Page</h3></summary> 
+  <h4>Description</h4>
+  <p> This page allows users to preview podcasts uploaded by all users before going in to listen to them </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Add to favorites (parent explore)</li>
+    <li>Delete from favorites (parent favourites)</li>
+    <li>Update podcast image file (parent view creations)</li>
+    <li>Update podcast audio file (parent view creations)</li>
+    <li>Update podcast details (parent view creations)</li>
+    <li>Delete podcast (parent view creations)</li>
+  </ul>
+    </details>
+    
+  <details>
+  <summary><h3 style="display: inline;">Podcast view Page</h3></summary> 
+  <h4>Description</h4>
+  <p> This page allows users to listen to podcasts uploaded by other users </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Stream Podcast</li>
+  </ul>
+    </details>
+    
+  <details>
+  <summary><h3 style="display: inline;">Profile Page</h3></summary> 
+  <h4>Description</h4>
+  <p> This simple menu page allows users to view their personal profile and settings </p>
+  <h4>API called</h4>
+  <ul>
+    <li>None</li>
+  </ul>
+    </details>
+    
+   <details>
+  <summary><h3 style="display: inline;">View Profile Page</h3></summary> 
+  <h4>Description</h4>
+  <p> This simple page displays users personal information </p>
+  <h4>API called</h4>
+  <ul>
+    <li>None</li>
+  </ul>
+    </details>
+    
+ <details>
+  <summary><h3 style="display: inline;">View Creations Page</h3></summary> 
+  <h4>Description</h4>
+  <p> This simple page displays podcasts created by the user </p>
+  <h4>API called</h4>
+  <ul>
+    <li>None</li>
+  </ul>
+    </details>
+    
+  <details>
+  <summary><h3 style="display: inline;">Change name Page</h3></summary> 
+  <h4>Description</h4>
+  <p> This simple page allowing uusers to change their display name </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Change display name</li>
+  </ul>
+    </details>
