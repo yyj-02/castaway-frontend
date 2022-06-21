@@ -177,5 +177,7 @@ our user interface. We believe that this will give us the edge over current comp
     <li>Change display name</li>
   </ul>
     </details>
-    
+  ## API documnetation
   [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
+  ## Back to main documenation
+  [← back to main documentation](../README.md)
