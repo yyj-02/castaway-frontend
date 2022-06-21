@@ -25,7 +25,7 @@ our user interface. We believe that this will give us the edge over current comp
   <details>
   <summary><h3 style="display: inline;">In app Hot reload</h3></summary> 
   <h4>Description</h4>
-  <p> A combination of API calls used to ensure that information updated on the app is displayed instantly. The collection of these API calls will be refered to as hot reload feature in the further pasts of this documentation </p>
+  <p> A combination of API calls used to ensure that information updated on the app is displayed instantly. The collection of these API calls will be refered to as hot reload feature in the further parts of this documentation </p>
   <h4>API called</h4>
   <ul>
     <li>Get all podcasts</li>
@@ -33,18 +33,40 @@ our user interface. We believe that this will give us the edge over current comp
     <li>View creations</li>
   </ul>
     </details>
- 
-  ### Login Page
-  #### Description
-  #### API used
+    
+  <details>
+  <summary><h3 style="display: inline;">Login page</h3></summary> 
+  <h4>Description</h4>
+  <p> A simple login page which authenticates the user and loads up their information and necessary streaming data. </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Log into an account</li>
+    <li>View Profile</li>
+    <li>Hot reload feature</li>
+  </ul>
+    </details>
+    
+ <details>
+  <summary><h3 style="display: inline;">Sign up page</h3></summary> 
+  <h4>Description</h4>
+  <p> A simple sign up page which creates an account, authenticates the user and loads up their information and necessary streaming data. </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Create an account</li>
+    <li>View Profile</li>
+    <li>Hot reload feature</li>
+  </ul>
+    </details>
+<details>
+  <summary><h3 style="display: inline;">Favorites page</h3></summary> 
+  <h4>Description</h4>
+  <p> A simple page that displays all the podcasts that have been marked as favourite but the user with the option to preview them </p>
+  <h4>API called</h4>
+  <ul>
+    <li>None</li>
+  </ul>
+    </details>
   
-  ### Sign up Page
-  #### Description
-  #### API used
-  
-  ### Favourites page
-  #### Description
-  #### API used
   
   ### Create page
   #### Description
