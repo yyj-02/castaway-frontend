@@ -18,6 +18,7 @@ class _PreviewpageState extends State<Previewpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Padding(
             padding: const EdgeInsets.fromLTRB(5.0, 30.0, 5.0, 30.0),
             child: Center(

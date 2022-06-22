@@ -66,10 +66,10 @@ class _ExplorePageState extends State<ExplorePage> {
                     color: Color(0xffb257a84),
                     fontSize: 40,
                   )),
-              const Padding(padding: EdgeInsets.all(5.0)),
               GridView.count(
                   crossAxisCount: 2,
                   shrinkWrap: true,
+                  physics: const ScrollPhysics(),
                   children:
                       profile.favePodcasts.where((s) => s != null).map((i) {
                     return Builder(
