@@ -5,8 +5,16 @@ import 'Palette.dart';
 import 'ProfileDetails.dart' as profile;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var email = prefs.getString('email');
+  var password = prefs.getString('password');
+  var val = prefs.getBool("val");
+  print(email);
+  print(password);
   runApp(const MyApp());
 }
 
@@ -70,7 +78,7 @@ class _MyAppState extends State<MyApp> {
     Timer.periodic(const Duration(seconds: 3600), (Timer t) => refresh());
     Timer.periodic(const Duration(seconds: 1000), (Timer t) => refreshall());
     return MaterialApp(
-      title: 'Navigation Demo',
+      title: 'Castaway',
       theme: ThemeData(
         primarySwatch: Palette.kToDark,
         fontFamily: 'Poppins',

@@ -5,6 +5,7 @@ import 'ViewProfile.dart';
 import 'ChangeName.dart';
 import 'ViewCreations.dart';
 import 'Login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -113,7 +114,7 @@ class _settingsState extends State<settings> {
                   SettingsTile.navigation(
                     leading: const Icon(Icons.logout),
                     title: const Text('Logout'),
-                    onPressed: (context) {
+                    onPressed: (context) async {
                       profile.myCreations = [];
                       profile.myIdToken = null;
                       profile.myRefreshToken = null;
@@ -123,6 +124,11 @@ class _settingsState extends State<settings> {
                       profile.numFav = 0;
                       profile.numCre = 0;
                       profile.email = "";
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.remove('email');
+                      prefs.remove("password");
+                      prefs.setBool("val", false);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return const FirstPage(title: "firstpage");

@@ -48,6 +48,7 @@ dependencies:
   form_data: ^0.0.1-nullsafety.1
   http_parser: ^4.0.1
   multi_select_flutter: ^4.1.2
+  shared_preferences: ^2.0.15
 
 
 dev_dependencies:

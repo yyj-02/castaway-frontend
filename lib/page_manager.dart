@@ -14,9 +14,6 @@ class PageManager {
   );
   final buttonNotifier = ValueNotifier<ButtonState>(ButtonState.paused);
 
-  // static const url =
-  //     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3';
-
   late AudioPlayer _audioPlayer;
   final podId;
 
