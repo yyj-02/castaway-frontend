@@ -2,12 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:multi_page_castaway/SecondPage.dart';
+import 'Loading.dart';
 import 'SecondPage.dart';
 import 'SignUp.dart';
 import 'ProfileDetails.dart' as profile;
 import 'package:shared_preferences/shared_preferences.dart';
-
-bool thechecker = false;
 
 Future<bool> checks() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -81,11 +80,6 @@ class _FirstPageState extends State<FirstPage> {
         }));
       }
     });
-    // if (thechecker) {
-    //   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    //     return const SecondPage(title: 'SecondPage');
-    //   }));
-    // }
     return Scaffold(
       backgroundColor: const Color(0xffb7bb9b9),
       body: Center(
@@ -94,19 +88,20 @@ class _FirstPageState extends State<FirstPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const Padding(padding: EdgeInsets.all(8.0)),
               const Text("Castaway",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 75,
+                    fontSize: 60,
                   )),
-              const Padding(padding: EdgeInsets.all(10.0)),
+              const Padding(padding: EdgeInsets.all(8.0)),
               const Text("The best way to enjoy a podcast",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
+                    fontSize: 18,
                   )),
               const MyCustomForm(),
-              const Padding(padding: EdgeInsets.all(10.0)),
+              const Padding(padding: EdgeInsets.all(8.0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -128,6 +123,7 @@ class _FirstPageState extends State<FirstPage> {
                           )))
                 ],
               ),
+              Image.asset('assets/images/Login.png', height: 180, width: 500)
             ],
           ),
         ),
@@ -166,7 +162,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          const Padding(padding: EdgeInsets.all(10.0)),
+          const Padding(padding: EdgeInsets.all(8.0)),
           const Text("Email Address",
               style: TextStyle(
                 color: Colors.white,
@@ -193,7 +189,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
               ),
             ),
           ),
-          const Padding(padding: EdgeInsets.all(10.0)),
+          const Padding(padding: EdgeInsets.all(8.0)),
           const Text("Password",
               style: TextStyle(
                 color: Colors.white,
@@ -221,7 +217,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
               ),
             ),
           ),
-          const Padding(padding: EdgeInsets.all(10.0)),
+          const Padding(padding: EdgeInsets.all(8.0)),
           ElevatedButton(
             style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -232,6 +228,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
                         borderRadius: BorderRadius.circular(18.0),
                         side: const BorderSide(color: Color(0xffb257a84))))),
             onPressed: () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
+                    return const loading();
+                  }));
               SharedPreferences prefs = await SharedPreferences.getInstance();
               if (prefs.getString('email') == null) {
                 var data = {
@@ -258,7 +258,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
                                       color: Colors.white,
                                     )),
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return const FirstPage(title: 'SecondPage');
+                                      }));
                                 })
                           ],
                         );

@@ -6,15 +6,15 @@ class loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xffbffffff),
+        backgroundColor: Colors.white,
         body: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                  Text("How's your day ..."),
+                    children: [
+                  Image.asset("assets/images/loading.JPG"),
                 ]))));
   }
 }
