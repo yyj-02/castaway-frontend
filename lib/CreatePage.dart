@@ -52,11 +52,11 @@ class _CreatePageState extends State<CreatePage> {
                 Text("Something's Brewing",
                     style: TextStyle(
                       color: Color(0xffb257a84),
-                      fontSize: 37,
+                      fontSize: 33,
                     )),
               ]),
         ),
-        const Padding(padding: EdgeInsets.all(40.0)),
+        const Padding(padding: EdgeInsets.all(20.0)),
         SizedBox(
           width: 350,
           child: ElevatedButton(
@@ -78,7 +78,7 @@ class _CreatePageState extends State<CreatePage> {
               Icon(Icons.storage, size: 123.0),
               Text("Upload from storage",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 26,
                   )),
             ]),
           ),
@@ -105,7 +105,7 @@ class _CreatePageState extends State<CreatePage> {
               Icon(Icons.mic, size: 123.0),
               Text("Go live ",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 26,
                   ))
             ]),
           ),

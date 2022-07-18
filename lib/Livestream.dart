@@ -1,31 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:socket_io/socket_io.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:record/record.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 import 'Recorder.dart';
 
 class LiveStreamPage extends StatefulWidget {
   const LiveStreamPage({Key? key}) : super(key: key);
 
-  connect() {
-    var io = new Server();
-    var nsp = io.of('localhost:8080');
-    nsp.on('connection', (client) {
-      print('connection /some');
-      client.on('msg', (data) {
-        print('data from /some => $data');
-        client.emit('fromServer', "ok 2");
-      });
-    });
-    io.on('connection', (client) {
-      print('connection default namespace');
-      client.on('msg', (data) {
-        print('data from default => $data');
-        client.emit('fromServer', "ok");
-      });
-    });
-    io.listen(8080);
-  }
 
   @override
   State<LiveStreamPage> createState() => _LiveStreamPageState();
@@ -33,23 +15,15 @@ class LiveStreamPage extends StatefulWidget {
 
 class _LiveStreamPageState extends State<LiveStreamPage> {
   connect() {
-    var io = new Server();
-    var nsp = io.of('localhost:8080/streamer');
-    nsp.on('connection', (client) {
-      print('connection /some');
-      client.on('msg', (data) {
-        print('data from /some => $data');
-        client.emit('fromServer', "ok 2");
-      });
+    IO.Socket socket = IO.io('ws://localhost:3000/streamer');
+    socket.on('connect', (_) {
+      print('connect');
+      socket.emit('msg', 'test');
     });
-    io.on('connection', (client) {
-      print('connection default namespace');
-      client.on('msg', (data) {
-        print('data from default => $data');
-        client.emit('fromServer', "ok");
-      });
-    });
-    io.listen(8080);
+    socket.on('event', (data) => print(data));
+    socket.on('disconnect', (_) => print('disconnect'));
+    socket.on('fromServer', (_) => print(_));
+    socket.connect();
   }
 
   @override

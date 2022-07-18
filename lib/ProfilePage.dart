@@ -30,13 +30,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 const Text("Welcome",
                     style: TextStyle(
                       color: Color(0xffb257a84),
-                      fontSize: 40,
+                      fontSize: 33,
                     )),
                 const Padding(padding: EdgeInsets.all(9.0)),
                 Text(profile.displayName,
                     style: const TextStyle(
                       color: Color(0xffb257a84),
-                      fontSize: 25,
+                      fontSize: 20,
                     )),
                 const Padding(padding: EdgeInsets.all(15.0)),
                 const settings()

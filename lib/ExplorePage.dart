@@ -105,9 +105,11 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               onTap: () {
                                 Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return Previewpage(podcastdet: i);
-                                }));
+                                    PageRouteBuilder(
+                                    pageBuilder: (c, a1, a2) => Previewpage(podcastdet: i),
+                                transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                                transitionDuration: Duration(milliseconds: 700),
+                                ));
                               },
                               child: SizedBox(
                                 width: 300,

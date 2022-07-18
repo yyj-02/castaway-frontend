@@ -64,9 +64,8 @@ class _ExplorePageState extends State<ExplorePage> {
               const Text("Only for you",
                   style: TextStyle(
                     color: Color(0xffb257a84),
-                    fontSize: 40,
+                    fontSize: 33,
                   )),
-              const Padding(padding: EdgeInsets.all(5.0)),
               GridView.count(
                   crossAxisCount: 2,
                   shrinkWrap: true,

@@ -31,7 +31,6 @@ class _changeNameState extends State<changeName> {
         child: Center(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Padding(padding: EdgeInsets.all(30.0)),
