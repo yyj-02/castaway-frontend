@@ -34,6 +34,7 @@ class _LiveStreamState extends State<LiveStream> {
     });
     socket.on("success", (message) {print(message);});
     socket.on('disconnect', (_) => print("disconnected"));
+    socket.on("error", (error) {print(error);});
     socket.on("audio", (audioFile) => {
     print("audioFile") // audio stream can be the continuous stream of audio files beign played in order
     });

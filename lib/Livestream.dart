@@ -31,16 +31,20 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
       },
     });
     socket.on("connect_error", (error) => {print(error.toString())});
-    socket.on('connect', (_) {
+    socket.onConnect((_) => () async {
       print('connected!');
+      var audioFile = await File('/data/user/0/com.example.multi_page_castaway/cache/audio').readAsBytes();
+      socket.emit('upload', audioFile);
     });
+
     socket.on("success", (message) {print(message);});
+    socket.on("error", (error) {print(error);});
     socket.on('disconnect', (_) => print("disconnected"));
-    var thefile = await File('/data/user/0/com.example.multi_page_castaway/cache/audio').readAsBytes();
-    socket.emit("upload",thefile);
+
+
     // to emit audio I think you do socket.emit("audio", audioPackets), hence you need to export the socket in a separate dart file
     socket.connect();
-
+    socket.emit('upload', "audioFile");
     // socket.emit("audio", )
   }
 
