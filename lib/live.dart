@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import "dart:io";
 import 'ProfileDetails.dart' as profile;
 import 'package:record/record.dart';
 import 'Recorder.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:http/http.dart' as http;
-import "live.dart";
 
-var add =  "ws://10.0.2.2:3000/streamer";
+var add =  "ws://10.0.2.2:3000/listener";
 
-class LiveStreamPage extends StatefulWidget {
-  const LiveStreamPage({Key? key}) : super(key: key);
+class LiveStream extends StatefulWidget {
+  const LiveStream({Key? key}) : super(key: key);
 
   @override
-  State<LiveStreamPage> createState() => _LiveStreamPageState();
+  State<LiveStream> createState() => _LiveStreamState();
 }
 
-class _LiveStreamPageState extends State<LiveStreamPage> {
+class _LiveStreamState extends State<LiveStream> {
   connect() async {
     http.Response response4 = await http
-        .get(Uri.parse("http://10.0.2.2:8080/streamer")); // this should be a variable
+        .get(Uri.parse("http://10.0.2.2:8080/listener")); // this should be a variable
     IO.Socket socket = IO.io(add, <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
@@ -36,15 +34,14 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     });
     socket.on("success", (message) {print(message);});
     socket.on('disconnect', (_) => print("disconnected"));
-    var thefile = await File('/data/user/0/com.example.multi_page_castaway/cache/audio').readAsBytes();
-    socket.emit("upload",thefile);
+    socket.on("audio", (audioFile) => {
+    print("audioFile") // audio stream can be the continuous stream of audio files beign played in order
+    });
     // to emit audio I think you do socket.emit("audio", audioPackets), hence you need to export the socket in a separate dart file
     socket.connect();
 
     // socket.emit("audio", )
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +71,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                     ],
                   ),
                   const Spacer(),
-                  const Text("You're Live",
+                  const Text("You're in the Live",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 50,
@@ -106,7 +103,6 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                         fontSize: 20,
                       )),
                   const Spacer(),
-
                   // Row(
                   //   children: const [
                   //     Spacer(),

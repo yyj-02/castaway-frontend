@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'CreateFromRecorded.dart';
 import 'Livestream.dart';
+import 'live.dart';
 
 class CreatePage extends StatefulWidget {
   const CreatePage({Key? key}) : super(key: key);
@@ -109,8 +110,12 @@ class _CreatePageState extends State<CreatePage> {
                   ))
             ]),
           ),
-        )
-      ],
+        ),
+        TextButton(onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return LiveStream();
+          }));
+        }, child: Text("GO to Live")),],
     ));
   }
 }
