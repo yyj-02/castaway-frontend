@@ -1,10 +1,8 @@
 //import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'ProfileDetails.dart' as profile;
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-import 'package:http/http.dart' as http;
 import 'package:audioplayers/audioplayers.dart';
 
 var add =  "ws://10.0.2.2:3000/listener";
@@ -19,8 +17,7 @@ class LiveStream extends StatefulWidget {
 class _LiveStreamState extends State<LiveStream> {
   AudioPlayer player = AudioPlayer();
   connect() async {
-    http.Response response4 = await http
-        .get(Uri.parse("http://10.0.2.2:8080/listener")); // this should be a variable
+// this should be a variable
     IO.Socket socket = IO.io(add, <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
@@ -38,7 +35,8 @@ class _LiveStreamState extends State<LiveStream> {
     socket.on('disconnect', (_) => print("disconnected"));
     socket.on("error", (error) {print(error);});
     socket.on("audio", (audioFile) => {
-      player.setSourceBytes(audioFile)
+      player.play(BytesSource(audioFile)),player.getDuration()
+      //print(audioFile)
 
 // audio stream can be the continuous stream of audio files beign played in order
     });
@@ -128,6 +126,9 @@ class _LiveStreamState extends State<LiveStream> {
                   const Spacer(),
                   const Spacer(),
                   const Spacer(),
-                ])));
+                ]
+            )
+        )
+    );
   }
 }

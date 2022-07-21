@@ -6,7 +6,7 @@ import 'ProfileDetails.dart' as profile;
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-import 'package:http/http.dart' as http;
+import 'package:record/record.dart';
 
 
 var add = "ws://10.0.2.2:3000/streamer";
@@ -28,6 +28,7 @@ IO.Socket socket = IO.io(add, <String, dynamic>{
   },
 });
 class _LiveStreamPageState extends State<LiveStreamPage> {
+  String pather = "";
   connect() async {
 
     socket.on("connect_error", (error) => {print(error.toString())});
@@ -60,10 +61,10 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     //         () {}); // so think of a way to export this socket and wait a while after it connects to send packages
     socket.emit(
         "upload",
-        File("/data/user/0/com.example.multi_page_castaway/cache/audio").readAsBytesSync()
+        File(pather).readAsBytesSync()
     ); //just put the file in an array
   }
-  final recorder = FlutterSoundRecorder();
+  final recorder = Record();
 
   Future initRecorder() async {
     final status = await Permission.microphone.request();
@@ -73,7 +74,6 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     if (status != PermissionStatus.granted){
       throw "Mic not available";
     }
-    await recorder.openRecorder();
   }
 
   @override
@@ -88,13 +88,18 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   }
 
   Future recorded() async {
-    await recorder.startRecorder(toFile: 'audio');
+    await recorder.start(
+        encoder: AudioEncoder.aacLc, // by default
+      bitRate: 128000, // by default
+      samplingRate: 44100);
   }
 
+
   Future stop() async {
-    final path = await recorder.stopRecorder();
+    final path = await recorder.stop();
     final audiofile = File(path!);
-    print("Recorded audio $audiofile");
+    print(path);
+    pather = path;
 
 
   }
@@ -155,7 +160,9 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                   Timer.periodic(const Duration(seconds: 5), (Timer t) => {
                     recs()
                   }
-                  );
+
+                  )
+                  ;
 
                 },
               ),
