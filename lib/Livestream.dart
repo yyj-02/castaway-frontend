@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import "dart:io";
 import 'ProfileDetails.dart' as profile;
-import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:record/record.dart';
-
 
 var add = "ws://10.0.2.2:3000/streamer";
 
@@ -17,6 +15,7 @@ class LiveStreamPage extends StatefulWidget {
   @override
   State<LiveStreamPage> createState() => _LiveStreamPageState();
 }
+
 // this should be a variable
 IO.Socket socket = IO.io(add, <String, dynamic>{
   "transports": ["websocket"],
@@ -27,10 +26,11 @@ IO.Socket socket = IO.io(add, <String, dynamic>{
     //hard coded as of now but supposed to get livestream id using the api
   },
 });
+
 class _LiveStreamPageState extends State<LiveStreamPage> {
   String pather = "";
-  connect() async {
 
+  connect() async {
     socket.on("connect_error", (error) => {print(error.toString())});
     socket.onConnect((_) => () async {
           print('connected!');
@@ -43,11 +43,9 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
       print(error);
     });
     socket.on('disconnect', (_) => print("disconnected"));
-
-    // to emit audio I think you do socket.emit("audio", audioPackets), hence you need to export the socket in a separate dart file
     socket.connect();
-
   }
+
   disconnect() async {
     socket.disconnect();
   }
@@ -56,22 +54,19 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
     socket.dispose();
   }
 
-  emit() async{
-    // await Future.delayed(const Duration(seconds: 5),
-    //         () {}); // so think of a way to export this socket and wait a while after it connects to send packages
-    socket.emit(
-        "upload",
-        File(pather).readAsBytesSync()
-    ); //just put the file in an array
+  emit() async {
+    socket.emit("upload",
+        File(pather).readAsBytesSync()); //just put the file in an array
   }
+
   final recorder = Record();
 
   Future initRecorder() async {
     final status = await Permission.microphone.request();
-    if (status == PermissionStatus.granted){
+    if (status == PermissionStatus.granted) {
       print("Mic available");
     }
-    if (status != PermissionStatus.granted){
+    if (status != PermissionStatus.granted) {
       throw "Mic not available";
     }
   }
@@ -90,22 +85,22 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   Future recorded() async {
     await recorder.start(
         encoder: AudioEncoder.aacLc, // by default
-      bitRate: 128000, // by default
-      samplingRate: 44100);
+        bitRate: 128000, // by default
+        samplingRate: 44100);
   }
-
 
   Future stop() async {
     final path = await recorder.stop();
     final audiofile = File(path!);
     print(path);
     pather = path;
-
-
   }
+
   recs() async {
     recorded();
-    await Future.delayed(const Duration(seconds: 4), () {stop();});
+    await Future.delayed(const Duration(seconds: 4), () {
+      stop();
+    });
     emit();
   }
 
@@ -157,13 +152,8 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                 onPressed: () async {
                   connect();
                   // Timer.periodic(const Duration(seconds: 5), (Timer t) => recorded());
-                  Timer.periodic(const Duration(seconds: 5), (Timer t) => {
-                    recs()
-                  }
-
-                  )
-                  ;
-
+                  Timer.periodic(
+                      const Duration(seconds: 5), (Timer t) => {recs()});
                 },
               ),
               const Spacer(),
@@ -173,33 +163,12 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                     fontSize: 20,
                   )),
               const Spacer(),
-
-              // Row(
-              //   children: const [
-              //     Spacer(),
-              //     Icon(
-              //       Icons.people_alt_outlined,
-              //       size: 40.0,
-              //       color: Colors.white,
-              //     ),
-              //     Spacer(),
-              //     Icon(
-              //       Icons.stop_circle,
-              //       size: 140.0,
-              //       color: Colors.white,
-              //     ),
-              //     Spacer(),
-              //     Icon(
-              //       Icons.messenger_outline,
-              //       size: 40.0,
-              //       color: Colors.white,
-              //     ),
-              //     Spacer(),
-              //   ],
-              // ),
               const Spacer(),
               const Spacer(),
               const Spacer(),
-            ])));
+            ]
+            )
+        )
+    );
   }
 }

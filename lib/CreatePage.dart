@@ -28,18 +28,6 @@ class _CreatePageState extends State<CreatePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<String>? categories = [
-      "Classic",
-      "NFT",
-      "Music",
-      "Gaming",
-      "Tech",
-      "Sports",
-      "Maternity",
-      "Self-Help",
-      "Others"
-    ];
-    var selected;
     return Center(
         child: Column(
       children: [
@@ -62,10 +50,9 @@ class _CreatePageState extends State<CreatePage> {
           width: 350,
           child: ElevatedButton(
             style: ButtonStyle(
-                foregroundColor:
-                    MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(0xffb257a84)),
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xffb257a84)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -89,10 +76,9 @@ class _CreatePageState extends State<CreatePage> {
           width: 350,
           child: ElevatedButton(
             style: ButtonStyle(
-                foregroundColor:
-                    MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(0xffb257a84)),
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xffb257a84)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -111,11 +97,7 @@ class _CreatePageState extends State<CreatePage> {
             ]),
           ),
         ),
-        TextButton(onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return LiveStream();
-          }));
-        }, child: Text("GO to Live")),],
+      ],
     ));
   }
 }
