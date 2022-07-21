@@ -1,10 +1,11 @@
+//import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'ProfileDetails.dart' as profile;
-import 'package:record/record.dart';
-import 'Recorder.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:http/http.dart' as http;
+import 'package:audioplayers/audioplayers.dart';
 
 var add =  "ws://10.0.2.2:3000/listener";
 
@@ -16,6 +17,7 @@ class LiveStream extends StatefulWidget {
 }
 
 class _LiveStreamState extends State<LiveStream> {
+  AudioPlayer player = AudioPlayer();
   connect() async {
     http.Response response4 = await http
         .get(Uri.parse("http://10.0.2.2:8080/listener")); // this should be a variable
@@ -36,18 +38,16 @@ class _LiveStreamState extends State<LiveStream> {
     socket.on('disconnect', (_) => print("disconnected"));
     socket.on("error", (error) {print(error);});
     socket.on("audio", (audioFile) => {
-    print("audioFile") // audio stream can be the continuous stream of audio files beign played in order
+      player.setSourceBytes(audioFile)
+
+// audio stream can be the continuous stream of audio files beign played in order
     });
     // to emit audio I think you do socket.emit("audio", audioPackets), hence you need to export the socket in a separate dart file
     socket.connect();
-
-    // socket.emit("audio", )
   }
 
   @override
   Widget build(BuildContext context) {
-    connect();
-    final record = Record();
     DateTime datetime = (DateTime.now());
     String current = DateFormat.Hms().format(datetime);
     return Scaffold(
@@ -72,7 +72,7 @@ class _LiveStreamState extends State<LiveStream> {
                     ],
                   ),
                   const Spacer(),
-                  const Text("You're in the Live",
+                  const Text("You're Listening",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 50,
@@ -85,16 +85,14 @@ class _LiveStreamState extends State<LiveStream> {
                       )),
                   const Spacer(),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.mic,
                       size: 40.0,
                       color: Colors.white,
                     ),
                     color: Colors.white,
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return AudioRecorder();
-                      }));
+                      connect();
                     },
                   ),
                   const Spacer(),
