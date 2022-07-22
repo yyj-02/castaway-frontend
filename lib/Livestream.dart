@@ -39,10 +39,15 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   Duration timerInterval = const Duration(seconds: 1);
   int counter = 0;
   int newflag = 1;
+  Icon fab = Icon(
+      Icons.mic,
+      color: Colors.white
+  );
+
+  int fabIconNumber = 0;
+
 
   Stream<int> stopWatchStream() {
-
-
     void stopTimer() {
       if (timer != null) {
         timer.cancel();
@@ -75,9 +80,10 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
 
   connect() async {
     socket.on("connect_error", (error) => {print(error.toString())});
-    socket.onConnect((_) => () async {
-          print('connected!');
-        });
+    socket.onConnect((_) =>
+        () async {
+      print('connected!');
+    });
 
     socket.on("success", (message) {
       print(message);
@@ -158,88 +164,133 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-              const Spacer(),
-              const Spacer(),
-              Row(
-                children: [
-                  TextButton(
-                      onPressed: () async {
-                        timerSubscription.cancel();
+                  const Spacer(),
+                  Row(
+                    children: [
+                      TextButton(
+                          onPressed: () async {if(fabIconNumber == 1 || fabIconNumber == 2){
+                            timerSubscription.cancel();
+                            setState(() {
+                              hoursStr = '00';
+                              minutesStr = '00';
+                              secondsStr = '00';
+                            });
+                            newflag = 0;
+                            stop();
+                            disconnect();
+                            recorder.dispose();
+                            socketdispose();
+                            dispose();
+                            Navigator.pop(context);
+                          } else {Navigator.pop(context);}
+    },
+                          child: const Text("<- Back",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ))),
+                    ],
+                  ),
+                  const Spacer(),
+                  const Spacer(),
+                  const Text("You're Live",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50,
+                      )),
+                  const Spacer(),
+                  Text(("$hoursStr:$minutesStr:$secondsStr"),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                      )),
+                  const Spacer(),
+
+                  FloatingActionButton(
+                    child: fab,
+                    onPressed: () =>
                         setState(() {
-                          hoursStr = '00';
-                          minutesStr = '00';
-                          secondsStr = '00';
-                        });
-                        newflag=0;
-                        stop();
-                        disconnect();
-                        recorder.dispose();
-                        socketdispose();
-                        dispose();
-                        Navigator.pop(context);
-                      },
-                      child: const Text("<- Back",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ))),
-                ],
-              ),
-              const Spacer(),
-              const Text("You're Live",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50,
-                  )),
-              const Spacer(),
-              Text(("$hoursStr:$minutesStr:$secondsStr"),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                  )),
-              const Spacer(),
+                          if (fabIconNumber == 0) {
+                            fab = Icon(
+                              Icons.mic_off,
+                              color: Colors.white,
+                            );
+                            fabIconNumber = 1;
+                            connect();
+                            timerStream = stopWatchStream();
+                                  timerSubscription = timerStream.listen((int newTick) {
+                                    setState(() {
+                                      hoursStr = ((newTick / (60 * 60)) % 60)
+                                          .floor()
+                                          .toString()
+                                          .padLeft(2, '0');
+                                      minutesStr = ((newTick / 60) % 60)
+                                          .floor()
+                                          .toString()
+                                          .padLeft(2, '0');
+                                      secondsStr =
+                                          (newTick % 60).floor().toString().padLeft(2, '0');
+                                    });
+                                  });
+                                  // Timer.periodic(const Duration(seconds: 5), (Timer t) => recorded());
+                                  Timer.periodic(
+                                      const Duration(seconds: 5), (Timer t) => {recs()});
+                          } else if (fabIconNumber == 2) {
+                            newflag=1;
+                            fab = Icon(Icons.mic_off,
+                                color: Colors.white);
+                            fabIconNumber = 1;
 
+                          } else {
+                            fab = Icon(Icons.mic,
+                                color: Colors.white);
+                            fabIconNumber = 2;
+                            newflag = 0;
+                          }
+                        }),),
 
-              IconButton(
-                icon: const Icon(
-                  Icons.mic,
-                  size: 40.0,
-                  color: Colors.white,
-                ),
-                color: Colors.white,
-                onPressed: () async {
-                    connect();
-                    timerStream = stopWatchStream();
-                    timerSubscription = timerStream.listen((int newTick) {
-                      setState(() {
-                        hoursStr = ((newTick / (60 * 60)) % 60)
-                            .floor()
-                            .toString()
-                            .padLeft(2, '0');
-                        minutesStr = ((newTick / 60) % 60)
-                            .floor()
-                            .toString()
-                            .padLeft(2, '0');
-                        secondsStr =
-                            (newTick % 60).floor().toString().padLeft(2, '0');
-                      });
-                    });
-                    // Timer.periodic(const Duration(seconds: 5), (Timer t) => recorded());
-                    Timer.periodic(
-                        const Duration(seconds: 5), (Timer t) => {recs()});
-                  }
-
-              ),
-              const Spacer(),
-              const Text("Press mic icon to record",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  )),
-              const Spacer(),
-              const Spacer(),
-              const Spacer(),
-              const Spacer(),
-            ]
+                  // IconButton(
+                  //   icon: const Icon(
+                  //     Icons.mic,
+                  //     size: 40.0,
+                  //     color: Colors.white,
+                  //   ),
+                  //   color: Colors.white,
+                  //   onPressed: () async {
+                  //       connect();
+                  //       timerStream = stopWatchStream();
+                  //       timerSubscription = timerStream.listen((int newTick) {
+                  //         setState(() {
+                  //           hoursStr = ((newTick / (60 * 60)) % 60)
+                  //               .floor()
+                  //               .toString()
+                  //               .padLeft(2, '0');
+                  //           minutesStr = ((newTick / 60) % 60)
+                  //               .floor()
+                  //               .toString()
+                  //               .padLeft(2, '0');
+                  //           secondsStr =
+                  //               (newTick % 60).floor().toString().padLeft(2, '0');
+                  //         });
+                  //       });
+                  //       // Timer.periodic(const Duration(seconds: 5), (Timer t) => recorded());
+                  //       Timer.periodic(
+                  //           const Duration(seconds: 5), (Timer t) => {recs()});
+                  //
+                  //     }
+                  //
+                  //
+                  // ),
+                  const Spacer(),
+                  const Text("Press mic icon to record",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      )),
+                  const Spacer(),
+                  const Spacer(),
+                  const Spacer(),
+                  const Spacer(),
+                ]
             )
         )
     );
