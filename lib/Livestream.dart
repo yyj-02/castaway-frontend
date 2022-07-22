@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import "dart:io";
 import 'ProfileDetails.dart' as profile;
 import 'package:permission_handler/permission_handler.dart';
@@ -29,6 +28,50 @@ IO.Socket socket = IO.io(add, <String, dynamic>{
 
 class _LiveStreamPageState extends State<LiveStreamPage> {
   String pather = "";
+  bool flag = true;
+  late Stream<int> timerStream;
+  late StreamSubscription<int> timerSubscription;
+  String hoursStr = '00';
+  String minutesStr = '00';
+  String secondsStr = '00';
+  late StreamController<int> streamController;
+  late Timer timer;
+  Duration timerInterval = const Duration(seconds: 1);
+  int counter = 0;
+  int newflag = 1;
+
+  Stream<int> stopWatchStream() {
+
+
+    void stopTimer() {
+      if (timer != null) {
+        timer.cancel();
+        counter = 0;
+        streamController.close();
+      }
+    }
+
+    void tick(_) {
+      counter++;
+      streamController.add(counter);
+      if (!flag) {
+        stopTimer();
+      }
+    }
+
+    void startTimer() {
+      timer = Timer.periodic(timerInterval, tick);
+    }
+
+    streamController = StreamController<int>(
+      onListen: startTimer,
+      onCancel: stopTimer,
+      onResume: startTimer,
+      onPause: stopTimer,
+    );
+
+    return streamController.stream;
+  }
 
   connect() async {
     socket.on("connect_error", (error) => {print(error.toString())});
@@ -97,17 +140,17 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   }
 
   recs() async {
-    recorded();
-    await Future.delayed(const Duration(seconds: 4), () {
-      stop();
-    });
-    emit();
+    if (newflag == 1) {
+      recorded();
+      await Future.delayed(const Duration(seconds: 4), () {
+        stop();
+      });
+      emit();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    DateTime datetime = (DateTime.now());
-    String current = DateFormat.Hms().format(datetime);
     return Scaffold(
         backgroundColor: const Color(0xffb7bb9b9),
         body: Center(
@@ -121,6 +164,18 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                 children: [
                   TextButton(
                       onPressed: () async {
+                        timerSubscription.cancel();
+                        setState(() {
+                          hoursStr = '00';
+                          minutesStr = '00';
+                          secondsStr = '00';
+                        });
+                        newflag=0;
+                        stop();
+                        disconnect();
+                        recorder.dispose();
+                        socketdispose();
+                        dispose();
                         Navigator.pop(context);
                       },
                       child: const Text("<- Back",
@@ -136,12 +191,14 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                     fontSize: 50,
                   )),
               const Spacer(),
-              Text((current),
+              Text(("$hoursStr:$minutesStr:$secondsStr"),
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                   )),
               const Spacer(),
+
+
               IconButton(
                 icon: const Icon(
                   Icons.mic,
@@ -150,11 +207,27 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                 ),
                 color: Colors.white,
                 onPressed: () async {
-                  connect();
-                  // Timer.periodic(const Duration(seconds: 5), (Timer t) => recorded());
-                  Timer.periodic(
-                      const Duration(seconds: 5), (Timer t) => {recs()});
-                },
+                    connect();
+                    timerStream = stopWatchStream();
+                    timerSubscription = timerStream.listen((int newTick) {
+                      setState(() {
+                        hoursStr = ((newTick / (60 * 60)) % 60)
+                            .floor()
+                            .toString()
+                            .padLeft(2, '0');
+                        minutesStr = ((newTick / 60) % 60)
+                            .floor()
+                            .toString()
+                            .padLeft(2, '0');
+                        secondsStr =
+                            (newTick % 60).floor().toString().padLeft(2, '0');
+                      });
+                    });
+                    // Timer.periodic(const Duration(seconds: 5), (Timer t) => recorded());
+                    Timer.periodic(
+                        const Duration(seconds: 5), (Timer t) => {recs()});
+                  }
+
               ),
               const Spacer(),
               const Text("Press mic icon to record",
