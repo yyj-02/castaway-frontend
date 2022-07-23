@@ -113,7 +113,7 @@ our user interface. We believe that this will give us the edge over current comp
 
 <details>
   <summary><h3 style="display: inline;">Livestream page</h3></summary> 
-  <p align="center"><img width=30% height=20% src="./LivePage.png" /></p>
+  <p align="center"><img width=30% height=20% src="./Livepage.png" /></p>
   <h4>Description</h4>
   <p> This page allows users to view available livestreams. The Livestreams are hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically. It also happens when the page is refreshed which can be done by switching between different bottom navigation tabs </p>
   <h4>API called</h4>
