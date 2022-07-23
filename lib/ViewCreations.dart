@@ -16,7 +16,7 @@ class ViewCreationsPage extends StatefulWidget {
 class _ViewCreationsPageState extends State<ViewCreationsPage> {
   @override
   Widget build(BuildContext context) {
-    if (profile.myCreations.length < 1) {
+    if (profile.myCreations.isEmpty) {
       return Scaffold(
         body: Column(children: [
           const Padding(padding: EdgeInsets.all(35.0)),
@@ -67,7 +67,7 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                         return const SecondPageC(title: "create");
                       }));
                     },
-                    child: Text("Go to Create",
+                    child: const Text("Go to Create",
                         style: TextStyle(
                           fontSize: 23,
                         )),

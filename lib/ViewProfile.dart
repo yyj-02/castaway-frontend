@@ -33,40 +33,40 @@ class _viewProfilePageState extends State<viewProfilePage> {
             const Text("View profile",
                 style: TextStyle(
                   color: Color(0xffb257a84),
-                  fontSize: 40,
+                  fontSize: 33,
                 )),
             const Spacer(),
             const Text("Email address",
                 style: TextStyle(
                   color: Color(0xffb257a84),
-                  fontSize: 25,
+                  fontSize: 20,
                 )),
             const Spacer(),
             Text(profile.email,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 17,
                 )),
             const Spacer(),
             const Text("Display name",
                 style: TextStyle(
                   color: Color(0xffb257a84),
-                  fontSize: 25,
+                  fontSize: 20,
                 )),
             const Spacer(),
             Text(profile.displayName,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 17,
                 )),
             const Spacer(),
             const Text("Number of podcasts created",
                 style: TextStyle(
                   color: Color(0xffb257a84),
-                  fontSize: 25,
+                  fontSize: 20,
                 )),
             const Spacer(),
             Text(profile.numCre.toString(),
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 17,
                 )),
             const Spacer(),
             const Text("Number of favourites",
@@ -77,7 +77,7 @@ class _viewProfilePageState extends State<viewProfilePage> {
             const Spacer(),
             Text(profile.numFav.toString(),
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 17,
                 )),
             const Spacer()
           ],

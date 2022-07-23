@@ -56,20 +56,78 @@ class _podcastplayerState extends State<podcastplayer> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(
-              icon: const Icon(Icons.fast_rewind),
-              iconSize: 25.0,
-              color: Colors.white,
-              onPressed: () {
-                if (widget.pos <= 0) {
-                } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return podcastview(
-                        podcast: profile.allPodcasts[widget.pos - 1]);
-                  }));
+            ValueListenableBuilder<ButtonState>(
+              valueListenable: _pageManager.buttonNotifier,
+              builder: (_, value, __) {
+                switch (value) {
+                  case ButtonState.loading:
+                    return IconButton(
+                      icon: const Icon(Icons.fast_rewind),
+                      iconSize: 25.0,
+                      color: Colors.white,
+                      onPressed: () {
+                        if (widget.pos <= 0) {
+                        } else {
+                          _pageManager.pause();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return podcastview(
+                                podcast: profile.allPodcasts[widget.pos - 1]);
+                          }));
+                        }
+                      },
+                    );
+                  case ButtonState.paused:
+                    return IconButton(
+                      icon: const Icon(Icons.fast_rewind),
+                      iconSize: 25.0,
+                      color: Colors.white,
+                      onPressed: () {
+                        if (widget.pos <= 0) {
+                        } else {
+                          _pageManager.pause();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return podcastview(
+                                podcast: profile.allPodcasts[widget.pos - 1]);
+                          }));
+                        }
+                      },
+                    );
+                  case ButtonState.playing:
+                    return IconButton(
+                      icon: const Icon(Icons.fast_rewind),
+                      iconSize: 25.0,
+                      color: Colors.white,
+                      onPressed: () {
+                        if (widget.pos <= 0) {
+                        } else {
+                          _pageManager.pause();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return podcastview(
+                                podcast: profile.allPodcasts[widget.pos - 1]);
+                          }));
+                        }
+                      },
+                    );
                 }
               },
             ),
+            // IconButton(
+            //   icon: const Icon(Icons.fast_rewind),
+            //   iconSize: 25.0,
+            //   color: Colors.white,
+            //   onPressed: () {
+            //     if (widget.pos <= 0) {
+            //     } else {
+            //       Navigator.push(context, MaterialPageRoute(builder: (context) {
+            //         return podcastview(
+            //             podcast: profile.allPodcasts[widget.pos - 1]);
+            //       }));
+            //     }
+            //   },
+            // ),
             ValueListenableBuilder<ButtonState>(
               valueListenable: _pageManager.buttonNotifier,
               builder: (_, value, __) {
@@ -100,20 +158,78 @@ class _podcastplayerState extends State<podcastplayer> {
                 }
               },
             ),
-            IconButton(
-              icon: const Icon(Icons.fast_forward),
-              iconSize: 25.0,
-              color: Colors.white,
-              onPressed: () {
-                if (widget.pos >= (profile.allPodcasts.length - 1)) {
-                } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return podcastview(
-                        podcast: profile.allPodcasts[widget.pos + 1]);
-                  }));
+            ValueListenableBuilder<ButtonState>(
+              valueListenable: _pageManager.buttonNotifier,
+              builder: (_, value, __) {
+                switch (value) {
+                  case ButtonState.loading:
+                    return IconButton(
+                      icon: const Icon(Icons.fast_forward),
+                      iconSize: 25.0,
+                      color: Colors.white,
+                      onPressed: () {
+                        if (widget.pos >= (profile.allPodcasts.length - 1)) {
+                        } else {
+                          _pageManager.pause();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return podcastview(
+                                podcast: profile.allPodcasts[widget.pos + 1]);
+                          }));
+                        }
+                      },
+                    );
+                  case ButtonState.paused:
+                    return IconButton(
+                      icon: const Icon(Icons.fast_forward),
+                      iconSize: 25.0,
+                      color: Colors.white,
+                      onPressed: () {
+                        if (widget.pos >= (profile.allPodcasts.length - 1)) {
+                        } else {
+                          _pageManager.pause();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return podcastview(
+                                podcast: profile.allPodcasts[widget.pos + 1]);
+                          }));
+                        }
+                      },
+                    );
+                  case ButtonState.playing:
+                    return IconButton(
+                      icon: const Icon(Icons.fast_forward),
+                      iconSize: 25.0,
+                      color: Colors.white,
+                      onPressed: () {
+                        if (widget.pos >= (profile.allPodcasts.length - 1)) {
+                        } else {
+                          _pageManager.pause();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return podcastview(
+                                podcast: profile.allPodcasts[widget.pos + 1]);
+                          }));
+                        }
+                      },
+                    );
                 }
               },
-            )
+            ),
+            // IconButton(
+            //   icon: const Icon(Icons.fast_forward),
+            //   iconSize: 25.0,
+            //   color: Colors.white,
+            //   onPressed: () {
+            //     if (widget.pos >= (profile.allPodcasts.length - 1)) {
+            //     } else {
+            //       Navigator.push(context, MaterialPageRoute(builder: (context) {
+            //         return podcastview(
+            //             podcast: profile.allPodcasts[widget.pos + 1]);
+            //       }));
+            //     }
+            //   },
+            // )
           ],
         ),
       ],

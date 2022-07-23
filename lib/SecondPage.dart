@@ -3,6 +3,7 @@ import 'Homepage.dart';
 import 'CreatePage.dart';
 import 'ExplorePage.dart';
 import 'ProfilePage.dart';
+import 'Livepage.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({Key? key, required this.title}) : super(key: key);
@@ -18,6 +19,7 @@ class _SecondPageState extends State<SecondPage> {
   final List<Widget> _widgetOptions = <Widget>[
     const ExplorePage(),
     const CreatePage(),
+    const LivePage(),
     const HomePage(),
     const ProfilePage()
   ];
@@ -43,6 +45,13 @@ class _SecondPageState extends State<SecondPage> {
               color: Color(0xffb257a84),
             ),
             label: 'Create',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.live_tv_rounded,
+              color: Color(0xffb257a84),
+            ),
+            label: 'Live',
           ),
           BottomNavigationBarItem(
             icon: Icon(

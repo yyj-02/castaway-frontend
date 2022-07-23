@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'ProfileDetails.dart' as profile;
 import 'package:flutter/material.dart';
 import 'SecondPage.dart';
+import 'Login.dart';
+import 'Loading.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -22,19 +25,20 @@ class _SignupState extends State<Signup> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const Padding(padding: EdgeInsets.all(21.0)),
               const Text("Castaway",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 75,
+                    fontSize: 60,
                   )),
-              const Padding(padding: EdgeInsets.all(10.0)),
+              const Padding(padding: EdgeInsets.all(3.0)),
               const Text("Be part of our family today",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
+                    fontSize: 18,
                   )),
               const MyCustomForm(),
-              const Padding(padding: EdgeInsets.all(10.0)),
+              const Padding(padding: EdgeInsets.all(3.0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,7 +49,10 @@ class _SignupState extends State<Signup> {
                   ),
                   TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return const FirstPage(title: 'SecondPage');
+                            }));
                       },
                       child: const Text("Login",
                           style: TextStyle(
@@ -53,7 +60,7 @@ class _SignupState extends State<Signup> {
                           )))
                 ],
               ),
-            ],
+              Image.asset('assets/images/Login.png', height: 180, width: 500)],
           ),
         ),
       ),
@@ -90,13 +97,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        const Padding(padding: EdgeInsets.all(10.0)),
+        const Padding(padding: EdgeInsets.all(6.0)),
         const Text("Email Address",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             )),
-        const Padding(padding: EdgeInsets.all(7.0)),
+        const Padding(padding: EdgeInsets.all(5.0)),
         SizedBox(
           width: 200,
           child: TextFormField(
@@ -117,13 +124,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
         ),
-        const Padding(padding: EdgeInsets.all(10.0)),
+        const Padding(padding: EdgeInsets.all(6.0)),
         const Text("Display Name",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             )),
-        const Padding(padding: EdgeInsets.all(7.0)),
+        const Padding(padding: EdgeInsets.all(5.0)),
         SizedBox(
           width: 200,
           child: TextFormField(
@@ -144,13 +151,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
         ),
-        const Padding(padding: EdgeInsets.all(10.0)),
+        const Padding(padding: EdgeInsets.all(6.0)),
         const Text("Password",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             )),
-        const Padding(padding: EdgeInsets.all(7.0)),
+        const Padding(padding: EdgeInsets.all(5.0)),
         SizedBox(
           width: 200,
           child: TextFormField(
@@ -172,7 +179,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
         ),
-        const Padding(padding: EdgeInsets.all(10.0)),
+        const Padding(padding: EdgeInsets.all(6.0)),
         ElevatedButton(
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -183,6 +190,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
                       borderRadius: BorderRadius.circular(18.0),
                       side: const BorderSide(color: Color(0xffb257a84))))),
           onPressed: () async {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) {
+                  return const loading();
+                }));
             var data = {
               'email': myController.text,
               'displayName': nameController.text,
@@ -208,12 +219,19 @@ class _MyCustomFormState extends State<MyCustomForm> {
                                   color: Colors.white,
                                 )),
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return const Signup();
+                                  }));
                             })
                       ],
                     );
                   });
             } else {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString('email', myController.text);
+              prefs.setString('password', passController.text);
+              prefs.setBool("val", true);
               profile.myIdToken = await jsonDecode(response.body)['idToken'];
               profile.myRefreshToken =
                   await jsonDecode(response.body)['refreshToken'];
@@ -244,12 +262,17 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   await jsonDecode(response4.body)['numberOfCreations'];
               profile.numFav =
                   await jsonDecode(response4.body)['numberOfFavorites'];
+              http.Response socketres = await http.get(
+                Uri.parse(
+                    "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+              profile.alllive = await jsonDecode(socketres.body);
               final uri5 = Uri.parse(
                   "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
               http.Response response5 =
                   await http.post(uri5, body: {'idToken': profile.myIdToken});
               print(response5.body);
               profile.myCreations = await jsonDecode(response5.body);
+
 
               if (profile.myIdToken != null) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {

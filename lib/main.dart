@@ -1,12 +1,20 @@
 import 'dart:async';
-import 'Login.dart';
 import 'package:flutter/material.dart';
 import 'Palette.dart';
 import 'ProfileDetails.dart' as profile;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'Front.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var email = prefs.getString('email');
+  var password = prefs.getString('password');
+  var val = prefs.getBool("val");
+  print(email);
+  print(password);
   runApp(const MyApp());
 }
 
@@ -53,6 +61,10 @@ Future<void> refreshall() async {
     http.Response response5 =
         await http.post(uri5, body: {'idToken': profile.myIdToken});
     profile.myCreations = await jsonDecode(response5.body);
+    http.Response socketres = await http.get(
+      Uri.parse(
+          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+    profile.alllive = await jsonDecode(socketres.body);
   }
 }
 
@@ -70,14 +82,15 @@ class _MyAppState extends State<MyApp> {
     Timer.periodic(const Duration(seconds: 3600), (Timer t) => refresh());
     Timer.periodic(const Duration(seconds: 1000), (Timer t) => refreshall());
     return MaterialApp(
-      title: 'Navigation Demo',
+      title: 'Castaway',
       theme: ThemeData(
         primarySwatch: Palette.kToDark,
         fontFamily: 'Poppins',
         primaryColor: const Color(0xffb257a84),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const FirstPage(title: 'FirstPage'),
+      home: const Frontpage(title: "hi"),
+      debugShowCheckedModeBanner: false
     );
   }
 }

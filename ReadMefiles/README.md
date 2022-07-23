@@ -2,7 +2,7 @@
   Castaway Frontend Documentation
 </h1>
 <h2> Overview</h2>
-<p> Castaway is a podcast streaming app whose frontend is built with flutter which provides and intuitive and straighforward programming framework.
+<p> Castaway is a podcast streaming app whose frontend is built with flutter which provides and intuitive and straightforward programming framework.
   You can use this app to stream your favourite podcast and listen to them at any time. The app also allows you to create your own podcasts with audio recordings
   or go live(work in progress).
 </p>
@@ -10,7 +10,7 @@
 <p> <b>Our first consideration</b> was to figure out how to stand out from other applications currently on the market. This led us to adopting a minimalist design for
 our user interface. We believe that this will give us the edge over current competitors,
 <br><br>
-  <b>Our next consideration</b> was figuring out how to incorporate strong visuals. In this aspect we have adopted the approach of "If it's not great leave it out". Our mockup will give you a rough idea of the strong imagery we intend to impement in our app over the coming days.
+  <b>Our next consideration</b> was figuring out how to incorporate strong visuals. In this aspect we have adopted the approach of "If it's not great leave it out". Our mockup will give you a rough idea of the minimalist imagery we intend to implement in our app over the coming days.
   <br><br>
   <b>Our last consideration</b> was to be obvious which ties in with our minimalist ethos. We have taken extra precautions in terms of UX design to ensure a confusion free experience for the user. To allow for this all of our components refresh as necessary to provide you with up to date podcasts and podcast details.
 </p>
@@ -20,13 +20,15 @@ our user interface. We believe that this will give us the edge over current comp
 <p align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
 
 ## Components and API used
+
   <details>
   <summary><h3 style="display: inline;">In app Hot reload</h3></summary> 
   <h4>Description</h4>
-  <p> A combination of API calls used to ensure that information updated on the app is displayed instantly. The collection of these API calls will be refered to as hot reload feature in the further parts of this documentation </p>
+  <p> A combination of API calls used to ensure that information updated on the app is displayed instantly. The collection of these API calls will be referred to as hot reload feature in the further parts of this documentation </p>
   <h4>API called</h4>
   <ul>
     <li>Get all podcasts</li>
+    <li>Get all livestreams</li>
     <li>View favourites</li>
     <li>View creations</li>
   </ul>
@@ -92,6 +94,44 @@ our user interface. We believe that this will give us the edge over current comp
     <li> Delete Audio file</li>
     <li> Delete Image file</li>
     <li>Hot reload feature</li>
+  </ul>
+    </details>
+
+<details>
+  <summary><h3 style="display: inline;">Create Livestream</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./Livestream.png" /></p>
+  <h4>Description</h4>
+  <p> This page allows users to upload their livestream title and description to create a livestream. The Livestream is hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically. It also happens when the page is refreshed which can be done by switching between different bottom navigation tabs </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Create Livestream</li>
+    <li>Delete Livestream</li>
+    <li>Websocket from media server</li>
+    <li>Hot reload feature</li>
+  </ul>
+    </details>
+
+<details>
+  <summary><h3 style="display: inline;">Livestream page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./Livepage.png" /></p>
+  <h4>Description</h4>
+  <p> This page allows users to view available livestreams. The Livestreams are hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically. It also happens when the page is refreshed which can be done by switching between different bottom navigation tabs </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Get all Livestreams</li>
+    <li>Access Livestream details</li>
+    <li>Hot reload feature</li>
+  </ul>
+    </details>
+
+<details>
+  <summary><h3 style="display: inline;">Livestream view page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./Livestreampage.png" /></p>
+  <h4>Description</h4>
+  <p> This page allows users to listen to specific livestreams. The Livestreams are hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically. It also happens when the page is refreshed which can be done by switching between different bottom navigation tabs </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Websocket from media server</li>
   </ul>
     </details>
 
@@ -178,7 +218,9 @@ our user interface. We believe that this will give us the edge over current comp
     </details>
 
 ## API documentation
+
 [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
 
-## Back to main documenation
+## Back to main documentation
+
 [← back to main documentation](../README.md)

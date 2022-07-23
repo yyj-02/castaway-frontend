@@ -31,7 +31,6 @@ class _changeNameState extends State<changeName> {
         child: Center(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Padding(padding: EdgeInsets.all(30.0)),
@@ -133,7 +132,6 @@ class _changeNameState extends State<changeName> {
                         MaterialPageRoute(builder: (context) {
                       return const SecondPage(title: 'SecondPage');
                     }));
-                    ;
                   },
                   child: Text("Change Display name".toUpperCase(),
                       style:

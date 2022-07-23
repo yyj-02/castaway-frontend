@@ -15,7 +15,7 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     Timer.periodic(const Duration(seconds: 1000), (Timer t) => setState(() {}));
-    if (profile.favePodcasts.length < 1) {
+    if (profile.favePodcasts.isEmpty) {
       return Column(children: [
         const Padding(padding: EdgeInsets.all(50.0)),
         Center(
@@ -46,7 +46,7 @@ class _ExplorePageState extends State<ExplorePage> {
                       return const SecondPage(title: "explore");
                     }));
                   },
-                  child: Text("Go to Explore",
+                  child: const Text("Go to Explore",
                       style: TextStyle(
                         fontSize: 23,
                       )),
@@ -64,7 +64,7 @@ class _ExplorePageState extends State<ExplorePage> {
               const Text("Only for you",
                   style: TextStyle(
                     color: Color(0xffb257a84),
-                    fontSize: 40,
+                    fontSize: 33,
                   )),
               GridView.count(
                   crossAxisCount: 2,

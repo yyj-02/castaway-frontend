@@ -27,18 +27,6 @@ class _CreatePageState extends State<CreatePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<String>? categories = [
-      "Classic",
-      "NFT",
-      "Music",
-      "Gaming",
-      "Tech",
-      "Sports",
-      "Maternity",
-      "Self-Help",
-      "Others"
-    ];
-    var selected;
     return Center(
         child: Column(
       children: [
@@ -52,19 +40,18 @@ class _CreatePageState extends State<CreatePage> {
                 Text("Something's Brewing",
                     style: TextStyle(
                       color: Color(0xffb257a84),
-                      fontSize: 37,
+                      fontSize: 33,
                     )),
               ]),
         ),
-        const Padding(padding: EdgeInsets.all(40.0)),
+        const Padding(padding: EdgeInsets.all(20.0)),
         SizedBox(
           width: 350,
           child: ElevatedButton(
             style: ButtonStyle(
-                foregroundColor:
-                    MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(0xffb257a84)),
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xffb257a84)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -78,7 +65,7 @@ class _CreatePageState extends State<CreatePage> {
               Icon(Icons.storage, size: 123.0),
               Text("Upload from storage",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 26,
                   )),
             ]),
           ),
@@ -88,10 +75,9 @@ class _CreatePageState extends State<CreatePage> {
           width: 350,
           child: ElevatedButton(
             style: ButtonStyle(
-                foregroundColor:
-                    MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(0xffb257a84)),
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xffb257a84)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -105,11 +91,11 @@ class _CreatePageState extends State<CreatePage> {
               Icon(Icons.mic, size: 123.0),
               Text("Go live ",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 26,
                   ))
             ]),
           ),
-        )
+        ),
       ],
     ));
   }
