@@ -3,10 +3,15 @@ import 'ProfileDetails.dart' as profile;
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:audioplayers/audioplayers.dart';
 
+
 var add = "ws://10.0.2.2:3000/listener";
 
 class LiveStream extends StatefulWidget {
-  const LiveStream({Key? key}) : super(key: key);
+  final livename;
+  final livedes;
+  final liveid;
+
+  const LiveStream({Key? key, required this.livename, required this.livedes, required this.liveid}) : super(key: key);
 
   @override
   State<LiveStream> createState() => _LiveStreamState();
@@ -26,7 +31,7 @@ class _LiveStreamState extends State<LiveStream> {
     "autoConnect": false,
     "extraHeaders": {
       "id-token": profile.myIdToken,
-      "livestream-id": "yiqQ45RXdDYZemAA1RrS",
+      "livestream-id": profile.viewlive,
       //hard coded as of now but supposed to get livestream id using the api
     },
   });
@@ -68,7 +73,8 @@ class _LiveStreamState extends State<LiveStream> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Scaffold(
+        body: SingleChildScrollView(
         child: SizedBox(
       width: 1000,
       height: 1000,
@@ -78,13 +84,41 @@ class _LiveStreamState extends State<LiveStream> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
             const Spacer(),
+                Row(
+                  children: [
+                    TextButton(
+                        onPressed: () async {
+                          disconnect();
+                          dispose();
+                            Navigator.pop(context);
+                        },
+                        child: const Text("<- Back",
+                            style: TextStyle(
+                              color: Color(0xffb7bb9b9),
+                            ))),
+                    const Spacer(),
+                  ],
+                ),
             const Spacer(),
-            const Text("You're Listening",
+            const Text("You're Listening to",
                 style: TextStyle(
                   color: Color(0xffb7bb9b9),
                   fontSize: 40,
                 )),
             const Spacer(),
+                 Text("${widget.livename}",
+                    style: TextStyle(
+                      color: Color(0xffb7bb9b9),
+                      fontSize: 30,
+                    )),
+                const Spacer(),
+                Text("${widget.livedes}",
+                    style: TextStyle(
+                      color: Color(0xffb7bb9b9),
+                      fontSize: 15,
+                    )),
+                const Spacer(),
+
             // IconButton(
             //   icon: const Icon(
             //     Icons.play_arrow,
@@ -120,7 +154,7 @@ class _LiveStreamState extends State<LiveStream> {
             const Spacer(),
             const Spacer(),
             const Spacer(),
-          ])),
-    ));
+      ])),
+    )));
   }
 }

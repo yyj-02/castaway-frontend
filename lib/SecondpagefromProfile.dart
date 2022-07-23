@@ -3,8 +3,7 @@ import 'Homepage.dart';
 import 'CreatePage.dart';
 import 'ExplorePage.dart';
 import 'ProfilePage.dart';
-import 'live.dart';
-
+import 'Livepage.dart';
 class SecondPage extends StatefulWidget {
   const SecondPage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -19,7 +18,7 @@ class _SecondPageState extends State<SecondPage> {
   final List<Widget> _widgetOptions = <Widget>[
     const ExplorePage(),
     const CreatePage(),
-    const LiveStream(),
+    const LivePage(),
     const HomePage(),
     const ProfilePage()
   ];

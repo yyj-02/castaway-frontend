@@ -1,11 +1,11 @@
 import 'dart:async';
-import 'Login.dart';
 import 'package:flutter/material.dart';
 import 'Palette.dart';
 import 'ProfileDetails.dart' as profile;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Front.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,6 +61,10 @@ Future<void> refreshall() async {
     http.Response response5 =
         await http.post(uri5, body: {'idToken': profile.myIdToken});
     profile.myCreations = await jsonDecode(response5.body);
+    http.Response socketres = await http.get(
+      Uri.parse(
+          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+    profile.alllive = await jsonDecode(socketres.body);
   }
 }
 
@@ -85,7 +89,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: const Color(0xffb257a84),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const FirstPage(title: 'FirstPage'),
+      home: const Frontpage(title: "hi"),
       debugShowCheckedModeBanner: false
     );
   }

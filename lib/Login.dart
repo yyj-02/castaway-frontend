@@ -34,7 +34,10 @@ Future<bool> checks() async {
       uri2,
     );
     profile.allPodcasts = await jsonDecode(response2.body);
-
+    http.Response socketres = await http.get(
+      Uri.parse(
+          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+    profile.alllive = await jsonDecode(socketres.body);
     final uri3 = Uri.parse(
         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
     http.Response response3 =
@@ -282,7 +285,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
                     uri2,
                   );
                   profile.allPodcasts = await jsonDecode(response2.body);
-
+                  http.Response socketres = await http.get(
+                    Uri.parse(
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+                  profile.alllive = await jsonDecode(socketres.body);
                   final uri3 = Uri.parse(
                       "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
                   http.Response response3 = await http
@@ -307,6 +313,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                       .post(uri5, body: {'idToken': profile.myIdToken});
                   print(response5.body);
                   profile.myCreations = await jsonDecode(response5.body);
+                  print(profile.alllive);
 
                   if (profile.myIdToken != null) {
                     Navigator.push(context,
@@ -383,6 +390,11 @@ class _MyCustomFormState extends State<MyCustomForm> {
                       .post(uri5, body: {'idToken': profile.myIdToken});
                   print(response5.body);
                   profile.myCreations = await jsonDecode(response5.body);
+                  http.Response socketres = await http.get(
+                    Uri.parse(
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+                  profile.alllive = await jsonDecode(socketres.body);
+                  print(profile.alllive);
 
                   if (profile.myIdToken != null) {
                     Navigator.push(context,

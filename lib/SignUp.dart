@@ -262,12 +262,17 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   await jsonDecode(response4.body)['numberOfCreations'];
               profile.numFav =
                   await jsonDecode(response4.body)['numberOfFavorites'];
+              http.Response socketres = await http.get(
+                Uri.parse(
+                    "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+              profile.alllive = await jsonDecode(socketres.body);
               final uri5 = Uri.parse(
                   "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
               http.Response response5 =
                   await http.post(uri5, body: {'idToken': profile.myIdToken});
               print(response5.body);
               profile.myCreations = await jsonDecode(response5.body);
+
 
               if (profile.myIdToken != null) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
