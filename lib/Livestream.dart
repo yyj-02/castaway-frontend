@@ -170,7 +170,6 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                           // socketdispose();
                           dispose();
                           newflag =4;
-                          await new Future.delayed(const Duration(seconds : 5));
                           if(Profile.currlive != ""){
                             http.Response socketres = await http.delete(
                                 Uri.parse(
@@ -269,7 +268,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                       Icons.mic_off,
                       color: Colors.white,
                     );
-                    fabIconNumber = 1;
+
                     http.Response socketres = await http.post(
                         Uri.parse(
                             "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
@@ -280,6 +279,27 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                           "title": nameController.text,
                           "description": myController.text,
                         });
+                    if(socketres.statusCode != 200){
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              scrollable: true,
+                              title: const Text('Something went wrong try again'),
+                              actions: [
+                                ElevatedButton(
+                                    child: const Text("ok",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        )),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    })
+                              ],
+                            );
+                          });
+                    } else {
+                      fabIconNumber = 1;
                     Profile.currlive = await jsonDecode(socketres.body)['livestreamId'];
                     print(Profile.currlive);
                     IO.Socket socket = IO.io(add, <String, dynamic>{
@@ -342,7 +362,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                     // Timer.periodic(const Duration(seconds: 5), (Timer t) => recorded());
                     Timer.periodic(
                         const Duration(seconds: 5), (Timer t) => {recs()});
-                  } else if (fabIconNumber == 2) {
+                  }} else if (fabIconNumber == 2) {
                     newflag = 1;
                     fab = const Icon(Icons.mic_off, color: Colors.white);
                     fabIconNumber = 1;
