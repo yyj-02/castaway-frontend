@@ -20,6 +20,7 @@ our user interface. We believe that this will give us the edge over current comp
 <p align="center"><img width=100% src="./CastawayDesignDiagram.png" /></p>
 
 ## Components and API used
+
   <details>
   <summary><h3 style="display: inline;">In app Hot reload</h3></summary> 
   <h4>Description</h4>
@@ -27,6 +28,7 @@ our user interface. We believe that this will give us the edge over current comp
   <h4>API called</h4>
   <ul>
     <li>Get all podcasts</li>
+    <li>Get all livestreams</li>
     <li>View favourites</li>
     <li>View creations</li>
   </ul>
@@ -92,6 +94,44 @@ our user interface. We believe that this will give us the edge over current comp
     <li> Delete Audio file</li>
     <li> Delete Image file</li>
     <li>Hot reload feature</li>
+  </ul>
+    </details>
+
+<details>
+  <summary><h3 style="display: inline;">Create Livestream</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./Livestream.png" /></p>
+  <h4>Description</h4>
+  <p> This page allows users to upload their livestream title and description to create a livestream. The Livestream is hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically. It also happens when the page is refreshed which can be done by switching between different bottom navigation tabs </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Create Livestream</li>
+    <li>Delete Livestream</li>
+    <li>Websocket from media server</li>
+    <li>Hot reload feature</li>
+  </ul>
+    </details>
+
+<details>
+  <summary><h3 style="display: inline;">Livestream page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./LivePage.png" /></p>
+  <h4>Description</h4>
+  <p> This page allows users to view available livestreams. The Livestreams are hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically. It also happens when the page is refreshed which can be done by switching between different bottom navigation tabs </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Get all Livestreams</li>
+    <li>Access Livestream details</li>
+    <li>Hot reload feature</li>
+  </ul>
+    </details>
+
+<details>
+  <summary><h3 style="display: inline;">Livestream view page</h3></summary> 
+  <p align="center"><img width=30% height=20% src="./Livestreampage.png" /></p>
+  <h4>Description</h4>
+  <p> This page allows users to listen to specific livestreams. The Livestreams are hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically. It also happens when the page is refreshed which can be done by switching between different bottom navigation tabs </p>
+  <h4>API called</h4>
+  <ul>
+    <li>Websocket from media server</li>
   </ul>
     </details>
 
@@ -178,7 +218,9 @@ our user interface. We believe that this will give us the edge over current comp
     </details>
 
 ## API documentation
+
 [go to API documentation →](https://github.com/yyj-02/castaway-backend/blob/main/functions/README.md)
 
 ## Back to main documenation
+
 [← back to main documentation](../README.md)
