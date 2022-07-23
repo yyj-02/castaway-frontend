@@ -39,7 +39,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   Duration timerInterval = const Duration(seconds: 1);
   int counter = 0;
   int newflag = 1;
-  Icon fab = Icon(
+  Icon fab = const Icon(
       Icons.mic,
       color: Colors.white
   );
@@ -210,7 +210,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                     onPressed: () =>
                         setState(() {
                           if (fabIconNumber == 0) {
-                            fab = Icon(
+                            fab = const Icon(
                               Icons.mic_off,
                               color: Colors.white,
                             );
@@ -236,12 +236,12 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                                       const Duration(seconds: 5), (Timer t) => {recs()});
                           } else if (fabIconNumber == 2) {
                             newflag=1;
-                            fab = Icon(Icons.mic_off,
+                            fab = const Icon(Icons.mic_off,
                                 color: Colors.white);
                             fabIconNumber = 1;
 
                           } else {
-                            fab = Icon(Icons.mic,
+                            fab = const Icon(Icons.mic,
                                 color: Colors.white);
                             fabIconNumber = 2;
                             newflag = 0;

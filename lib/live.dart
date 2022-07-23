@@ -14,7 +14,7 @@ class LiveStream extends StatefulWidget {
 
 class _LiveStreamState extends State<LiveStream> {
   AudioPlayer player = AudioPlayer();
-  Icon fab = Icon(
+  Icon fab = const Icon(
     Icons.play_arrow,
       color: Colors.white
   );
@@ -41,7 +41,7 @@ class _LiveStreamState extends State<LiveStream> {
     socket.on("success", (message) {
       print(message);
     });
-    socket.on('disconnect', (_) => setState((){fab = Icon(Icons.play_arrow,
+    socket.on('disconnect', (_) => setState((){fab = const Icon(Icons.play_arrow,
         color: Colors.white);
     fabIconNumber = 0;
     print("disconnected");}),);
@@ -100,7 +100,7 @@ class _LiveStreamState extends State<LiveStream> {
               child: fab,
               onPressed: () => setState(() {
                 if (fabIconNumber == 0) {
-                  fab = Icon(
+                  fab = const Icon(
                     Icons.stop,
                       color: Colors.white,
                   );
@@ -108,7 +108,7 @@ class _LiveStreamState extends State<LiveStream> {
                   connect();
 
                 } else {
-                  fab = Icon(Icons.play_arrow,
+                  fab = const Icon(Icons.play_arrow,
                       color: Colors.white);
                   fabIconNumber = 0;
                   disconnect();

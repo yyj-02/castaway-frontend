@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                                     PageRouteBuilder(
                                     pageBuilder: (c, a1, a2) => Previewpage(podcastdet: i),
                                 transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                                transitionDuration: Duration(milliseconds: 700),
+                                transitionDuration: const Duration(milliseconds: 700),
                                 ));
                               },
                               child: SizedBox(

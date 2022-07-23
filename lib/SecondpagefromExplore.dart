@@ -14,7 +14,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 3;
 
   final List<Widget> _widgetOptions = <Widget>[
     const ExplorePage(),

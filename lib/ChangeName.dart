@@ -132,7 +132,6 @@ class _changeNameState extends State<changeName> {
                         MaterialPageRoute(builder: (context) {
                       return const SecondPage(title: 'SecondPage');
                     }));
-                    ;
                   },
                   child: Text("Change Display name".toUpperCase(),
                       style:

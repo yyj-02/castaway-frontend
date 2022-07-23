@@ -59,7 +59,7 @@ class _settingsState extends State<settings> {
       child: Column(
         children: [
           SizedBox(
-            height: 450,
+            height: 350,
             child: SettingsList(sections: [
               SettingsSection(
                 title: const Text('Common'),
@@ -98,18 +98,6 @@ class _settingsState extends State<settings> {
               ),
               SettingsSection(
                 title: const Text('Security'),
-                tiles: <SettingsTile>[
-                  SettingsTile.navigation(
-                    leading: const Icon(Icons.privacy_tip),
-                    title: const Text('Privacy'),
-                  ),
-                  SettingsTile.navigation(
-                    leading: const Icon(Icons.security),
-                    title: const Text('Account settings'),
-                  ),
-                ],
-              ),
-              SettingsSection(
                 tiles: <SettingsTile>[
                   SettingsTile.navigation(
                     leading: const Icon(Icons.logout),

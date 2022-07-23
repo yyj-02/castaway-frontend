@@ -86,6 +86,7 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const FirstPage(title: 'FirstPage'),
+      debugShowCheckedModeBanner: false
     );
   }
 }
