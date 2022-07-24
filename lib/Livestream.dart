@@ -9,8 +9,8 @@ import 'package:record/record.dart';
 import 'package:http/http.dart' as http;
 import 'package:multi_page_castaway/ProfileDetails.dart' as Profile;
 
-// var add = "ws://35.213.151.122:3000/streamer";
-var add = "ws://10.0.2.2:3000/streamer";
+ var add = "ws://35.213.151.122:3000/streamer";
+// var add = "ws://10.0.2.2:3000/streamer";
 
 class LiveStreamPage extends StatefulWidget {
   const LiveStreamPage({Key? key}) : super(key: key);
