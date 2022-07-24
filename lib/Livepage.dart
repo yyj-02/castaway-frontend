@@ -13,8 +13,7 @@ class LivePage extends StatefulWidget {
   @override
   State<LivePage> createState() => _LivePageState();
 }
-// var alllive;
-//
+
 getall() async {
   http.Response socketres = await http.get(
       Uri.parse(

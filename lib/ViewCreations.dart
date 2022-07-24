@@ -43,10 +43,11 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text("Go Create something \nbe you !",
+                  const Padding(padding: EdgeInsets.all(100.0)),
+                  const Text("Make something new!",
                       style: TextStyle(
                         color: Color(0xffb257a84),
-                        fontSize: 30,
+                        fontSize: 25,
                       )),
                   const Padding(padding: EdgeInsets.all(25.0)),
                   ElevatedButton(
@@ -69,7 +70,7 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                     },
                     child: const Text("Go to Create",
                         style: TextStyle(
-                          fontSize: 23,
+                          fontSize: 20,
                         )),
                   ),
                 ]),

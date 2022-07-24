@@ -123,6 +123,12 @@ class _PreviewpageState extends State<Previewpage> {
                                   widget.podcastdet['artistName'],
                                   style: const TextStyle(fontSize: 16.0,color: Colors.white),
                                 ),
+                                Text("Genres: ${widget.podcastdet['genres'].toString().substring(1,widget.podcastdet['genres'].toString().length-1)}",
+                                  style: const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -184,6 +190,12 @@ class _PreviewpageState extends State<Previewpage> {
                                   'This podcast has been deleted from your favourites'),
                               actions: [
                                 ElevatedButton(
+                                  style: ButtonStyle(
+                                    foregroundColor:
+                                    MaterialStateProperty.all<Color>(Colors.white),
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                        const Color(0xffb257a84)),
+                                  ),
                                   child: const Text("Ok",
                                       style: TextStyle(
                                         color: Colors.white,
@@ -207,6 +219,12 @@ class _PreviewpageState extends State<Previewpage> {
                               title: const Text('Error please try again later'),
                               actions: [
                                 ElevatedButton(
+                                  style: ButtonStyle(
+                                    foregroundColor:
+                                    MaterialStateProperty.all<Color>(Colors.white),
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                        const Color(0xffb257a84)),
+                                  ),
                                   child: const Text("OK",
                                       style: TextStyle(
                                         color: Colors.white,

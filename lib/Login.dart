@@ -256,6 +256,12 @@ class _MyCustomFormState extends State<MyCustomForm> {
                           title: const Text('Invalid Credentials try again'),
                           actions: [
                             ElevatedButton(
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.white),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      const Color(0xffb257a84)),
+                                ),
                                 child: const Text("ok",
                                     style: TextStyle(
                                       color: Colors.white,
@@ -342,6 +348,12 @@ class _MyCustomFormState extends State<MyCustomForm> {
                           title: const Text('Invalid Credentials try again'),
                           actions: [
                             ElevatedButton(
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.white),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      const Color(0xffb257a84)),
+                                ),
                                 child: const Text("ok",
                                     style: TextStyle(
                                       color: Colors.white,

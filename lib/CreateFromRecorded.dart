@@ -181,12 +181,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                 MaterialStateProperty.all<Color>(Colors.white),
                                                 backgroundColor: MaterialStateProperty.all<Color>(
                                                     const Color(0xffb257a84)),
-                                                shape:
-                                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(18.0),
-                                                        side: const BorderSide(
-                                                            color: Color(0xffb257a84))))),
+                                                ),
                                             child: const Text("Ok",
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -214,12 +209,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                             MaterialStateProperty.all<Color>(Colors.white),
                                             backgroundColor: MaterialStateProperty.all<Color>(
                                                 const Color(0xffb257a84)),
-                                            shape:
-                                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(18.0),
-                                                    side: const BorderSide(
-                                                        color: Color(0xffb257a84))))),
+                                            ),
                                         child: const Text("ok",
                                             style: TextStyle(
                                               color: Colors.white,
@@ -330,12 +320,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                               MaterialStateProperty.all<Color>(Colors.white),
                                               backgroundColor: MaterialStateProperty.all<Color>(
                                                   const Color(0xffb257a84)),
-                                              shape:
-                                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                  RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.circular(18.0),
-                                                      side: const BorderSide(
-                                                          color: Color(0xffb257a84))))),
+                                              ),
                                           child: const Text("Ok",
                                               style: TextStyle(
                                                 color: Colors.white,
@@ -363,12 +348,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                           MaterialStateProperty.all<Color>(Colors.white),
                                           backgroundColor: MaterialStateProperty.all<Color>(
                                               const Color(0xffb257a84)),
-                                          shape:
-                                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(18.0),
-                                                  side: const BorderSide(
-                                                      color: Color(0xffb257a84))))),
+                                          ),
                                       child: const Text("ok",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -507,31 +487,8 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                 Colors.red),
                                       ),
                                       onPressed: () async {
-                                        if (imageID != null) {
-                                          print(imageID);
-                                          final uri5 = Uri.parse(
-                                              "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images/$imageID/delete");
-                                          http.Response response5 = await http
-                                              .post(uri5, body: {
-                                            'idToken': profile.myIdToken
-                                          });
-                                          print(response5.body);
-                                        }
-                                        if (podcastID != null) {
-                                          final uri5 = Uri.parse(
-                                              "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts/$podcastID/delete");
-                                          http.Response response5 = await http
-                                              .post(uri5, body: {
-                                            'idToken': profile.myIdToken
-                                          });
-                                          print(response5.body);
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                                  builder: (context) {
-                                            return const SecondPageC(
-                                                title: 'SecondPage');
-                                          }));
-                                        }
+                                          Navigator.pop(context);
+
                                       },
                                       child: const Text("Cancel",
                                           style: TextStyle(
@@ -545,12 +502,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                             MaterialStateProperty.all<Color>(Colors.white),
                                             backgroundColor: MaterialStateProperty.all<Color>(
                                                 const Color(0xffb257a84)),
-                                            shape:
-                                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(18.0),
-                                                    side: const BorderSide(
-                                                        color: Color(0xffb257a84))))),
+                                            ),
                                         child: const Text("Confirm",
                                             style: TextStyle(
                                               color: Colors.white,
@@ -633,12 +585,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                                   MaterialStateProperty.all<Color>(Colors.white),
                                                                   backgroundColor: MaterialStateProperty.all<Color>(
                                                                       const Color(0xffb257a84)),
-                                                                  shape:
-                                                                  MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                      RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius.circular(18.0),
-                                                                          side: const BorderSide(
-                                                                              color: Color(0xffb257a84))))),
+                                                                  ),
                                                               child: const Text(
                                                                   "Ok",
                                                                   style:
@@ -675,12 +622,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                                   MaterialStateProperty.all<Color>(Colors.white),
                                                                   backgroundColor: MaterialStateProperty.all<Color>(
                                                                       const Color(0xffb257a84)),
-                                                                  shape:
-                                                                  MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                      RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius.circular(18.0),
-                                                                          side: const BorderSide(
-                                                                              color: Color(0xffb257a84))))),
+                                                                  ),
                                                               child: const Text(
                                                                   "Ok",
                                                                   style:
@@ -711,12 +653,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                                 MaterialStateProperty.all<Color>(Colors.white),
                                                                 backgroundColor: MaterialStateProperty.all<Color>(
                                                                     const Color(0xffb257a84)),
-                                                                shape:
-                                                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                    RoundedRectangleBorder(
-                                                                        borderRadius: BorderRadius.circular(18.0),
-                                                                        side: const BorderSide(
-                                                                            color: Color(0xffb257a84))))),
+                                                                ),
                                                             child: const Text(
                                                                 "Ok",
                                                                 style:

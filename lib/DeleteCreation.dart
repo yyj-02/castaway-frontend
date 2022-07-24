@@ -135,6 +135,12 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                                 widget.podcastdet['artistName'],
                                 style: const TextStyle(fontSize: 16.0,color: Colors.white,),
                               ),
+                              Text("Genres: ${widget.podcastdet['genres'].toString().substring(1,widget.podcastdet['genres'].toString().length-1)}",
+                                style: const TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -221,6 +227,12 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                                       const Text('Your image has been updated'),
                                   actions: [
                                     ElevatedButton(
+                                      style: ButtonStyle(
+                                        foregroundColor:
+                                        MaterialStateProperty.all<Color>(Colors.white),
+                                        backgroundColor: MaterialStateProperty.all<Color>(
+                                            const Color(0xffb257a84)),
+                                      ),
                                       child: const Text("Ok",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -316,6 +328,12 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                                       const Text('Your audio has been updated'),
                                   actions: [
                                     ElevatedButton(
+                                      style: ButtonStyle(
+                                        foregroundColor:
+                                        MaterialStateProperty.all<Color>(Colors.white),
+                                        backgroundColor: MaterialStateProperty.all<Color>(
+                                            const Color(0xffb257a84)),
+                                      ),
                                       child: const Text("Ok",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -428,6 +446,12 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                                   const Text('This podcast has been deleted'),
                               actions: [
                                 ElevatedButton(
+                                  style: ButtonStyle(
+                                    foregroundColor:
+                                    MaterialStateProperty.all<Color>(Colors.white),
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                        const Color(0xffb257a84)),
+                                  ),
                                   child: const Text("Ok",
                                       style: TextStyle(
                                         color: Colors.white,
@@ -450,6 +474,12 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                               title: const Text('Error please try again later'),
                               actions: [
                                 ElevatedButton(
+                                  style: ButtonStyle(
+                                    foregroundColor:
+                                    MaterialStateProperty.all<Color>(Colors.white),
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                        const Color(0xffb257a84)),
+                                  ),
                                   child: const Text("OK",
                                       style: TextStyle(
                                         color: Colors.white,

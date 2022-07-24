@@ -199,6 +199,12 @@ class _UpdateDetailsPageState extends State<UpdateDetailsPage> {
                                 title: const Text('Details Updated'),
                                 actions: [
                                   ElevatedButton(
+                                      style: ButtonStyle(
+                                        foregroundColor:
+                                        MaterialStateProperty.all<Color>(Colors.white),
+                                        backgroundColor: MaterialStateProperty.all<Color>(
+                                            const Color(0xffb257a84)),
+                                      ),
                                       child: const Text("Ok",
                                           style: TextStyle(
                                             color: Colors.white,

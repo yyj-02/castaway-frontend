@@ -125,6 +125,12 @@ class _PreviewpageState extends State<Previewpage> {
                                   widget.podcastdet['artistName'],
                                   style: const TextStyle(fontSize: 16.0,color: Colors.white),
                                 ),
+                                Text("Genres: ${widget.podcastdet['genres'].toString().substring(1,widget.podcastdet['genres'].toString().length-1)}",
+                                  style: const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
