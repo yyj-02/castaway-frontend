@@ -4,7 +4,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:audioplayers/audioplayers.dart';
 
 
-var add = "ws://10.0.2.2:3000/listener";
+var add = "ws://35.213.151.122:3000/listener";
 
 class LiveStream extends StatefulWidget {
   final livename;

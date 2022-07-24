@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:multi_page_castaway/ProfileDetails.dart' as profile;
 import 'live.dart';
 
-var add = "ws://10.0.2.2:3000/streamer";
+var add = "ws://35.213.151.122:3000/streamer";
 
 class LivePage extends StatefulWidget {
   const LivePage({Key? key}) : super(key: key);
