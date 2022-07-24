@@ -39,7 +39,7 @@ class _LivePageState extends State<LivePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Padding(padding: EdgeInsets.all(30.0)),
-                  const Text("All these choices",
+                  const Text("Coming live",
                       style: TextStyle(
                         color: Color(0xffb257a84),
                         fontSize: 40,
@@ -48,15 +48,19 @@ class _LivePageState extends State<LivePage> {
             ListView(
               shrinkWrap: true,
               physics: const ScrollPhysics(),
-            children: profile.alllive.map((strone){
+            children: profile.alllive.map((livestream){
           return SizedBox(
             width: 350,
-           child: ElevatedButton(onPressed: () {
-             profile.viewlive = strone['livestreamId'];
+           child: ElevatedButton(
+             style: ButtonStyle(
+               backgroundColor: livestream['streamerConnected'] == true ? MaterialStateProperty.all(const Color(0xffb257a84)) : MaterialStateProperty.all(Colors.grey),
+             ),
+             onPressed: () {
+             profile.viewlive = livestream['livestreamId'];
              Navigator.push(context,
              MaterialPageRoute(builder: (context) {
-               return  LiveStream(livedes: strone['description'], livename: strone['title'], liveid: strone["livestreamId"],);}));},
-             child: Text(strone['title'].toString(),style: const TextStyle(
+               return  LiveStream(livedes: livestream['description'], livename: livestream['title'], liveid: livestream["livestreamId"],);}));},
+             child: Text("${livestream['title']} - by ${livestream['artistName']}",style: const TextStyle(
                  color: Colors.white,)),
 
            ),
