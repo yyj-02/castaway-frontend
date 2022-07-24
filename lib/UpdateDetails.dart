@@ -59,7 +59,7 @@ class _UpdateDetailsPageState extends State<UpdateDetailsPage> {
                         onPressed: () async {
                           Navigator.pop(context);
                         },
-                        child: const Text("<- Back",
+                        child: const Text("← back",
                             style: TextStyle(
                               color: Color(0xffb257a84),
                             ))),

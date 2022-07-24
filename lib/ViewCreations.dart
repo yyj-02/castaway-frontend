@@ -30,7 +30,7 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                         return const SecondPage(title: "secondpage");
                       }));
                     },
-                    child: const Text("<- Back",
+                    child: const Text("← back",
                         style: TextStyle(
                           color: Color(0xffb257a84),
                         ))),
@@ -92,7 +92,7 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                             return const SecondPage(title: "secondpage");
                           }));
                         },
-                        child: const Text("<- Back",
+                        child: const Text("← back",
                             style: TextStyle(
                               color: Color(0xffb257a84),
                             ))),
@@ -133,6 +133,8 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                                                       Radius.circular(18.0))),
                                           child: Container(
                                             decoration: const BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(18.0)),
                                               gradient: LinearGradient(
                                                 begin: Alignment.topCenter,
                                                 end: Alignment.bottomCenter,
@@ -144,13 +146,13 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                                                   Colors.transparent,
                                                   Colors.transparent,
                                                   Colors.transparent,
-                                                  Colors.white10,
-                                                  Colors.white24,
-                                                  Colors.white38,
-                                                  Colors.white54,
-                                                  Colors.white60,
-                                                  Colors.white70,
-                                                  Colors.white,
+                                                  Colors.black12,
+                                                  Colors.black26,
+                                                  Colors.black38,
+                                                  Colors.black45,
+                                                  Colors.black54,
+                                                  Colors.black87,
+                                                  Colors.black,
                                                 ],
                                                 tileMode: TileMode.mirror,
                                               ),
@@ -174,18 +176,24 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                                                 child: SizedBox(
                                                   width: 150,
                                                   height: 150,
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      Text(
-                                                        i['title'],
-                                                        style: const TextStyle(
-                                                            fontSize: 18.0),
-                                                      ),
-                                                    ],
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 3.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.end,
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          i['title'],
+                                                          style: const TextStyle(
+                                                            fontSize: 16.0,
+                                                            color: Colors.white,),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),

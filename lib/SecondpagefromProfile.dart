@@ -34,39 +34,40 @@ class _SecondPageState extends State<SecondPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_filled,
-              color: Color(0xffb257a84),
+
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.mic,
-              color: Color(0xffb257a84),
+
             ),
             label: 'Create',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.live_tv_rounded,
-              color: Color(0xffb257a84),
+
             ),
             label: 'Live',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.headphones,
-              color: Color(0xffb257a84),
+
             ),
             label: 'Explore',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.man,
-              color: Color(0xffb257a84),
             ),
             label: 'Profile',
           ),
         ],
+        selectedItemColor: Color(0xffb257a84),
+        unselectedItemColor: Colors.grey,
         onTap: (index) {
           setState(() {
             _selectedIndex = index;

@@ -74,6 +74,8 @@ class _HomePageState extends State<HomePage> {
                                 const BorderRadius.all(Radius.circular(18.0))),
                         child: Container(
                           decoration: const BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(18.0)),
                             gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
@@ -85,13 +87,13 @@ class _HomePageState extends State<HomePage> {
                                 Colors.transparent,
                                 Colors.transparent,
                                 Colors.transparent,
-                                Colors.white10,
-                                Colors.white24,
-                                Colors.white38,
-                                Colors.white54,
-                                Colors.white60,
-                                Colors.white70,
-                                Colors.white,
+                                Colors.black12,
+                                Colors.black26,
+                                Colors.black38,
+                                Colors.black45,
+                                Colors.black54,
+                                Colors.black87,
+                                Colors.black,
                               ],
                               tileMode: TileMode.mirror,
                             ),
@@ -99,41 +101,69 @@ class _HomePageState extends State<HomePage> {
                           child: Card(
                             elevation: 0,
                             color: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
+                            shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(18.0)),
                             ),
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(context,
+                                Navigator.push(
+                                    context,
                                     PageRouteBuilder(
-                                    pageBuilder: (c, a1, a2) => Previewpage(podcastdet: i),
-                                transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                                transitionDuration: const Duration(milliseconds: 700),
-                                ));
+                                      pageBuilder: (c, a1, a2) =>
+                                          Previewpage(podcastdet: i),
+                                      transitionsBuilder:
+                                          (c, anim, a2, child) =>
+                                              FadeTransition(
+                                                  opacity: anim, child: child),
+                                      transitionDuration:
+                                          const Duration(milliseconds: 700),
+                                    ));
                               },
                               child: SizedBox(
                                 width: 300,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      i['title'],
-                                      style: const TextStyle(fontSize: 18.0),
-                                    ),
-                                    Text(
-                                      i['description'],
-                                      style: const TextStyle(fontSize: 16.0),
-                                    ),
-                                    Text(
-                                      i['artistName'],
-                                      style: const TextStyle(fontSize: 16.0),
-                                    ),
-                                    // Text(
-                                    //   i['genres'] ,
-                                    //   style: const TextStyle(fontSize: 16.0),
-                                    // )
-                                  ],
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        i['title'],
+                                        style: const TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        i['description'],
+                                        style: const TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        i['artistName'],
+                                        style: const TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text("Genres: ${i['genres'].toString().substring(1,i['genres'].toString().length-1)}",
+                                        style: const TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   i['genres'] ,
+                                      //   style: const TextStyle(fontSize: 16.0),
+                                      // )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

@@ -34,7 +34,7 @@ class _podcastviewState extends State<podcastview> {
                                 podcastdet: widget.podcast);
                           }));
                         },
-                        child: const Text("<- Back",
+                        child: const Text("← back",
                             style: TextStyle(
                               color: Colors.white,
                             ))),

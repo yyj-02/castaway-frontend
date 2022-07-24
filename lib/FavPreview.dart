@@ -32,7 +32,7 @@ class _PreviewpageState extends State<Previewpage> {
                             return const SecondPage(title: 'SecondPage');
                           }));
                         },
-                        child: const Text("<- Back",
+                        child: const Text("← back",
                             style: TextStyle(
                               color: Color(0xffb257a84),
                             ))),
@@ -63,6 +63,8 @@ class _PreviewpageState extends State<Previewpage> {
                           const BorderRadius.all(Radius.circular(12.0))),
                   child: Container(
                     decoration: const BoxDecoration(
+                      borderRadius:
+                      BorderRadius.all(Radius.circular(18.0)),
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -74,13 +76,13 @@ class _PreviewpageState extends State<Previewpage> {
                           Colors.transparent,
                           Colors.transparent,
                           Colors.transparent,
-                          Colors.white10,
-                          Colors.white24,
-                          Colors.white38,
-                          Colors.white54,
-                          Colors.white60,
-                          Colors.white70,
-                          Colors.white,
+                          Colors.black12,
+                          Colors.black26,
+                          Colors.black38,
+                          Colors.black45,
+                          Colors.black54,
+                          Colors.black87,
+                          Colors.black,
                         ],
                         tileMode: TileMode.mirror,
                       ),
@@ -101,23 +103,28 @@ class _PreviewpageState extends State<Previewpage> {
                         child: SizedBox(
                           width: 300,
                           height: 400,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                widget.podcastdet['title'],
-                                style: const TextStyle(fontSize: 18.0),
-                              ),
-                              Text(
-                                widget.podcastdet['description'],
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                              Text(
-                                widget.podcastdet['artistName'],
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  widget.podcastdet['title'],
+                                  style: const TextStyle(fontSize: 16.0,color: Colors.white,fontWeight: FontWeight.bold,),
+                                ),
+                                Text(
+                                  widget.podcastdet['description'],
+                                  style: const TextStyle(fontSize: 16.0,color: Colors.white),
+                                ),
+                                Text(
+                                  widget.podcastdet['artistName'],
+                                  style: const TextStyle(fontSize: 16.0,color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

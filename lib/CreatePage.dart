@@ -61,13 +61,17 @@ class _CreatePageState extends State<CreatePage> {
                 return const CreateRecordedPage();
               }));
             },
-            child: Column(children: const [
-              Icon(Icons.storage, size: 123.0),
-              Text("Upload from storage",
-                  style: TextStyle(
-                    fontSize: 26,
-                  )),
-            ]),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 6.0, vertical: 14.0),
+              child: Column(children: const [
+                Icon(Icons.storage, size: 123.0),
+                Text("Upload from storage",
+                    style: TextStyle(
+                      fontSize: 26,
+                    )),
+              ]),
+            ),
           ),
         ),
         const Padding(padding: EdgeInsets.all(20.0)),
@@ -87,13 +91,17 @@ class _CreatePageState extends State<CreatePage> {
                 return const LiveStreamPage();
               }));
             },
-            child: Column(children: const [
-              Icon(Icons.mic, size: 123.0),
-              Text("Go live ",
-                  style: TextStyle(
-                    fontSize: 26,
-                  ))
-            ]),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 6.0, vertical: 14.0),
+              child: Column(children: const [
+                Icon(Icons.mic, size: 123.0),
+                Text("Go live ",
+                    style: TextStyle(
+                      fontSize: 26,
+                    ))
+              ]),
+            ),
           ),
         ),
       ],

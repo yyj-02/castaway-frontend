@@ -45,7 +45,7 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                             return const ViewCreationsPage();
                           }));
                         },
-                        child: const Text("<- Back",
+                        child: const Text("← back",
                             style: TextStyle(
                               color: Color(0xffb257a84),
                             ))),
@@ -75,6 +75,8 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                         const BorderRadius.all(Radius.circular(12.0))),
                 child: Container(
                   decoration: const BoxDecoration(
+                    borderRadius:
+                    BorderRadius.all(Radius.circular(18.0)),
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -86,13 +88,13 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                         Colors.transparent,
                         Colors.transparent,
                         Colors.transparent,
-                        Colors.white10,
-                        Colors.white24,
-                        Colors.white38,
-                        Colors.white54,
-                        Colors.white60,
-                        Colors.white70,
-                        Colors.white,
+                        Colors.black12,
+                        Colors.black26,
+                        Colors.black38,
+                        Colors.black45,
+                        Colors.black54,
+                        Colors.black87,
+                        Colors.black,
                       ],
                       tileMode: TileMode.mirror,
                     ),
@@ -113,23 +115,28 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                       child: SizedBox(
                         width: 300,
                         height: 400,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              widget.podcastdet['title'],
-                              style: const TextStyle(fontSize: 16.0),
-                            ),
-                            Text(
-                              widget.podcastdet['description'],
-                              style: const TextStyle(fontSize: 16.0),
-                            ),
-                            Text(
-                              widget.podcastdet['artistName'],
-                              style: const TextStyle(fontSize: 16.0),
-                            ),
-                          ],
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.podcastdet['title'],
+                                style: const TextStyle(fontSize: 16.0,color: Colors.white,fontWeight: FontWeight.bold,),
+                              ),
+                              Text(
+                                widget.podcastdet['description'],
+                                style: const TextStyle(fontSize: 16.0,color: Colors.white,),
+                              ),
+                              Text(
+                                widget.podcastdet['artistName'],
+                                style: const TextStyle(fontSize: 16.0,color: Colors.white,),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -364,12 +371,12 @@ class _DeleteCreationsPageState extends State<DeleteCreationsPage> {
                     foregroundColor:
                         MaterialStateProperty.all<Color>(Colors.white),
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        const Color(0xffb257a84)),
+                        const Color(0xffff6961)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                             side:
-                                const BorderSide(color: Color(0xffb257a84))))),
+                                const BorderSide(color: Color(0xffff6961))))),
                 onPressed: () async {
                   var data = {
                     'idToken': profile.myIdToken,

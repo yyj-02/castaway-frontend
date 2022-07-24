@@ -40,7 +40,7 @@ class _changeNameState extends State<changeName> {
                         onPressed: () async {
                           Navigator.pop(context);
                         },
-                        child: const Text("<- Back",
+                        child: const Text("← back",
                             style: TextStyle(
                               color: Color(0xffb257a84),
                             ))),
@@ -102,6 +102,7 @@ class _changeNameState extends State<changeName> {
                       uri,
                       body: data,
                     );
+                    print(response.body);
                     final uri4 = Uri.parse(
                         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
                     http.Response response4 = await http

@@ -92,7 +92,7 @@ class _LiveStreamState extends State<LiveStream> {
                           dispose();
                             Navigator.pop(context);
                         },
-                        child: const Text("<- Back",
+                        child: const Text("← back",
                             style: TextStyle(
                               color: Color(0xffb7bb9b9),
                             ))),

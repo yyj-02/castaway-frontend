@@ -186,7 +186,7 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
                           Navigator.pop(context);
                         }
                       },
-                      child: const Text("<- Back",
+                      child: const Text("← back",
                           style: TextStyle(
                             color: Colors.white,
                           ))),

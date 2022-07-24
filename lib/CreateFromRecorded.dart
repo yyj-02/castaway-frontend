@@ -59,6 +59,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      const Padding(padding: EdgeInsets.all(7.0)),
                       Row(
                         children: [
                           TextButton(
@@ -82,7 +83,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                 }
                                 Navigator.pop(context);
                               },
-                              child: const Text("<- Back",
+                              child: const Text("← back",
                                   style: TextStyle(
                                     color: Color(0xffb257a84),
                                   ))),
@@ -94,6 +95,153 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                             fontSize: 37,
                           )),
                     ]),
+              ),
+              const Padding(padding: EdgeInsets.all(7.0)),
+              const Text("Upload Audio",
+                  style: TextStyle(
+                    color: Color(0xffb257a84),
+                    fontSize: 23,
+                  )),
+              const Padding(padding: EdgeInsets.all(7.0)),
+              Row(
+                children: [
+                  const Spacer(),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color(0xffb257a84)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: const BorderSide(
+                                        color: Color(0xffb257a84))))),
+                    onPressed: () async {
+                      FilePickerResult? result =
+                          await FilePicker.platform.pickFiles();
+                      var path = result?.paths[0];
+                      File audio = File(path!);
+                      void uploadFileToServer(File imagePath) async {
+                        var request = http.MultipartRequest(
+                            "POST",
+                            Uri.parse(
+                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts"));
+                        request.fields['idToken'] = profile.myIdToken;
+                        request.files.add(http.MultipartFile(
+                            'podcast',
+                            File(path).readAsBytes().asStream(),
+                            File(path).lengthSync(),
+                            filename: path.split("/").last,
+                            contentType: MediaType('audio', 'mpeg')));
+                        var res = await request.send();
+                        final respStr = await http.Response.fromStream(res);
+                        String podcastId =
+                            (jsonDecode(respStr.body)['podcastUploadId']);
+                        podcastID = podcastId;
+                        if (res.statusCode == 200) {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  scrollable: true,
+                                  title: const Text(
+                                      'Your audio file submission was a success.'),
+                                  actions: [
+                                    Row(
+                                      children: [
+                                        ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.red),
+                                          ),
+                                          onPressed: () async {
+                                            if (podcastID != null) {
+                                              final uri5 = Uri.parse(
+                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts/$podcastID/delete");
+                                              http.Response response5 =
+                                                  await http.post(uri5, body: {
+                                                'idToken': profile.myIdToken
+                                              });
+                                              print(response5.body);
+                                              Navigator.pop(context);
+                                            }
+                                          },
+                                          child: const Text("Cancel",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              )),
+                                        ),
+                                        const Spacer(),
+                                        ElevatedButton(
+                                            style: ButtonStyle(
+                                                foregroundColor:
+                                                MaterialStateProperty.all<Color>(Colors.white),
+                                                backgroundColor: MaterialStateProperty.all<Color>(
+                                                    const Color(0xffb257a84)),
+                                                shape:
+                                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(18.0),
+                                                        side: const BorderSide(
+                                                            color: Color(0xffb257a84))))),
+                                            child: const Text("Ok",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                )),
+                                            onPressed: () async {
+                                              Navigator.pop(context);
+                                            }),
+                                      ],
+                                    )
+                                  ],
+                                );
+                              });
+                        } else {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  scrollable: true,
+                                  title: const Text(
+                                      'Your audio file submission was not received please try again'),
+                                  actions: [
+                                    ElevatedButton(
+                                        style: ButtonStyle(
+                                            foregroundColor:
+                                            MaterialStateProperty.all<Color>(Colors.white),
+                                            backgroundColor: MaterialStateProperty.all<Color>(
+                                                const Color(0xffb257a84)),
+                                            shape:
+                                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(18.0),
+                                                    side: const BorderSide(
+                                                        color: Color(0xffb257a84))))),
+                                        child: const Text("ok",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            )),
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        })
+                                  ],
+                                );
+                              });
+                        }
+                      }
+
+                      uploadFileToServer(audio);
+                      //add text controller data and send a post request to make a podcast
+                    },
+                    child: Text("Select audio".toUpperCase(),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 14)),
+                  ),
+                  const Spacer(),
+                ],
               ),
               const Padding(padding: EdgeInsets.all(7.0)),
               const Text("Cover Photo",
@@ -149,14 +297,54 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                 title: const Text(
                                     'Your image submission was a success'),
                                 actions: [
-                                  ElevatedButton(
-                                      child: const Text("ok",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          )),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      })
+                                  Row(
+                                    children: [
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.red),
+                                        ),
+                                        onPressed: () async {
+                                          if (imageID != null) {
+                                            print(imageID);
+                                            final uri5 = Uri.parse(
+                                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images/$imageID/delete");
+                                            http.Response response5 = await http
+                                                .post(uri5, body: {
+                                              'idToken': profile.myIdToken
+                                            });
+                                            print(response5.body);
+                                            Navigator.pop(context);
+                                          }
+                                        },
+                                        child: const Text("Cancel",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            )),
+                                      ),
+                                      const Spacer(),
+                                      ElevatedButton(
+                                          style: ButtonStyle(
+                                              foregroundColor:
+                                              MaterialStateProperty.all<Color>(Colors.white),
+                                              backgroundColor: MaterialStateProperty.all<Color>(
+                                                  const Color(0xffb257a84)),
+                                              shape:
+                                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(18.0),
+                                                      side: const BorderSide(
+                                                          color: Color(0xffb257a84))))),
+                                          child: const Text("Ok",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              )),
+                                          onPressed: () async {
+                                            Navigator.pop(context);
+                                          }),
+                                    ],
+                                  )
                                 ],
                               );
                             });
@@ -170,6 +358,17 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                     'Your image submission was not received please try again'),
                                 actions: [
                                   ElevatedButton(
+                                      style: ButtonStyle(
+                                          foregroundColor:
+                                          MaterialStateProperty.all<Color>(Colors.white),
+                                          backgroundColor: MaterialStateProperty.all<Color>(
+                                              const Color(0xffb257a84)),
+                                          shape:
+                                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(18.0),
+                                                  side: const BorderSide(
+                                                      color: Color(0xffb257a84))))),
                                       child: const Text("ok",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -280,6 +479,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                   const Spacer(),
                   ElevatedButton(
                     style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(const Size(200, 40)),
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
                         backgroundColor: MaterialStateProperty.all<Color>(
@@ -291,245 +491,290 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                     side: const BorderSide(
                                         color: Color(0xffb257a84))))),
                     onPressed: () async {
-                      FilePickerResult? result =
-                          await FilePicker.platform.pickFiles();
-                      var path = result?.paths[0];
-                      File audio = File(path!);
-                      void uploadFileToServer(File imagePath) async {
-                        var request = http.MultipartRequest(
-                            "POST",
-                            Uri.parse(
-                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts"));
-                        request.fields['idToken'] = profile.myIdToken;
-                        request.files.add(http.MultipartFile(
-                            'podcast',
-                            File(path).readAsBytes().asStream(),
-                            File(path).lengthSync(),
-                            filename: path.split("/").last,
-                            contentType: MediaType('audio', 'mpeg')));
-                        var res = await request.send();
-                        final respStr = await http.Response.fromStream(res);
-                        String podcastId =
-                            (jsonDecode(respStr.body)['podcastUploadId']);
-                        podcastID = podcastId;
-                        if (res.statusCode == 200) {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  scrollable: true,
-                                  title: const Text(
-                                      'Your audio file submission was a success. Please click confirm to create your podcast'),
-                                  actions: [
-                                    Row(
-                                      children: [
-                                        ElevatedButton(
-                                          onPressed: () async {
-                                            if (imageID != null) {
-                                              print(imageID);
-                                              final uri5 = Uri.parse(
-                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images/$imageID/delete");
-                                              http.Response response5 =
-                                                  await http.post(uri5, body: {
-                                                'idToken': profile.myIdToken
-                                              });
-                                              print(response5.body);
-                                            }
-                                            if (podcastID != null) {
-                                              final uri5 = Uri.parse(
-                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts/$podcastID/delete");
-                                              http.Response response5 =
-                                                  await http.post(uri5, body: {
-                                                'idToken': profile.myIdToken
-                                              });
-                                              print(response5.body);
-                                              Navigator.push(context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) {
-                                                return const SecondPageC(
-                                                    title: 'SecondPage');
-                                              }));
-                                            }
-                                          },
-                                          child: const Text(
-                                              "Cancel podcast\ncreation",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        const Spacer(),
-                                        ElevatedButton(
-                                            child: const Text(
-                                                "Confirm podcast\ncreation",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                )),
-                                            onPressed: () async {
-                                              var data = {
-                                                'idToken': profile.myIdToken,
-                                                'podcastUploadId': podcastID,
-                                                "imageUploadId": imageID,
-                                                'title': myController.text,
-                                                'description':
-                                                    passController.text,
-                                                'genres': selected,
-                                                'public': true
-                                              };
-                                              Dio dio = Dio();
-                                              Response response =
-                                                  await dio.post(
-                                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts",
-                                                options: Options(headers: {
-                                                  HttpHeaders.contentTypeHeader:
-                                                      "application/json",
-                                                }),
-                                                data: jsonEncode(data),
-                                              );
-                                              print(response.data);
-                                              final uri2 = Uri.parse(
-                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
-                                              http.Response response2 =
-                                                  await http.get(
-                                                uri2,
-                                              );
-                                              profile.allPodcasts =
-                                                  await jsonDecode(
-                                                      response2.body);
-                                              final uri5 = Uri.parse(
-                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
-                                              http.Response response5 =
-                                                  await http.post(uri5, body: {
-                                                'idToken': profile.myIdToken
-                                              });
-                                              print(response5.body);
-                                              profile.myCreations =
-                                                  await jsonDecode(
-                                                      response5.body);
-                                              final uri4 = Uri.parse(
-                                                  "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
-                                              http.Response response4 =
-                                              await http.post(uri4, body: {'idToken': profile.myIdToken});
-                                              print(response4.body);
-                                              profile.email = await jsonDecode(response4.body)['email'];
-                                              profile.displayName =
-                                              await jsonDecode(response4.body)['displayName'];
-                                              profile.numCre =
-                                              await jsonDecode(response4.body)['numberOfCreations'];
-                                              profile.numFav =
-                                              await jsonDecode(response4.body)['numberOfFavorites'];
-                                              if (response.statusCode == 200) {
-                                                showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return AlertDialog(
-                                                          scrollable: true,
-                                                          title: const Text(
-                                                              'Success your podcast was uploaded'),
-                                                          actions: [
-                                                            ElevatedButton(
-                                                                child: const Text(
-                                                                    "Ok",
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                    )),
-                                                                onPressed: () {
-                                                                  Navigator.push(
-                                                                      context,
-                                                                      MaterialPageRoute(
-                                                                          builder:
-                                                                              (context) {
-                                                                    return const SecondPageC(
-                                                                        title:
-                                                                            'SecondPage');
-                                                                  }));
-                                                                })
-                                                          ]);
-                                                    });
-                                              } else {
-                                                showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return AlertDialog(
-                                                          scrollable: true,
-                                                          title: const Text(
-                                                              'Error your podcast was not uploaded try again'),
-                                                          actions: [
-                                                            ElevatedButton(
-                                                                child: const Text(
-                                                                    "Ok",
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                    )),
-                                                                onPressed: () {
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                })
-                                                          ]);
-                                                    });
-                                              }
-                                            }),
-                                      ],
-                                    )
-                                  ],
-                                );
-                              });
-                        } else {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  scrollable: true,
-                                  title: const Text(
-                                      'Your audio file submission was not received please try again'),
-                                  actions: [
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              scrollable: true,
+                              title: const Text('Confirm podcast creation.'),
+                              actions: [
+                                Row(
+                                  children: [
                                     ElevatedButton(
-                                        child: const Text("ok",
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.red),
+                                      ),
+                                      onPressed: () async {
+                                        if (imageID != null) {
+                                          print(imageID);
+                                          final uri5 = Uri.parse(
+                                              "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/images/$imageID/delete");
+                                          http.Response response5 = await http
+                                              .post(uri5, body: {
+                                            'idToken': profile.myIdToken
+                                          });
+                                          print(response5.body);
+                                        }
+                                        if (podcastID != null) {
+                                          final uri5 = Uri.parse(
+                                              "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts/$podcastID/delete");
+                                          http.Response response5 = await http
+                                              .post(uri5, body: {
+                                            'idToken': profile.myIdToken
+                                          });
+                                          print(response5.body);
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                                  builder: (context) {
+                                            return const SecondPageC(
+                                                title: 'SecondPage');
+                                          }));
+                                        }
+                                      },
+                                      child: const Text("Cancel",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          )),
+                                    ),
+                                    const Spacer(),
+                                    ElevatedButton(
+                                        style: ButtonStyle(
+                                            foregroundColor:
+                                            MaterialStateProperty.all<Color>(Colors.white),
+                                            backgroundColor: MaterialStateProperty.all<Color>(
+                                                const Color(0xffb257a84)),
+                                            shape:
+                                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(18.0),
+                                                    side: const BorderSide(
+                                                        color: Color(0xffb257a84))))),
+                                        child: const Text("Confirm",
                                             style: TextStyle(
                                               color: Colors.white,
                                             )),
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        })
+                                        onPressed: () async {
+                                          if (imageID != null &&
+                                              myController.text != null &&
+                                              passController.text != null &&
+                                              selected != null) {
+                                            var data = {
+                                              'idToken': profile.myIdToken,
+                                              'podcastUploadId': podcastID,
+                                              "imageUploadId": imageID,
+                                              'title': myController.text,
+                                              'description':
+                                                  passController.text,
+                                              'genres': selected,
+                                              'public': true
+                                            };
+                                            Dio dio = Dio();
+                                            Response response = await dio.post(
+                                              "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts",
+                                              options: Options(headers: {
+                                                HttpHeaders.contentTypeHeader:
+                                                    "application/json",
+                                              }),
+                                              data: jsonEncode(data),
+                                            );
+                                            print(response.data);
+                                            final uri2 = Uri.parse(
+                                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/podcasts");
+                                            http.Response response2 =
+                                                await http.get(
+                                              uri2,
+                                            );
+                                            profile.allPodcasts =
+                                                await jsonDecode(
+                                                    response2.body);
+                                            final uri5 = Uri.parse(
+                                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
+                                            http.Response response5 = await http
+                                                .post(uri5, body: {
+                                              'idToken': profile.myIdToken
+                                            });
+                                            print(response5.body);
+                                            profile.myCreations =
+                                                await jsonDecode(
+                                                    response5.body);
+                                            final uri4 = Uri.parse(
+                                                "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
+                                            http.Response response4 = await http
+                                                .post(uri4, body: {
+                                              'idToken': profile.myIdToken
+                                            });
+                                            print(response4.body);
+                                            profile.email = await jsonDecode(
+                                                response4.body)['email'];
+                                            profile.displayName =
+                                                await jsonDecode(response4
+                                                    .body)['displayName'];
+                                            profile.numCre = await jsonDecode(
+                                                response4
+                                                    .body)['numberOfCreations'];
+                                            profile.numFav = await jsonDecode(
+                                                response4
+                                                    .body)['numberOfFavorites'];
+                                            if (response.statusCode == 200) {
+                                              showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                        scrollable: true,
+                                                        title: const Text(
+                                                            'Success your podcast was uploaded'),
+                                                        actions: [
+                                                          ElevatedButton(
+                                                              style: ButtonStyle(
+                                                                  foregroundColor:
+                                                                  MaterialStateProperty.all<Color>(Colors.white),
+                                                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                                                      const Color(0xffb257a84)),
+                                                                  shape:
+                                                                  MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                      RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.circular(18.0),
+                                                                          side: const BorderSide(
+                                                                              color: Color(0xffb257a84))))),
+                                                              child: const Text(
+                                                                  "Ok",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                  )),
+                                                              onPressed: () {
+                                                                Navigator.push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) {
+                                                                  return const SecondPageC(
+                                                                      title:
+                                                                          'SecondPage');
+                                                                }));
+                                                              })
+                                                        ]);
+                                                  });
+                                            } else {
+                                              showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                        scrollable: true,
+                                                        title: const Text(
+                                                            'Error your podcast was not uploaded try again'),
+                                                        actions: [
+                                                          ElevatedButton(
+                                                              style: ButtonStyle(
+                                                                  foregroundColor:
+                                                                  MaterialStateProperty.all<Color>(Colors.white),
+                                                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                                                      const Color(0xffb257a84)),
+                                                                  shape:
+                                                                  MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                      RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.circular(18.0),
+                                                                          side: const BorderSide(
+                                                                              color: Color(0xffb257a84))))),
+                                                              child: const Text(
+                                                                  "Ok",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                  )),
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              })
+                                                        ]);
+                                                  });
+                                            }
+                                          } else {
+                                            showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return AlertDialog(
+                                                      scrollable: true,
+                                                      title: const Text(
+                                                          'Error your podcast was not uploaded try again'),
+                                                      actions: [
+                                                        ElevatedButton(
+                                                            style: ButtonStyle(
+                                                                foregroundColor:
+                                                                MaterialStateProperty.all<Color>(Colors.white),
+                                                                backgroundColor: MaterialStateProperty.all<Color>(
+                                                                    const Color(0xffb257a84)),
+                                                                shape:
+                                                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                    RoundedRectangleBorder(
+                                                                        borderRadius: BorderRadius.circular(18.0),
+                                                                        side: const BorderSide(
+                                                                            color: Color(0xffb257a84))))),
+                                                            child: const Text(
+                                                                "Ok",
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                )),
+                                                            onPressed:
+                                                                () async {
+                                                              if (podcastID !=
+                                                                  null) {
+                                                                final uri5 =
+                                                                    Uri.parse(
+                                                                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/uploads/podcasts/$podcastID/delete");
+                                                                http.Response
+                                                                    response5 =
+                                                                    await http.post(
+                                                                        uri5,
+                                                                        body: {
+                                                                      'idToken':
+                                                                          profile
+                                                                              .myIdToken
+                                                                    });
+                                                                print(response5
+                                                                    .body);
+                                                              }
+                                                              Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) {
+                                                                return const SecondPageC(
+                                                                    title:
+                                                                        'SecondPage');
+                                                              }));
+                                                            })
+                                                      ]);
+                                                });
+                                          }
+                                        }),
                                   ],
-                                );
-                              });
-                        }
-                      }
-
-                      uploadFileToServer(audio);
+                                )
+                              ],
+                            );
+                          });
                       //add text controller data and send a post request to make a podcast
                     },
-                    child: Text("Select audio".toUpperCase(),
+                    child: Text("PUBLISH".toUpperCase(),
                         style:
-                            const TextStyle(color: Colors.white, fontSize: 14)),
+                            const TextStyle(color: Colors.white, fontSize: 16)),
                   ),
                   const Spacer(),
-                  // ElevatedButton(
-                  //   style: ButtonStyle(
-                  //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                  //       backgroundColor:
-                  //       MaterialStateProperty.all<Color>(const Color(0xffb257a84)),
-                  //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  //           RoundedRectangleBorder(
-                  //               borderRadius: BorderRadius.circular(18.0),
-                  //               side: const BorderSide(color: Color(0xffb257a84))))),
-                  //   onPressed: () {
-                  //     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  //       return LiveStreamPage();
-                  //     }));
-                  //   },
-                  //   child: Text("      Go live      ".toUpperCase(),
-                  //       style: const TextStyle(color: Colors.white, fontSize: 14)),
-                  // ),
-                  // Spacer(),
+
+
                 ],
-              )
+              ),
+              const Padding(padding: EdgeInsets.all(5.0)),
+
             ]),
           ),
         ),
