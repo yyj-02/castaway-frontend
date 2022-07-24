@@ -63,7 +63,8 @@ Future<void> refreshall() async {
     profile.myCreations = await jsonDecode(response5.body);
     http.Response socketres = await http.get(
       Uri.parse(
-          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
+    );
     profile.alllive = await jsonDecode(socketres.body);
   }
 }
@@ -82,15 +83,14 @@ class _MyAppState extends State<MyApp> {
     Timer.periodic(const Duration(seconds: 3600), (Timer t) => refresh());
     Timer.periodic(const Duration(seconds: 1000), (Timer t) => refreshall());
     return MaterialApp(
-      title: 'Castaway',
-      theme: ThemeData(
-        primarySwatch: Palette.kToDark,
-        fontFamily: 'Poppins',
-        primaryColor: const Color(0xffb257a84),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const Frontpage(title: "hi"),
-      debugShowCheckedModeBanner: false
-    );
+        title: 'Castaway',
+        theme: ThemeData(
+          primarySwatch: Palette.kToDark,
+          fontFamily: 'Poppins',
+          primaryColor: const Color(0xffb257a84),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const Frontpage(title: "hi"),
+        debugShowCheckedModeBanner: false);
   }
 }

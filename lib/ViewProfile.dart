@@ -17,7 +17,7 @@ class _viewProfilePageState extends State<viewProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Padding(padding:EdgeInsets.all(30.0)),
+            const Padding(padding: EdgeInsets.all(30.0)),
             Row(
               children: [
                 TextButton(

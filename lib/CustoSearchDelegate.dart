@@ -3,7 +3,6 @@ import 'ProfileDetails.dart' as profile;
 import 'Preview.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
-
   // first overwrite to
   // clear the search text
   @override
@@ -78,10 +77,10 @@ class CustomSearchDelegate extends SearchDelegate {
           onTap: () =>
               Navigator.push(context, MaterialPageRoute(builder: (context) {
             return Previewpage(
-            podcastdet: profile.allPodcasts[profile.allPodcasts
-            .map((podcast) => podcast['title'])
-            .toList()
-            .indexOf(result)]);
+                podcastdet: profile.allPodcasts[profile.allPodcasts
+                    .map((podcast) => podcast['title'])
+                    .toList()
+                    .indexOf(result)]);
           })),
         );
       },

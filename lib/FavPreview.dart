@@ -28,7 +28,8 @@ class _PreviewpageState extends State<Previewpage> {
                   SizedBox(
                     child: TextButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
                             return const SecondPage(title: 'SecondPage');
                           }));
                         },
@@ -63,8 +64,7 @@ class _PreviewpageState extends State<Previewpage> {
                           const BorderRadius.all(Radius.circular(12.0))),
                   child: Container(
                     decoration: const BoxDecoration(
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(18.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(18.0)),
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -108,22 +108,28 @@ class _PreviewpageState extends State<Previewpage> {
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   widget.podcastdet['title'],
-                                  style: const TextStyle(fontSize: 16.0,color: Colors.white,fontWeight: FontWeight.bold,),
+                                  style: const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 Text(
                                   widget.podcastdet['description'],
-                                  style: const TextStyle(fontSize: 16.0,color: Colors.white),
+                                  style: const TextStyle(
+                                      fontSize: 16.0, color: Colors.white),
                                 ),
                                 Text(
                                   widget.podcastdet['artistName'],
-                                  style: const TextStyle(fontSize: 16.0,color: Colors.white),
+                                  style: const TextStyle(
+                                      fontSize: 16.0, color: Colors.white),
                                 ),
-                                Text("Genres: ${widget.podcastdet['genres'].toString().substring(1,widget.podcastdet['genres'].toString().length-1)}",
+                                Text(
+                                  "Genres: ${widget.podcastdet['genres'].toString().substring(1, widget.podcastdet['genres'].toString().length - 1)}",
                                   style: const TextStyle(
                                     fontSize: 16.0,
                                     color: Colors.white,
@@ -170,16 +176,16 @@ class _PreviewpageState extends State<Previewpage> {
                   print(jsonDecode(response.body)['message']);
                   final uri4 = Uri.parse(
                       "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
-                  http.Response response4 =
-                  await http.post(uri4, body: {'idToken': profile.myIdToken});
+                  http.Response response4 = await http
+                      .post(uri4, body: {'idToken': profile.myIdToken});
                   print(response4.body);
                   profile.email = await jsonDecode(response4.body)['email'];
                   profile.displayName =
-                  await jsonDecode(response4.body)['displayName'];
+                      await jsonDecode(response4.body)['displayName'];
                   profile.numCre =
-                  await jsonDecode(response4.body)['numberOfCreations'];
+                      await jsonDecode(response4.body)['numberOfCreations'];
                   profile.numFav =
-                  await jsonDecode(response4.body)['numberOfFavorites'];
+                      await jsonDecode(response4.body)['numberOfFavorites'];
                   if (response.statusCode == 200) {
                     showDialog(
                         context: context,
@@ -192,9 +198,11 @@ class _PreviewpageState extends State<Previewpage> {
                                 ElevatedButton(
                                   style: ButtonStyle(
                                     foregroundColor:
-                                    MaterialStateProperty.all<Color>(Colors.white),
-                                    backgroundColor: MaterialStateProperty.all<Color>(
-                                        const Color(0xffb257a84)),
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            const Color(0xffb257a84)),
                                   ),
                                   child: const Text("Ok",
                                       style: TextStyle(
@@ -221,9 +229,11 @@ class _PreviewpageState extends State<Previewpage> {
                                 ElevatedButton(
                                   style: ButtonStyle(
                                     foregroundColor:
-                                    MaterialStateProperty.all<Color>(Colors.white),
-                                    backgroundColor: MaterialStateProperty.all<Color>(
-                                        const Color(0xffb257a84)),
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            const Color(0xffb257a84)),
                                   ),
                                   child: const Text("OK",
                                       style: TextStyle(

@@ -20,10 +20,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   Future initRecorder() async {
     final status = await Permission.microphone.request();
-    if (status == PermissionStatus.granted){
+    if (status == PermissionStatus.granted) {
       print("Mic available");
     }
-    if (status != PermissionStatus.granted){
+    if (status != PermissionStatus.granted) {
       throw "Mic not available";
     }
     await recorder.openRecorder();
@@ -48,15 +48,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
     final path = await recorder.stopRecorder();
     final audiofile = File(path!);
     print("Recorded audio $audiofile");
-
-
   }
-
 
   @override
   Widget build(BuildContext context) {
-    // Timer.periodic(const Duration(seconds: 5), (Timer t) => stop());
-    // Timer.periodic(const Duration(seconds: 5), (Timer t) => record());
     return MaterialApp(
       home: Scaffold(
         body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [

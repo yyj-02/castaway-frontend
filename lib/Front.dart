@@ -35,18 +35,19 @@ Future<bool> checks() async {
     profile.allPodcasts = await jsonDecode(response2.body);
     http.Response socketres = await http.get(
       Uri.parse(
-          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
+    );
     profile.alllive = await jsonDecode(socketres.body);
     final uri3 = Uri.parse(
         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
     http.Response response3 =
-    await http.post(uri3, body: {'idToken': profile.myIdToken});
+        await http.post(uri3, body: {'idToken': profile.myIdToken});
     print(response3.body);
     profile.favePodcasts = await jsonDecode(response3.body);
     final uri4 = Uri.parse(
         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/info");
     http.Response response4 =
-    await http.post(uri4, body: {'idToken': profile.myIdToken});
+        await http.post(uri4, body: {'idToken': profile.myIdToken});
     print(response4.body);
     profile.email = await jsonDecode(response4.body)['email'];
     profile.displayName = await jsonDecode(response4.body)['displayName'];
@@ -55,7 +56,7 @@ Future<bool> checks() async {
     final uri5 = Uri.parse(
         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
     http.Response response5 =
-    await http.post(uri5, body: {'idToken': profile.myIdToken});
+        await http.post(uri5, body: {'idToken': profile.myIdToken});
     print(response5.body);
     profile.myCreations = await jsonDecode(response5.body);
     return true;
@@ -81,7 +82,7 @@ class _FrontpageState extends State<Frontpage> {
           return const SecondPage(title: 'SecondPage');
         }));
       } else {
-        await Future.delayed(const Duration(seconds : 5));
+        await Future.delayed(const Duration(seconds: 5));
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return const FirstPage(title: "hi");
         }));
@@ -118,4 +119,3 @@ class _FrontpageState extends State<Frontpage> {
 }
 
 //Login Form
-

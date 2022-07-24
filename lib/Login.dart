@@ -36,7 +36,8 @@ Future<bool> checks() async {
     profile.allPodcasts = await jsonDecode(response2.body);
     http.Response socketres = await http.get(
       Uri.parse(
-          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
+    );
     profile.alllive = await jsonDecode(socketres.body);
     final uri3 = Uri.parse(
         "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
@@ -231,10 +232,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
                         borderRadius: BorderRadius.circular(18.0),
                         side: const BorderSide(color: Color(0xffb257a84))))),
             onPressed: () async {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                    return const loading();
-                  }));
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const loading();
+              }));
               SharedPreferences prefs = await SharedPreferences.getInstance();
               if (prefs.getString('email') == null) {
                 var data = {
@@ -258,9 +258,11 @@ class _MyCustomFormState extends State<MyCustomForm> {
                             ElevatedButton(
                                 style: ButtonStyle(
                                   foregroundColor:
-                                  MaterialStateProperty.all<Color>(Colors.white),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      const Color(0xffb257a84)),
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          const Color(0xffb257a84)),
                                 ),
                                 child: const Text("ok",
                                     style: TextStyle(
@@ -269,8 +271,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
                                 onPressed: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                        return const FirstPage(title: 'SecondPage');
-                                      }));
+                                    return const FirstPage(title: 'SecondPage');
+                                  }));
                                 })
                           ],
                         );
@@ -293,7 +295,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   profile.allPodcasts = await jsonDecode(response2.body);
                   http.Response socketres = await http.get(
                     Uri.parse(
-                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
+                  );
                   profile.alllive = await jsonDecode(socketres.body);
                   final uri3 = Uri.parse(
                       "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/favorites");
@@ -350,9 +353,11 @@ class _MyCustomFormState extends State<MyCustomForm> {
                             ElevatedButton(
                                 style: ButtonStyle(
                                   foregroundColor:
-                                  MaterialStateProperty.all<Color>(Colors.white),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      const Color(0xffb257a84)),
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          const Color(0xffb257a84)),
                                 ),
                                 child: const Text("ok",
                                     style: TextStyle(
@@ -404,7 +409,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   profile.myCreations = await jsonDecode(response5.body);
                   http.Response socketres = await http.get(
                     Uri.parse(
-                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+                        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
+                  );
                   profile.alllive = await jsonDecode(socketres.body);
                   print(profile.alllive);
 

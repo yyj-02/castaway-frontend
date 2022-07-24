@@ -177,11 +177,14 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                         const Spacer(),
                                         ElevatedButton(
                                             style: ButtonStyle(
-                                                foregroundColor:
-                                                MaterialStateProperty.all<Color>(Colors.white),
-                                                backgroundColor: MaterialStateProperty.all<Color>(
-                                                    const Color(0xffb257a84)),
-                                                ),
+                                              foregroundColor:
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.white),
+                                              backgroundColor:
+                                                  MaterialStateProperty.all<
+                                                          Color>(
+                                                      const Color(0xffb257a84)),
+                                            ),
                                             child: const Text("Ok",
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -205,11 +208,13 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                   actions: [
                                     ElevatedButton(
                                         style: ButtonStyle(
-                                            foregroundColor:
-                                            MaterialStateProperty.all<Color>(Colors.white),
-                                            backgroundColor: MaterialStateProperty.all<Color>(
-                                                const Color(0xffb257a84)),
-                                            ),
+                                          foregroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.white),
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  const Color(0xffb257a84)),
+                                        ),
                                         child: const Text("ok",
                                             style: TextStyle(
                                               color: Colors.white,
@@ -316,11 +321,14 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                       const Spacer(),
                                       ElevatedButton(
                                           style: ButtonStyle(
-                                              foregroundColor:
-                                              MaterialStateProperty.all<Color>(Colors.white),
-                                              backgroundColor: MaterialStateProperty.all<Color>(
-                                                  const Color(0xffb257a84)),
-                                              ),
+                                            foregroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.white),
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                        Color>(
+                                                    const Color(0xffb257a84)),
+                                          ),
                                           child: const Text("Ok",
                                               style: TextStyle(
                                                 color: Colors.white,
@@ -344,11 +352,13 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                 actions: [
                                   ElevatedButton(
                                       style: ButtonStyle(
-                                          foregroundColor:
-                                          MaterialStateProperty.all<Color>(Colors.white),
-                                          backgroundColor: MaterialStateProperty.all<Color>(
-                                              const Color(0xffb257a84)),
-                                          ),
+                                        foregroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                Colors.white),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                const Color(0xffb257a84)),
+                                      ),
                                       child: const Text("ok",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -459,7 +469,8 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                   const Spacer(),
                   ElevatedButton(
                     style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(const Size(200, 40)),
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(200, 40)),
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
                         backgroundColor: MaterialStateProperty.all<Color>(
@@ -487,8 +498,7 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                 Colors.red),
                                       ),
                                       onPressed: () async {
-                                          Navigator.pop(context);
-
+                                        Navigator.pop(context);
                                       },
                                       child: const Text("Cancel",
                                           style: TextStyle(
@@ -498,11 +508,13 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                     const Spacer(),
                                     ElevatedButton(
                                         style: ButtonStyle(
-                                            foregroundColor:
-                                            MaterialStateProperty.all<Color>(Colors.white),
-                                            backgroundColor: MaterialStateProperty.all<Color>(
-                                                const Color(0xffb257a84)),
-                                            ),
+                                          foregroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.white),
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  const Color(0xffb257a84)),
+                                        ),
                                         child: const Text("Confirm",
                                             style: TextStyle(
                                               color: Colors.white,
@@ -580,12 +592,19 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                             'Success your podcast was uploaded'),
                                                         actions: [
                                                           ElevatedButton(
-                                                              style: ButtonStyle(
-                                                                  foregroundColor:
-                                                                  MaterialStateProperty.all<Color>(Colors.white),
-                                                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                                                      const Color(0xffb257a84)),
-                                                                  ),
+                                                              style:
+                                                                  ButtonStyle(
+                                                                foregroundColor:
+                                                                    MaterialStateProperty.all<
+                                                                            Color>(
+                                                                        Colors
+                                                                            .white),
+                                                                backgroundColor:
+                                                                    MaterialStateProperty.all<
+                                                                            Color>(
+                                                                        const Color(
+                                                                            0xffb257a84)),
+                                                              ),
                                                               child: const Text(
                                                                   "Ok",
                                                                   style:
@@ -617,12 +636,19 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                             'Error your podcast was not uploaded try again'),
                                                         actions: [
                                                           ElevatedButton(
-                                                              style: ButtonStyle(
-                                                                  foregroundColor:
-                                                                  MaterialStateProperty.all<Color>(Colors.white),
-                                                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                                                      const Color(0xffb257a84)),
-                                                                  ),
+                                                              style:
+                                                                  ButtonStyle(
+                                                                foregroundColor:
+                                                                    MaterialStateProperty.all<
+                                                                            Color>(
+                                                                        Colors
+                                                                            .white),
+                                                                backgroundColor:
+                                                                    MaterialStateProperty.all<
+                                                                            Color>(
+                                                                        const Color(
+                                                                            0xffb257a84)),
+                                                              ),
                                                               child: const Text(
                                                                   "Ok",
                                                                   style:
@@ -649,11 +675,17 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                                                       actions: [
                                                         ElevatedButton(
                                                             style: ButtonStyle(
-                                                                foregroundColor:
-                                                                MaterialStateProperty.all<Color>(Colors.white),
-                                                                backgroundColor: MaterialStateProperty.all<Color>(
-                                                                    const Color(0xffb257a84)),
-                                                                ),
+                                                              foregroundColor:
+                                                                  MaterialStateProperty.all<
+                                                                          Color>(
+                                                                      Colors
+                                                                          .white),
+                                                              backgroundColor:
+                                                                  MaterialStateProperty.all<
+                                                                          Color>(
+                                                                      const Color(
+                                                                          0xffb257a84)),
+                                                            ),
                                                             child: const Text(
                                                                 "Ok",
                                                                 style:
@@ -706,12 +738,9 @@ class _CreateRecordedPageState extends State<CreateRecordedPage> {
                             const TextStyle(color: Colors.white, fontSize: 16)),
                   ),
                   const Spacer(),
-
-
                 ],
               ),
               const Padding(padding: EdgeInsets.all(5.0)),
-
             ]),
           ),
         ),

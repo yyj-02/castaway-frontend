@@ -152,7 +152,8 @@ class _HomePageState extends State<HomePage> {
                                           color: Colors.white,
                                         ),
                                       ),
-                                      Text("Genres: ${i['genres'].toString().substring(1,i['genres'].toString().length-1)}",
+                                      Text(
+                                        "Genres: ${i['genres'].toString().substring(1, i['genres'].toString().length - 1)}",
                                         style: const TextStyle(
                                           fontSize: 16.0,
                                           color: Colors.white,

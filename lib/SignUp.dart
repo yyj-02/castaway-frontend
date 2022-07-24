@@ -51,8 +51,8 @@ class _SignupState extends State<Signup> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                              return const FirstPage(title: 'SecondPage');
-                            }));
+                          return const FirstPage(title: 'SecondPage');
+                        }));
                       },
                       child: const Text("Login",
                           style: TextStyle(
@@ -60,7 +60,8 @@ class _SignupState extends State<Signup> {
                           )))
                 ],
               ),
-              Image.asset('assets/images/Login.png', height: 180, width: 500)],
+              Image.asset('assets/images/Login.png', height: 180, width: 500)
+            ],
           ),
         ),
       ),
@@ -190,10 +191,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
                       borderRadius: BorderRadius.circular(18.0),
                       side: const BorderSide(color: Color(0xffb257a84))))),
           onPressed: () async {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) {
-                  return const loading();
-                }));
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const loading();
+            }));
             var data = {
               'email': myController.text,
               'displayName': nameController.text,
@@ -215,8 +215,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
                       actions: [
                         ElevatedButton(
                             style: ButtonStyle(
-                              foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   const Color(0xffb257a84)),
                             ),
@@ -227,8 +227,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
                             onPressed: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                    return const Signup();
-                                  }));
+                                return const Signup();
+                              }));
                             })
                       ],
                     );
@@ -270,7 +270,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   await jsonDecode(response4.body)['numberOfFavorites'];
               http.Response socketres = await http.get(
                 Uri.parse(
-                    "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+                    "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
+              );
               profile.alllive = await jsonDecode(socketres.body);
               final uri5 = Uri.parse(
                   "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/users/creations");
@@ -278,7 +279,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   await http.post(uri5, body: {'idToken': profile.myIdToken});
               print(response5.body);
               profile.myCreations = await jsonDecode(response5.body);
-
 
               if (profile.myIdToken != null) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {

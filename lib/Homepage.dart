@@ -58,7 +58,6 @@ class _ExplorePageState extends State<ExplorePage> {
                                 fontSize: 20,
                               )),
                         ),
-
                       ]),
                 ),
               )

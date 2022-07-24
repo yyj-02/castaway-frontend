@@ -35,28 +35,24 @@ class _SecondPageState extends State<SecondPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_filled,
-
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.mic,
-
             ),
             label: 'Create',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.live_tv_rounded,
-
             ),
             label: 'Live',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.headphones,
-
             ),
             label: 'Explore',
           ),

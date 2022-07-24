@@ -16,60 +16,64 @@ class LivePage extends StatefulWidget {
 
 getall() async {
   http.Response socketres = await http.get(
-      Uri.parse(
-          "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),);
+    Uri.parse(
+        "https://us-central1-castaway-819d7.cloudfunctions.net/app/api/livestreams"),
+  );
   profile.alllive = await jsonDecode(socketres.body);
-
 }
 
 class _LivePageState extends State<LivePage> {
-
   @override
-
   Widget build(BuildContext context) {
     getall();
     print(profile.alllive);
-  return SingleChildScrollView(
+    return SingleChildScrollView(
         child: Center(
-          child: SizedBox(
-          width: 350,
-          height: 50000,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Padding(padding: EdgeInsets.all(30.0)),
-                  const Text("Coming live",
-                      style: TextStyle(
-                        color: Color(0xffb257a84),
-                        fontSize: 40,
+      child: SizedBox(
+        width: 350,
+        height: 50000,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          const Padding(padding: EdgeInsets.all(30.0)),
+          const Text("Coming live",
+              style: TextStyle(
+                color: Color(0xffb257a84),
+                fontSize: 40,
+              )),
+          ListView(
+            shrinkWrap: true,
+            physics: const ScrollPhysics(),
+            children: profile.alllive.map((livestream) {
+              return SizedBox(
+                width: 350,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: livestream['streamerConnected'] == true
+                        ? MaterialStateProperty.all(const Color(0xffb257a84))
+                        : MaterialStateProperty.all(Colors.grey),
+                  ),
+                  onPressed: () {
+                    profile.viewlive = livestream['livestreamId'];
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return LiveStream(
+                        livedes: livestream['description'],
+                        livename: livestream['title'],
+                        liveid: livestream["livestreamId"],
+                      );
+                    }));
+                  },
+                  child: Text(
+                      "${livestream['title']} - by ${livestream['artistName']}",
+                      style: const TextStyle(
+                        color: Colors.white,
                       )),
-
-            ListView(
-              shrinkWrap: true,
-              physics: const ScrollPhysics(),
-            children: profile.alllive.map((livestream){
-          return SizedBox(
-            width: 350,
-           child: ElevatedButton(
-             style: ButtonStyle(
-               backgroundColor: livestream['streamerConnected'] == true ? MaterialStateProperty.all(const Color(0xffb257a84)) : MaterialStateProperty.all(Colors.grey),
-             ),
-             onPressed: () {
-             profile.viewlive = livestream['livestreamId'];
-             Navigator.push(context,
-             MaterialPageRoute(builder: (context) {
-               return  LiveStream(livedes: livestream['description'], livename: livestream['title'], liveid: livestream["livestreamId"],);}));},
-             child: Text("${livestream['title']} - by ${livestream['artistName']}",style: const TextStyle(
-                 color: Colors.white,)),
-
-           ),
-          );
-          }).toList(),),
-                  const Spacer()
-                ]
-
-            ),
-              ),
-        ));
+                ),
+              );
+            }).toList(),
+          ),
+          const Spacer()
+        ]),
+      ),
+    ));
   }
 }

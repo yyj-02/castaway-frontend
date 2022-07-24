@@ -4,6 +4,7 @@ import 'CreatePage.dart';
 import 'ExplorePage.dart';
 import 'ProfilePage.dart';
 import 'Livepage.dart';
+
 class SecondPage extends StatefulWidget {
   const SecondPage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -34,28 +35,24 @@ class _SecondPageState extends State<SecondPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_filled,
-
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.mic,
-
             ),
             label: 'Create',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.live_tv_rounded,
-
             ),
             label: 'Live',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.headphones,
-
             ),
             label: 'Explore',
           ),

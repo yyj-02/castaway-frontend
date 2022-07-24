@@ -134,8 +134,8 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                                                       Radius.circular(18.0))),
                                           child: Container(
                                             decoration: const BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.all(Radius.circular(18.0)),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(18.0)),
                                               gradient: LinearGradient(
                                                 begin: Alignment.topCenter,
                                                 end: Alignment.bottomCenter,
@@ -178,20 +178,26 @@ class _ViewCreationsPageState extends State<ViewCreationsPage> {
                                                   width: 150,
                                                   height: 150,
                                                   child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 3.0),
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 6.0,
+                                                        vertical: 3.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment.end,
                                                       crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(
                                                           i['title'],
-                                                          style: const TextStyle(
+                                                          style:
+                                                              const TextStyle(
                                                             fontSize: 16.0,
-                                                            color: Colors.white,),
+                                                            color: Colors.white,
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
