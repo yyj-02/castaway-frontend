@@ -39,6 +39,7 @@ class _LivePageState extends State<LivePage> {
                 color: Color(0xffb257a84),
                 fontSize: 40,
               )),
+          const Padding(padding: EdgeInsets.all(5.0)),
           const Text("Grey: not connected  |  Green: connected",
               style: TextStyle(
                 color: Color(0xffb257a84),
