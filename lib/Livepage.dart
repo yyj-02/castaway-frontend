@@ -39,6 +39,11 @@ class _LivePageState extends State<LivePage> {
                 color: Color(0xffb257a84),
                 fontSize: 40,
               )),
+          const Text("Grey: not connected  |  Green: connected",
+              style: TextStyle(
+                color: Color(0xffb257a84),
+                fontSize: 15,
+              )),
           ListView(
             shrinkWrap: true,
             physics: const ScrollPhysics(),
