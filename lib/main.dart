@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'Palette.dart';
-import 'ProfileDetails.dart' as profile;
+import 'pages/others/Palette.dart';
+import 'commons/profile.dart' as profile;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Front.dart';
+import 'pages/create/Front.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
