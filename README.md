@@ -77,14 +77,18 @@ Press the green play button to run the flutter program.
 <br>
 (Refer to Installation appendix)
 
-### Possible errors and solution
+### Possible errors and solutions
 <ul>
   <li> OS error number 5: Disable your antivirus software e.g norton/windows defender</li>
   </ul>
 <h3> Installation appendix</h3>
 <p align="center"><img width="110%" src="./ReadMefiles/Installationappendix.jpg" height="110%"/></p>
 
-
+### Note
+<ul>
+  <li> Livestream is currently down due to cost considerations. However if you would like to test it out locally you may run the docker container which can be found
+  in the backend documentation under media server. Then comment out the variable add in both live.dart and Livestream.dart and uncomment the line below it.</li>
+  </ul>
 
 ## Frontend Documentation
 
