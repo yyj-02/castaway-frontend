@@ -72,7 +72,7 @@ our user interface. We believe that this will give us the edge over current comp
 
   <details>
   <summary><h3 style="display: inline;">Create page</h3></summary> 
-  <p align="center"><img width=30% height=20% src="./maincreate.png" /></p>
+  <p align="center"><img width=30% height=20% src="./CreatePage.png" /></p>
   <h4>Description</h4>
   <p> A simple page which allows users to create their podcasts from a recorded source or go live. </p>
   <h4>API called</h4>
@@ -83,7 +83,7 @@ our user interface. We believe that this will give us the edge over current comp
 
   <details>
   <summary><h3 style="display: inline;">Create from Storage</h3></summary> 
-  <p align="center"><img width=30% height=20% src="./CreatePage.png" /></p>
+  <p align="center"><img width=30% height=20% src="./CreateStore.png" /></p>
   <h4>Description</h4>
   <p> This page allows users to upload their podcast image, audio file, title, description and genres and create a podcast. The podcast is hot reloaded onto the users page and will be loaded for all other users when a reload is triggered. This happens every hour automatically </p>
   <h4>API called</h4>
